@@ -1,0 +1,90 @@
+.W-contact{
+    width: 100%;
+    margin-top: 10rem;
+  
+}
+
+.contacts{
+  
+    max-width: 50%;
+    margin: 0 auto;
+
+   
+}
+
+.contacts form{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+.contacts input,
+.contacts textarea{
+   padding: 1rem;
+border-radius:5px;
+font-size: 1.2rem;
+font-family: "work sans";
+min-width:100%;
+resize: none;
+border: 1.5px solid #858383;
+outline: none;
+}
+
+
+.C_desc{
+    
+    padding: 3.5rem 1rem;
+}
+
+.C_desc span{
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #6f6f6f;
+}
+.location.grid .C_desc h1{
+    font-size: 38px;
+line-height: 38px;
+padding-top: 10px;
+font-weight: 650;
+padding-bottom: 10px;
+text-transform: capitalize;
+
+}
+
+.location.grid .C_desc h3{
+    font-size: 25px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+
+
+}
+
+
+.location.grid .C_desc ul li{
+
+    padding-bottom: 20px;
+    font-size: 22px;
+      color: #495f55;
+      font-weight: 300;
+}
+
+.icons{
+    margin-left: -2.8rem;
+   
+}
+
+.icons li{
+    display: flex;
+    gap: 1.5rem;
+}
+
+
+
+
+
+.mail::placeholder,
+.password::placeholder {
+  color: #cfcfcf; 
+}
+
+

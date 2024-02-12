@@ -1,0 +1,31 @@
+
+.A-wrapper{
+    padding:8rem 0 2rem 0;  
+}
+.About{
+    background-image: url("../../img/Cat.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 65vh;
+    width: 100%;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* .About span:nth-child(1){
+    font-size: 5rem;
+    font-weight: 800;
+   color: rgb(80, 80, 80);
+  
+} */
+.About span{
+    font-size: 4rem;
+    font-weight: 700;
+    color:  rgb(0, 0, 0);
+    text-transform: capitalize;
+    
+  
+}
+

@@ -1,0 +1,138 @@
+.m-log{
+    height: 100vh;
+        background-image: url('../../img/huskylogin.jpg');
+        background-position: center;
+         background-size: cover;
+       
+    }
+    
+    .w-log{
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+      
+    }
+    
+    .l-container{
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0);
+        padding: 2rem 0;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        width: 320px;
+        box-shadow: 0 0 10px rgba(0, 0, 0,0.4);
+    }
+    
+    .login .Email{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 1.8rem;
+        margin-top: 10px;
+    }
+    
+    .login label{
+        color: #fff;
+    }
+    
+    .login .Pass{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 1.8rem 0rem 1.8rem;
+    
+    }
+    
+    .login input{
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+        background: #00000047;
+        border: none;
+        border-bottom: 1px solid #fff;
+      color: #fff;
+        margin-bottom: 10px;
+    }
+    
+    .login{
+        margin-top: 10px;
+    }
+    .l-button{
+    background-color: rgb(5, 132, 154);
+    border: none;
+    border-radius:6px ;
+    padding: 8px 10px;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 13  0px;
+    
+    }
+    .l-button:hover{
+    background-color: rgb(5, 114, 154);
+    
+    
+    }
+    
+    .l-container span{
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        padding: 0 0.8rem;
+        color: #ccc;
+    }
+    
+    .login p{
+        font-size: 14px;
+        color: #fdfdfd;
+        padding: 0 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    }
+    .login p:hover{
+        font-size: 15px;
+        font-weight: 550;
+        color: rgb(3, 125, 181);
+        text-decoration: underline;
+    
+    }
+    
+    .l-container .C-btn{
+        background: rgba(255, 0, 0, 0);
+        display: block;
+        padding: 5px 20px;
+        margin: 0 auto;
+        width: 220px;
+        margin-top: 20px;
+        font-size: 15px;
+        border-radius: 6px;
+        cursor: Pointer;
+        border: 1px solid #ccc;
+        color: #fff;
+        transition: all 0.5s ease;
+    
+    }
+    
+    .l-container .C-btn:hover{
+        color:  rgb(100, 211, 219);
+        text-decoration: underline;
+        border: 1px solid #04a799 ;
+    }
+    
+    .error-message {
+        color: rgb(227, 63, 13);
+    
+        margin-top: 15px;
+        text-align: center;
+        font-size: 16px;
+      }
+      
+    

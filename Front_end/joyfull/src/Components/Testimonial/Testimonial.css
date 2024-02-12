@@ -1,0 +1,29 @@
+.testimonial{
+    display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-direction: column;
+   gap: 1rem;
+   margin: 5rem 0;
+   background: #fafafa;
+   padding: 2rem;
+   border-radius: 10px;
+   box-shadow:  5px 5px 20px rgba(113, 113, 113, 0.2);
+  cursor: grab;
+}
+
+.testimonial > img{
+    width: 100px;
+    border-radius: 50%;
+}
+.testimonial > span{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--skyblue);
+}
+.testimonial > p{
+  font-size: 18px;
+  font-weight: 600;
+  color: #7c7c7c;
+  text-align: justify;
+}

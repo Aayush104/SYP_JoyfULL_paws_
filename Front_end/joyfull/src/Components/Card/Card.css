@@ -1,0 +1,40 @@
+.c-wrapper{
+   
+    width: 100%;
+   padding-top: 2rem;
+  
+   
+}
+.main{
+    display: flex;
+    height: 30vh;
+    margin: 2rem 1.5rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+.c-wrapper img{
+ width: 70px;
+ height: 70px;
+ margin: 3.5rem 2rem;
+
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.description span:nth-child(1){
+   color: #FBAE02;;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem ;
+}
+.description span:nth-child(2){
+   color: #7b7a7a;
+  font-size: 16px;
+  font-family: Comic Neue;
+  padding: 0.5rem ;
+  display: flex;
+  justify-content: center;
+}

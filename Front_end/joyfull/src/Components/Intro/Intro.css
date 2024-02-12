@@ -1,0 +1,38 @@
+.i-wrapper{
+ 
+    display:flex;
+    justify-content: space-between;
+ background-image: url('../../img/Pops.png');
+ height: 60vh;
+ background-repeat: no-repeat;
+ background-size: contain;
+ z-index: -1;
+
+}
+
+
+
+.i-slogan span{
+    text-transform: capitalize;
+    font-size: 3.5rem;
+    font-weight: 700;
+    padding: 0.5rem ;
+    display:flex;
+    flex-direction: column;
+ 
+    align-items: justify;
+    color: var(--skyblue);
+   
+
+}
+
+.i_button{
+margin-top: 1rem;
+    margin-left: 0.5rem;
+  
+}
+
+
+.i_left{
+    padding-top: 2rem;
+}

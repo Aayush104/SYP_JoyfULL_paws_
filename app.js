@@ -1,49 +1,3 @@
-// const express = require('express');
-// const app = express();
-// const { users } = require('./model/Index');
-// const bodyParser = require('body-parser');
-// const cors = require('cors');
-
-
-// app.use(cors());
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-
-// // register
-// app.post('/register', async (req, res) => {
-//     const { username, email, password } = req.body;
-
-//     try {
-//         const existingUser = await users.findAll({
-//             where: {
-//                 Email: email
-//             }
-//         });
-
-//         if (existingUser) {
-//             console.error("Email exists");
-//             return res.status(400).send("Email already exists");
-//         } else {
-//             await users.create({
-//                 UserName: username,
-//                 Email: email,
-//                 Password: password
-//             });
-//             res.send('Registration successful');
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Error registering user');
-//     }
-// });
-
-
-// Login
-
-
-// app.listen(5000, () => {
-//     console.log(`Server is running on port 5000`);
-// });
 
 
 const express = require('express');
@@ -68,12 +22,12 @@ app.get('/login', (req, res) => {
 
 //register
 app.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
+    const { Username, Email, Password } = req.body;
 
     try {
         const existingUser = await users.findOne({
             where: {
-                Email: email
+                Email: Email
             }
         });
 
@@ -83,9 +37,9 @@ app.post('/register', async (req, res) => {
         }
 
         await users.create({
-            UserName: username,
-            Email: email,
-            Password: password
+            UserName: Username,
+            Email: Email,
+            Password: Password
         });
         res.send('Registration successful');
     } catch (error) {
@@ -95,6 +49,7 @@ app.post('/register', async (req, res) => {
 });
 
 
+//Login
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -112,7 +67,7 @@ app.post('/login', async (req, res) => {
 
         if (user.Password !== password) {
             console.error("Incorrect password");
-            return res.status(401).send("Password donot match");
+            return res.status(401).send("Invalid Email Or Password");
         }
 
         console.log("Login successful");

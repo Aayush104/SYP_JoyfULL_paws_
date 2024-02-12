@@ -1,0 +1,68 @@
+.f-wrapper{
+    margin-top: 4rem;
+    background-color:  var(--footer)
+     
+}
+
+.f-wrapper img{
+    width: 8rem;
+}
+
+.f-icons{
+   display: flex;
+   gap: 1rem;
+   font-size: 25px;
+}
+
+.f-icons a{
+    color: #fff;
+}
+
+.section_footer{
+    display: flex;
+    gap: 8rem;
+}
+
+.f-services h2{
+color: #e8e8e8;
+}
+
+.f-services p{
+    color: #cccccc;
+}
+.f-contact h2{
+color: #e8e8e8;
+}
+.f-contact p{
+    color: #cccccc;
+}
+.f-about h2{
+color: #e8e8e8;
+}
+.f-about p{
+    color: #cccccc;
+}
+
+.donate h2{
+color: #e8e8e8;
+}
+.donate p{
+    color: #cccccc;
+}
+
+.f-credits p{
+    text-align: center;
+}
+
+.footer{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+   
+}
+
+.f-credits {
+    width: 100%;
+    text-align: center;
+    padding-top: 3rem;
+  }
