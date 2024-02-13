@@ -48,11 +48,11 @@ const navigateTo = useNavigate()
             <form className="login" onSubmit={handleSubmit}>
             <div className='Email'>
             <label>Email:</label>
-                <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input type="email" id="email" placeholder='Enter Your mail' name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
             <div className='Pass'>
                 <label>Password:</label>
-                <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input type="password" id="password" placeholder='Enter Password' name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                
                 <button type="submit"  className='l-button' >Login</button>

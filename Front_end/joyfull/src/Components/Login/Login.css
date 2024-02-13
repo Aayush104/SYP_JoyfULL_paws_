@@ -105,6 +105,9 @@
     
     }
     
+    .login input::placeholder{
+        color: #fff;
+      }
     .l-container .C-btn{
         background: rgba(255, 0, 0, 0);
         display: block;
@@ -128,7 +131,7 @@
     }
     
     .error-message {
-        color: rgb(227, 63, 13);
+        color: rgb(227, 31, 13);
     
         margin-top: 15px;
         text-align: center;
