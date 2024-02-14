@@ -1,5 +1,5 @@
 const { users } = require("../model/Index");
-
+const bcrypt = require('bcrypt')
 
 //Register User in Database
 exports.createUser =  async (req, res) => {
@@ -26,8 +26,8 @@ exports.createUser =  async (req, res) => {
         await users.create({
             UserName: Username,
             Email: Email,
-            Password: Password
-        });
+            Password: bcrypt.hashSync(Password, 10)
+        }); 
         res.send('Registration successful');
     } catch (error) {
         console.error('Error registering user:', error);
@@ -52,7 +52,9 @@ exports.userLogin = async (req, res) => {
             return res.status(404).send("User not found");
         }
 
-        if (user.Password !== password) {
+        const isPassword = bcrypt.compareSync(password, user.Password)
+
+        if (isPassword == false) {
             console.error("Incorrect password");
             return res.status(401).send("Invalid Email Or Password");
         }
