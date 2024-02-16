@@ -80,9 +80,10 @@
 .link .arrow{
   position: absolute;
   top: -0.4rem;
+  transition:all  0.3s ease;
 }
 
 .link .arrow:hover{
   transform: rotate(180deg);
-  transition:all  0.3s ease;
+
 }

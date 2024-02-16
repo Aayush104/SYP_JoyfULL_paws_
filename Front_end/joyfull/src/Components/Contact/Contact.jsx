@@ -33,13 +33,14 @@ const Contact = () => {
       </ul>
   
       </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54941.468216700196!2d87.21833829587607!3d26.565329195954106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef72612c26b923%3A0xd2f0e2766be60408!2sDuhabi!5e1!3m2!1sen!2snp!4v1698133783714!5m2!1sen!2snp"
-       width="650" 
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d892.1230159296002!2d87.2781721!3d26.5685809!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef726dbca3cd2b%3A0x958a55959c7c638d!2sDuhabi%20Area%20Police%20Station!5e0!3m2!1sen!2snp!4v1708099149534!5m2!1sen!2snp"
+       width="630" 
        height="450"
-        style={{border: "0"}}
+        style={{borderRadius: "10px"}}
          allowfullscreen="" 
          loading="lazy" 
-         referrerpolicy="no-referrer-when-downgrade">
+       >
       </iframe>
       </div>
   

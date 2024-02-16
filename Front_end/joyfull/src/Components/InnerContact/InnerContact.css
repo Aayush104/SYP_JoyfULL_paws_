@@ -1,0 +1,44 @@
+.iw-image{
+    background-image: url('../../img/contact_banner.jpg');
+    width: 100%;
+    background-repeat: no-repeat;
+    height: 60vh;
+    background-size: cover;
+}
+
+.iw-image span {
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.iw-image span:nth-child(1){
+    color: #1b6580;
+    font-size: 3.1rem;
+    font-weight: 700;
+    padding-bottom: 0.8rem;
+}
+
+.iw-image span:nth-child(2){
+    color: #35689c;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.iw-image span:nth-child(3){
+    color: #a8a431;
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.iw-slogans{
+    width: 40%;
+    align-items: center;
+    padding: 5rem;
+}
+
+.iw-slogans span{
+    text-transform: capitalize;
+    
+    padding: 0.5rem ;
+    display:flex;
+    flex-direction: column;
+}

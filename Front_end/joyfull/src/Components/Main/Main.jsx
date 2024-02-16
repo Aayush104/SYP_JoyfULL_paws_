@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+
+import InnerNav from '../InnerNav/InnerNav';
 
 const Main = () => {
   return (
-    <div>
-      <p>Here is main page</p>
+    <div className='w-main'>
+     <InnerNav />
+    <div className='search'>
+
     </div>
-  )
+    </div>
+  );
 }
 
-export default Main
+export default Main;

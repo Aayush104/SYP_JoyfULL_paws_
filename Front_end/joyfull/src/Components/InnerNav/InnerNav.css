@@ -1,0 +1,67 @@
+
+.nav-link .h-link{
+    position: relative;
+    
+  }
+
+.nav-link .h-link .home{
+    position: absolute;
+    top: -1.4rem;
+    left: 1rem;
+}
+  
+.nav-link .h-link .about{
+    position: absolute;
+    top: -1.4rem;
+    left: 2rem;
+}
+  
+.nav-link .h-link .phone{
+    position: absolute;
+    top: -1.4rem;
+    left: 2.4rem;
+}
+  
+.nav-link .h-link .Admin{
+    position: absolute;
+    top: -1.8rem;
+    left: 1.1rem;
+}
+ 
+
+.nav-link{
+    position: relative;
+}
+
+.nav-link .admin_arrow{
+    position: absolute;
+    top: -0.2rem
+  }
+
+  
+.nav-link .admin_arrow:hover{
+    transform: rotate(180deg);
+    transition:all  0.3s ease;
+  }
+
+  .drop-down li{
+    position: relative;
+  }
+.drop-down li .Add-pet{
+
+    position: absolute;
+    left: -1.6rem;
+ 
+}
+.drop-down li .Your_post{
+
+    position: absolute;
+    left: -1.6rem;
+ 
+}
+.drop-down li .log_out{
+
+    position: absolute;
+    left: -1.5rem;
+ 
+}

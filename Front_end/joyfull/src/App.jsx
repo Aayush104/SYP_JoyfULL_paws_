@@ -15,6 +15,8 @@ import Register from './Components/Register/Register';
 import Main from './Components/Main/Main'
 import './App.css';
 import Login from './Components/Login/Login';
+import InnerAbout from './Components/InnerAbout/InnerAbout';
+import InnerContact from './Components/InnerContact/InnerContact';
 
 const App = () => {
   return (
@@ -43,6 +45,9 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path = "/Login" element={<Login />} />
           <Route path = "/main" element={<Main />} />
+          <Route path = "/innerAbout" element={<InnerAbout/>} />
+          <Route path = "/innercontact" element={<InnerContact/>} />
+
         </Routes>
       </div>
     </Router>

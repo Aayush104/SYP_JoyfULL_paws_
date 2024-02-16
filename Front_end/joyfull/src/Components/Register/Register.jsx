@@ -27,11 +27,10 @@ function Register() {
   
               if (response.data === 'Registration successful') {
                   console.log("User has been created");
-                  setMessage('Registration successful');
                   setEmail('');
                   setUsername('');
                   setPassword('');
-                  navigateTo('/main')
+                  navigateTo('/Login')
               } 
 
               if(response.data == 'Password donot match'){

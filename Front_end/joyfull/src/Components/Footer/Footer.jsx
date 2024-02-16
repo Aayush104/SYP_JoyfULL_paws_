@@ -11,7 +11,7 @@ const Footer = () => {
         <div className='fix2 footer'>
         <div className='f-services'>
           <h2>Our Services</h2>
-          <p>Signup</p>
+          <p>Explore</p>
           <p>Other services</p>
           <h3>Follow us on</h3>
           <div className='f-icons'> <a href='https://www.facebook.com/aayush.chhetri.9406/'><FaFacebook /></a>
