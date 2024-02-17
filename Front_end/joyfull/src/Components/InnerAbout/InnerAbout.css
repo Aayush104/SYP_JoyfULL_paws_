@@ -1,9 +1,4 @@
-/* Define the font family */
-@font-face {
-    font-family: 'YourCartoonFont';
-    src: url('path_to_your_font/YourCartoonFont.woff2') format('woff2'),
-         url('path_to_your_font/YourCartoonFont.woff') format('woff');
-  }
+
   
   /* Styling for the banner */
   .ia_banner {
@@ -12,6 +7,7 @@
       background-repeat: no-repeat;
       height: 65vh;
       background-size: cover;
+    
   }
   
 
@@ -19,32 +15,29 @@
       text-transform: capitalize;
       padding: 0.5rem;
       display: flex;
+      font-weight: 700;
       flex-direction: column;
+     align-items: flex-start;
+     text-align: center;
+     
   }
   
 
   .ia_banner span:nth-child(1) {
-    color: #66ccffbf; 
-      font-family: 'Comic Sans MS', cursive;
-      font-size: 2.8rem;
+    color:  rgb(77, 139, 180);
+      /* font-family: 'Comic Sans MS', cursive; */
+      font-size: 3.2rem;
       font-weight: 700;
       padding-bottom: 0.8rem;
   }
   
 
 .ia_banner span:nth-child(2) {
-    color: #66ccffbf; 
-    font-family: 'YourCartoonFont';
-    font-size: 1.5rem;
+   color:  rgb(77, 139, 180);
+/*  
+    font-family: 'Comic Sans MS', cursive; */
+    font-size: 3rem;
     padding-bottom: 1rem;
-}
-
-
-.ia_banner span:nth-child(3) {
-    color: #66ccffbf; 
-    font-family: 'YourCartoonFont';
-    font-size: 1.5rem;
-    padding-bottom: 2rem;
 }
 
  

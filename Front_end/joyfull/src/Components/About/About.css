@@ -22,8 +22,9 @@
 } */
 .About span{
     font-size: 4rem;
+    font-family: 'Comic Sans MS', cursive;
     font-weight: 700;
-    color:  rgb(0, 0, 0);
+    color:  rgba(55, 121, 165, 0.919);
     text-transform: capitalize;
     
   

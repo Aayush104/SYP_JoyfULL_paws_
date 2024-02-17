@@ -26,17 +26,12 @@ const InnerAbout = () => {
                         transition={transitions}>
                         Know Us 😊Trust Us🤝 Love Us💙
                     </motion.span>
+                    
                     <motion.span
                         initial={initialPositions}
                         whileInView={finalPositions}
                         transition={transitions}>
-                        "Bringing Joy Home: Where Pets and Hearts Meet."
-                    </motion.span>
-                    <motion.span
-                        initial={initialPositions}
-                        whileInView={finalPositions}
-                        transition={transitions}>
-                        "Discover Your Furry Friend's Perfect Match with Joyful Paws"
+                        Discover Perfect Match for You With Us
                     </motion.span>
                 </div>
 

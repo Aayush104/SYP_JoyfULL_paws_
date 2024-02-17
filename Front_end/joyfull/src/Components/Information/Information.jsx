@@ -11,16 +11,22 @@ const Information = () => {
         hidden:{opacity:0},
         visible: {opacity: 1},
       };
-      const transition ={duration:5, type:'spring'}
+      const transition ={duration:3, type:'spring'}
+      const initialPosition = { y: 300 } // Initial position off-screen
+      const finalPosition = { y: 0 }
       return (
         <motion.div className='info-wrapper'
         variants ={fadeIn}
+        
         initial = "hidden"
         whileInView="visible"
         transition={transition}
+        
         >
     
         <motion.div  variants = {fadeIn}
+         initial={initialPosition}
+              whileInView={finalPosition}
         transition={transition} >
         <Card image={Gromming}  Title="Gromming Services" Desc ="Treat your pet to our baths, haircuts, and nail trims for a clean,
            healthy,and happy companion. Regular grooming is more than appearance; it's essential for their well-being.
@@ -28,10 +34,14 @@ const Information = () => {
         </motion.div>
        
            <motion.div variants = {fadeIn}
+            initial={initialPosition}
+              whileInView={finalPosition}
             transition={transition}>
           <Card image={Care} Title="Veterinary 24/7" Desc ="For your furry friends, we're always available! Whether it's a regular check-up or a pet emergency, our expert team is on call. Reach out at (555) 123-4567 for round-the-clock, trusted vet care."> </Card>
            </motion.div>
            <motion.div variants={fadeIn}
+            initial={initialPosition}
+              whileInView={finalPosition}
             transition={transition}>
           <Card image={Fun} Title="Fun activities" Desc = "We've got a lineup of pet-perfect fun! From playful playgroups to exciting pet events, we've got it all. Keep your pets happy and engaged with our amazing recreational programs. Fun awaits your furry friend! 🐾"> </Card>
            </motion.div>
