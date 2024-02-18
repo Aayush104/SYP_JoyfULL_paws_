@@ -24,6 +24,10 @@ app.post('/register', createUser)
 //Login garna
 app.post('/login', userLogin )
 
+//logout
+
+// app.get('/logout', logout)
+
 app.listen(5000, () => {
     console.log(`Server is running on port 5000`);
 });

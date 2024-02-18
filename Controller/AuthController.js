@@ -62,11 +62,17 @@ exports.userLogin = async (req, res) => {
 
         //Generating token here
        const token = jwt.sign({id:user.ID}, process.env.SECRETKEY,{expiresIn: "30d"})
-
-    res.json({token})
+    res.json({token}) //sending  dayain json form
        
     } catch (error) {
         console.error(error);
         return res.status(500).send('Error logging in');
     }
 };
+
+
+// exports.logout = async(req,res)=>{
+
+//     res.status(407).send('clear')
+
+// }

@@ -24,6 +24,8 @@ const Login = () => {
                 localStorage.setItem('token', token);
                 navigateTo('/main'); 
             }
+
+           
         } catch (error) {
             console.error("Error:", error.response.data);
             if (error.response && error.response.status === 401) {

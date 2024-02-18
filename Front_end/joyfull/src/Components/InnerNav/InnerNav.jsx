@@ -9,8 +9,15 @@ import { CgProfile } from "react-icons/cg";
 import { MdLibraryAdd } from "react-icons/md";
 import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 import { LuLogOut } from "react-icons/lu";
-import { NavLink } from 'react-router-dom';
+import { NavLink, } from 'react-router-dom';
 const InnerNav = () => {
+
+
+  const handleLogout = ()=>{
+    localStorage.removeItem('token')
+  
+    
+  }
   return (
     <div className="n-wrapper">
     <img src={logo} alt="Logo" />
@@ -73,7 +80,8 @@ const InnerNav = () => {
         Your Post</li>
     
         <NavLink to= '/'>
-        <li>
+        <li onClick={handleLogout}>
+     
             <LuLogOut className='log_out'  size= '1.2rem'/>
             Sign Out</li>
         </NavLink>

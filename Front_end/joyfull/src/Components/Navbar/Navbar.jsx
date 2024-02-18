@@ -4,9 +4,17 @@ import logo from "../../img/Logo.png";
 import { RiArrowDropDownLine} from "react-icons/ri";
 
 import {Link} from 'react-scroll'
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+  const navigateTo = useNavigate()
+
+  const handleLogout = ()=>{
+    localStorage.removeItem('token')
+    navigateTo('/Intro')
+    
+  }
   return (
     <div className="n-wrapper">
       <img src={logo} alt="Logo" />
