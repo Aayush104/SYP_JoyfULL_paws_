@@ -13,6 +13,8 @@ require('./model/Index');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+require('dotenv').config()
+
 
 
 //register garna user

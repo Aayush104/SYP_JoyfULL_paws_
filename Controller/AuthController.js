@@ -1,5 +1,6 @@
 const { users } = require("../model/Index");
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 //Register User in Database
 exports.createUser =  async (req, res) => {
@@ -59,8 +60,11 @@ exports.userLogin = async (req, res) => {
             return res.status(401).send("Invalid Email Or Password");
         }
 
-        console.log("Login successful");
-        res.send("Login successful");
+        //Generating token here
+       const token = jwt.sign({id:user.ID}, process.env.SECRETKEY,{expiresIn: "30d"})
+
+    res.json({token})
+       
     } catch (error) {
         console.error(error);
         return res.status(500).send('Error logging in');

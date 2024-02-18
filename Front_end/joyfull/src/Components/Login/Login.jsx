@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { NavLink,useNavigate} from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 
-const Login = () =>{
+const Login = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-const navigateTo = useNavigate()
+    const navigateTo = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -18,10 +18,11 @@ const navigateTo = useNavigate()
                 password: password
             });
 
-            if (response.data === "Login successful") {
+            if (response.data.token) { // Check if response contains data in which token must there
                 console.log("Login successful");
-                navigateTo('/main')
-                
+                const { token } = response.data;
+                localStorage.setItem('token', token);
+                navigateTo('/main'); 
             }
         } catch (error) {
             console.error("Error:", error.response.data);
@@ -37,32 +38,31 @@ const navigateTo = useNavigate()
 
     return (
         <div className="m-log">
-             <NavLink to='/'>
-        <p className='back'>
-         Back
-        </p>
-      </NavLink>
-      <div className='w-log'>
-        <div className='l-container'>
-          <span>Log in</span>
-            <form className="login" onSubmit={handleSubmit}>
-            <div className='Email'>
-            <label>Email:</label>
-                <input type="email" id="email" placeholder='Enter Your mail' name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div className='Pass'>
-                <label>Password:</label>
-                <input type="password" id="password" placeholder='Enter Password' name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <NavLink to='/'>
+                <p className='back'>
+                    Back
+                </p>
+            </NavLink>
+            <div className='w-log'>
+                <div className='l-container'>
+                    <span>Log in</span>
+                    <form className="login" onSubmit={handleSubmit}>
+                        <div className='Email'>
+                            <label>Email:</label>
+                            <input type="email" id="email" placeholder='Enter Your mail' name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        </div>
+                        <div className='Pass'>
+                            <label>Password:</label>
+                            <input type="password" id="password" placeholder='Enter Password' name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        </div>
+                        <button type="submit" className='l-button'>Login</button>
+                    </form>
+                    <NavLink to='/register'>
+                        <button className='C-btn'> Create An account?</button>
+                    </NavLink>
+                    {message && <p className='error-message'>{message}</p>}
                 </div>
-               
-                <button type="submit"  className='l-button' >Login</button>
-            </form>
-            <NavLink to='/register'>
-            <button className='C-btn'> Create An account?</button>
-          </NavLink>
-            {message && <p className='error-message'>{message}</p>}
-        </div>
-        </div>
+            </div>
         </div>
     );
 };
