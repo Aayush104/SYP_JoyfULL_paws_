@@ -11,8 +11,8 @@ const InnerAbout = () => {
     const initialPosition = { x: -800, opacity: 0 };
     const finalPosition = { x: 0, opacity: 1 };
     const transitions = { duration: 3, type: 'spring' };
-    const initialPositions = { y: -200 }; // Initial position off-screen
-    const finalPositions = { y: 0 }; // Final position at the top of the container
+    const initialPositions = { x: -600 }; // Initial position off-screen
+    const finalPositions = { x: 0 }; // Final position at the top of the container
 
     return (
         <div className='w-iabout'>

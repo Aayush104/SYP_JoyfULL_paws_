@@ -1,17 +1,14 @@
 
 .A-wrapper{
-    padding:8rem 0 2rem 0;  
+    padding:2rem 0 2rem 0;  
 }
 .About{
-    background-image: url("../../img/Cat.png");
+    background-image: url("https://www.awlqld.com.au/wp-content/uploads/2019/09/banner-19.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 65vh;
+    /* background-size: cover; */
+
     width: 100%;
-    display:flex ;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    height: 65vh
 }
 
 /* .About span:nth-child(1){
@@ -24,9 +21,16 @@
     font-size: 4rem;
     font-family: 'Comic Sans MS', cursive;
     font-weight: 700;
-    color:  rgba(55, 121, 165, 0.919);
+    color: #ecc267;
     text-transform: capitalize;
-    
+  
   
 }
 
+.about_span{
+   
+    width: 50%;
+    align-items: center;
+  padding: 4.2rem;
+   
+}

@@ -1,8 +1,13 @@
 import React from 'react';
 import './Main.css';
 import InnerNav from '../InnerNav/InnerNav';
+import Information from '../Information/Information';
 import { motion } from 'framer-motion';
-
+import pet from "../../img/1stpet.jpg";
+import paw from "../../img/paw_print.jpg";
+import { IoInformation } from 'react-icons/io5';
+import Testimonial from '../Testimonial/Testimonial';
+import Footer from '../Footer/Footer';
 const Main = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 100 }, // y vaneko kaha hunxa view ma aaunu vanda aagdai vaneko
@@ -59,6 +64,102 @@ const Main = () => {
           />
         </motion.div>
       </div>
+<Information />
+      <div className='featured_pets'>
+      <div className='head'>
+      <span>Available pets</span>
+      <motion.img 
+            src={paw} 
+            alt="" 
+            width="50px" 
+          
+            animate={{ rotate: [0, 20, 0], 
+            transition: { duration: 1, repeat: Infinity } }} // Continuous rotation animation
+          />
+      <span>Featured Pets </span>
+   
+
+
+      </div>
+
+<div className='main_pet'>
+<div className='pet_box'>
+<img src={pet}></img>
+
+<div className='pet_box_span'>
+<span>Charlie</span>
+<span>Loves to go out for walks and walks very good on a lead. He is very
+ inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
+ <button className='read_btn'>Read More</button>
+ 
+</div>
+
+</div>
+<div className='pet_box'>
+<img src={pet}></img>
+
+<div className='pet_box_span'>
+<span>Charlie</span>
+<span>Loves to go out for walks and walks very good on a lead. He is very
+ inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
+ <button className='read_btn'>Read More</button>
+ 
+</div>
+
+</div>
+<div className='pet_box'>
+<img src={pet}></img>
+
+<div className='pet_box_span'>
+<span>Charlie</span>
+<span>Loves to go out for walks and walks very good on a lead. He is very
+ inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
+ <button className='read_btn'>Read More</button>
+ 
+</div>
+
+</div>
+<div className='pet_box'>
+<img src={pet}></img>
+
+<div className='pet_box_span'>
+<span>Charlie</span>
+<span>Loves to go out for walks and walks very good on a lead. He is very
+ inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
+ <button className='read_btn'>Read More</button>
+ 
+</div>
+
+</div>
+<div className='pet_box'>
+<img src={pet}></img>
+
+<div className='pet_box_span'>
+<span>Charlie</span>
+<span>Loves to go out for walks and walks very good on a lead. He is very
+ inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
+ <button className='read_btn'>Read More</button>
+ 
+</div>
+
+</div>
+<div className='pet_box'>
+<img src={pet}></img>
+
+<div className='pet_box_span'>
+<span>Charlie</span>
+<span>Loves to go out for walks and walks very good on a lead. He is very
+ inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
+ <button className='read_btn'>Read More</button>
+ 
+</div>
+
+</div>
+</div>
+
+      </div>
+      <Testimonial />
+      <Footer />
     </div>
   );
 }

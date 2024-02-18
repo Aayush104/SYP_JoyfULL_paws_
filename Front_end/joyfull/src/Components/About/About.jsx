@@ -20,7 +20,9 @@ const About = () => {
             </motion.div>
 
             <div className='About'>
-                <motion.span
+
+            <div className='about_span'>
+            <motion.span
                     transition={transition1}
                     initial={initialPosition1}
                     whileInView={finalPosition1}
@@ -34,6 +36,8 @@ const About = () => {
                 >
                     Know us!!
                 </motion.span>
+            </div>
+               
             </div>
         </div>
     );
