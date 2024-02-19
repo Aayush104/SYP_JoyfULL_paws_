@@ -10,11 +10,12 @@ import { MdLibraryAdd } from "react-icons/md";
 import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 import { LuLogOut } from "react-icons/lu";
 import { NavLink, } from 'react-router-dom';
+import Cookies from 'js-cookie';
 const InnerNav = () => {
 
 
   const handleLogout = ()=>{
-    localStorage.removeItem('token')
+    Cookies.remove('token');
   
     
   }

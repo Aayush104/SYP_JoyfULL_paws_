@@ -8,13 +8,7 @@ import { NavLink,useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-  const navigateTo = useNavigate()
 
-  const handleLogout = ()=>{
-    localStorage.removeItem('token')
-    navigateTo('/Intro')
-    
-  }
   return (
     <div className="n-wrapper">
       <img src={logo} alt="Logo" />

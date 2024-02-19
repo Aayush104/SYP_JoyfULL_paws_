@@ -18,6 +18,7 @@ import Login from './Components/Login/Login';
 import InnerAbout from './Components/InnerAbout/InnerAbout';
 import InnerContact from './Components/InnerContact/InnerContact';
 
+
 const App = () => {
   return (
     <Router>
@@ -30,7 +31,6 @@ const App = () => {
               <>
                 <Navbar />
                 <Intro />
-               
                 <About />
                 <Story />
                 <Mission />

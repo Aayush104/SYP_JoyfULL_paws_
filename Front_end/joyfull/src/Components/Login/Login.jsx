@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
-
+import Cookies from 'js-cookie'
 const Login = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const Login = () => {
             if (response.data.token) { // Check if response contains data in which token must there
                 console.log("Login successful");
                 const { token } = response.data;
-                localStorage.setItem('token', token);
+            Cookies.set('token', token)
                 navigateTo('/main'); 
             }
 

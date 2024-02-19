@@ -71,8 +71,7 @@ exports.userLogin = async (req, res) => {
 };
 
 
-// exports.logout = async(req,res)=>{
+exports.logout = async(req,res)=>{
 
-//     res.status(407).send('clear')
+}
 
-// }
