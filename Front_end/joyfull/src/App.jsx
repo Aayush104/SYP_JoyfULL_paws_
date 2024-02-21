@@ -16,6 +16,7 @@ import Login from './Components/Login/Login';
 import InnerAbout from './Components/InnerAbout/InnerAbout';
 import InnerContact from './Components/InnerContact/InnerContact';
 import Protect from './Components/Protect/Protect';
+import Addpet from './Components/AddPet/Addpet';
 
 const App = () => {
   return (
@@ -41,10 +42,11 @@ const App = () => {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          {/* Wrap the protected routes with Protect component */}
           <Route path="/main" element={<Protect><Main /></Protect>} />
           <Route path="/innerAbout" element={<Protect><InnerAbout /></Protect>} />
           <Route path="/innercontact" element={<Protect><InnerContact /></Protect>} />
+          <Route path="/Addpet" element={<Protect><Addpet /></Protect>} />
+        
         </Routes>
       </div>
     </Router>

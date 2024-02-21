@@ -1,0 +1,80 @@
+.W-Addpet{
+    display: flex;
+    align-items: center;
+    height: 90vh;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.pet_form{
+   
+   background-color: rgba(0, 0, 0, 0.099);
+   padding: 2rem 2rem 1rem 2rem;
+   border-radius: 10px;
+   border: 1px solid #ccc;
+ 
+    
+}
+
+.left_form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form_p{
+    display: flex;
+    gap: 2rem;
+}
+.form_p .l-1 input{
+    width: 14rem;
+}
+.form_p .l-1 input,textarea{
+    padding: 8px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+;
+resize: none;
+  border-bottom: 1px solid #f1f1f1;
+  color: #333;
+  margin-top: 4px;
+  margin-bottom: 2px;
+
+}
+.form_p .l-1 label{
+font-size: 16px;   
+}
+.form_p .l-1 select{
+font-size: 16px; 
+padding: 8px;  
+border: 1px solid #ccc;
+border-radius: 8px;
+width: 15rem;
+}
+.form_p .l-2 label{
+font-size: 16px;   
+}
+.form_p .l-2 input{
+background-color: rgba(0, 0, 0, 0);   
+cursor: pointer;
+padding: auto;
+color: #333;
+border-radius: 8px;
+width: 200px;
+padding: 5px;
+border: 1px solid #ccc;
+
+
+}
+
+.pet_form form button{
+    margin-top: 6px;
+    background: rgb(208, 55, 121);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 11px 26px 11px 26px;
+    cursor: pointer;
+}
+

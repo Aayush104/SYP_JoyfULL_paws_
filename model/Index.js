@@ -33,6 +33,8 @@ sequelize
 
     db.users= require('./Usermodel.js')(sequelize, DataTypes);
 
+    db.pets= require('./Petmodel.js')(sequelize, DataTypes);
+
 db.sequelize.sync({ force: false }).then(() =>{
     console.log("yes re-sync done")
 })

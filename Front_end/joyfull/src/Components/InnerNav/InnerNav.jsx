@@ -69,12 +69,14 @@ const InnerNav = () => {
          <RiArrowDropDownLine className="admin_arrow" size='1.8rem' />
          
          <ul className='drop-down'>
+
+         <NavLink to= '/Addpet'>
           
       <li>
       <MdLibraryAdd className='Add-pet' size= '1.2rem'/>
         Add Pet
         </li>
-      
+        </NavLink>
     
         <li>
        <BsFillFileEarmarkPostFill className='Your_post' size= '1.1rem' />

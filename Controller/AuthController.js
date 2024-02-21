@@ -1,4 +1,4 @@
-const { users } = require("../model/Index");
+const { users, pets } = require("../model/Index");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -71,7 +71,37 @@ exports.userLogin = async (req, res) => {
 };
 
 
-exports.logout = async(req,res)=>{
+//Add pet in database
+exports.Addpet = async (req, res) =>{
 
+    const {petname,
+        petgender,
+        pethealth,
+        petsize,
+        petage,
+        petlikings,
+        aboutpet,
+        petphoto} = req.body
+
+        const filename = req.file.filename
+        // console.log(petname,
+        //     petgender,
+        //     pethealth,
+        //     petsize,
+        //     petage,
+        //     petlikings,
+        //     aboutpet,
+        //     petphoto)
+
+            await pets.create({
+                PetName : petname,
+                	PetGender :petgender,	
+                    Health	: pethealth,
+                    Petsize : petsize,
+                    Age : petage,
+                    PetLikings : petlikings,
+                    AboutPet : aboutpet,
+                    PetPhoto : filename
+            })
 }
 
