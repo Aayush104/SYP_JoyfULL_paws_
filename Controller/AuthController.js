@@ -84,14 +84,8 @@ exports.Addpet = async (req, res) =>{
         petphoto} = req.body
 
         const filename = req.file.filename
-        // console.log(petname,
-        //     petgender,
-        //     pethealth,
-        //     petsize,
-        //     petage,
-        //     petlikings,
-        //     aboutpet,
-        //     petphoto)
+       
+     
 
             await pets.create({
                 PetName : petname,

@@ -27,7 +27,7 @@ const InnerNav = () => {
 
       <Link spy={true} to= 'Navbar' smooth={true}>
       <NavLink to= '/main'>
-      <li className='nav-link '>
+      <li className='nav-link'>
       <div className='h-link'>
       <IoHome className='home'/>
         
