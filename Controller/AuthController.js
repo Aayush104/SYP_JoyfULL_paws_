@@ -81,21 +81,49 @@ exports.Addpet = async (req, res) =>{
         petage,
         petlikings,
         aboutpet,
-        petphoto} = req.body
+        } = req.body
 
         const filename = req.file.filename
        
-     
 
-            await pets.create({
-                PetName : petname,
-                	PetGender :petgender,	
-                    Health	: pethealth,
-                    Petsize : petsize,
-                    Age : petage,
-                    PetLikings : petlikings,
-                    AboutPet : aboutpet,
-                    PetPhoto : filename
-            })
+        if (!petname || !pethealth || !petsize || !petage || !petlikings || !aboutpet || !petgender || !filename){
+          return  res.json("fill form")
+        }
+
+
+try {
+    
+    await pets.create({
+        PetName : petname,
+            PetGender :petgender,	
+            Health	: pethealth,
+            Petsize : petsize,
+            Age : petage,
+            PetLikings : petlikings,
+            AboutPet : aboutpet,
+            PetPhoto : process.env.IMAGE_URL + filename
+    })
+
+    res.json("success")
+} catch (error) {
+
+    return res.status(402).send("Internal error occured")
 }
 
+          
+}
+
+
+//get pet details from database
+
+
+exports.getPetdetail = async(req,res)=>{
+
+    try {
+        const petDetail = await pets.findAll();
+        res.json(petDetail);
+    } catch (error) {
+        console.error('Error fetching pet details:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}

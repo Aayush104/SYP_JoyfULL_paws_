@@ -3,6 +3,7 @@ import './Intro.css'
 import { motion } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 
+
 const Intro = () => {
     const transition = { duration: 3, type: 'spring' }
     const initialPosition = { y: -200 } // Initial position off-screen

@@ -8,6 +8,8 @@ import paw from "../../img/paw_print.jpg";
 import { IoInformation } from 'react-icons/io5';
 import Testimonial from '../Testimonial/Testimonial';
 import Footer from '../Footer/Footer';
+import axios from 'axios';
+import { useState,useEffect } from 'react';
 const Main = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 100 }, // y vaneko kaha hunxa view ma aaunu vanda aagdai vaneko
@@ -17,6 +19,23 @@ const Main = () => {
   const transition = { duration: 4, type: 'spring' };
   const initialPosition = { y: -200 } // Initial position off-screen
   const finalPosition = { y: 0 }
+
+
+
+  // yaha dekhi backend saga connect garinxa
+  const [details, setDetails] = useState([]);
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/main');
+        setDetails(response.data);
+      } catch (error) {
+        console.error('Error fetching pet details:', error);
+      }
+    };
+    fetchDetails();
+  }, []);
+
 
   return (
     <div className='w-main'>
@@ -81,81 +100,21 @@ const Main = () => {
 
 
       </div>
-
-<div className='main_pet'>
-<div className='pet_box'>
-<img src={pet}></img>
-
-<div className='pet_box_span'>
-<span>Charlie</span>
-<span>Loves to go out for walks and walks very good on a lead. He is very
- inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
- <button className='read_btn'>Read More</button>
- 
+      <div className='main_pet petsbox'>
+     
+          {details.map(detail => (
+            
+              <div className='pet_box_span' key={detail.id}>
+              <img src={detail.PetPhoto} className='pet-image' />
+                <span>{detail.PetName}</span>
+                <span>{detail.AboutPet.slice(0,20)}</span>
+                <button className='read_btn'>Read More</button>
+              </div>
+          
+          ))}
+      
 </div>
 
-</div>
-<div className='pet_box'>
-<img src={pet}></img>
-
-<div className='pet_box_span'>
-<span>Charlie</span>
-<span>Loves to go out for walks and walks very good on a lead. He is very
- inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
- <button className='read_btn'>Read More</button>
- 
-</div>
-
-</div>
-<div className='pet_box'>
-<img src={pet}></img>
-
-<div className='pet_box_span'>
-<span>Charlie</span>
-<span>Loves to go out for walks and walks very good on a lead. He is very
- inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
- <button className='read_btn'>Read More</button>
- 
-</div>
-
-</div>
-<div className='pet_box'>
-<img src={pet}></img>
-
-<div className='pet_box_span'>
-<span>Charlie</span>
-<span>Loves to go out for walks and walks very good on a lead. He is very
- inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
- <button className='read_btn'>Read More</button>
- 
-</div>
-
-</div>
-<div className='pet_box'>
-<img src={pet}></img>
-
-<div className='pet_box_span'>
-<span>Charlie</span>
-<span>Loves to go out for walks and walks very good on a lead. He is very
- inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
- <button className='read_btn'>Read More</button>
- 
-</div>
-
-</div>
-<div className='pet_box'>
-<img src={pet}></img>
-
-<div className='pet_box_span'>
-<span>Charlie</span>
-<span>Loves to go out for walks and walks very good on a lead. He is very
- inquisitive and is always on the out look for rabbits. This boy adores human cuddles and loves to snuggle into you. </span>
- <button className='read_btn'>Read More</button>
- 
-</div>
-
-</div>
-</div>
 
       </div>
       <Testimonial />

@@ -12,6 +12,9 @@ const AddPet = () => {
   const [aboutpet, setAboutPet] = useState('');
   const [petphoto, setPetPhoto] = useState(null); // Store file object
 
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,16 +26,30 @@ const AddPet = () => {
     formData.append('petage', petage);
     formData.append('petlikings', petlikings);
     formData.append('aboutpet', aboutpet);
-    formData.append('petphoto', petphoto); // Append the file object
+    formData.append('petphoto', petphoto); 
 
     try {
-      const response = await axios.post("http://localhost:5000/Addpet", formData, {
-        
-      });
-    console.log(response.data)
+      const response = await axios.post("http://localhost:5000/Addpet", formData);
+
+      if (response.data === 'success') {
+        setMessage("Pet Added successfully");
+        setMessageType("success");
+        setAboutPet('');
+        setPetAge('')
+        setPetName('');
+        setPetHealth('');
+        setPetGender('');
+        setPetLikings('');
+        setAboutPet('');
+
+      } else {
+        setMessage("Fill all details. Please try again.");
+        setMessageType("error");
+      }
     } catch (error) {
       console.error('Error:', error);
-     
+      setMessage("Failed to add pet. Please try again.");
+      setMessageType("error");
     }
   };
 
@@ -61,6 +78,8 @@ const AddPet = () => {
                   onChange={(e) => setPetGender(e.target.value)}
                   required
                 >
+                
+                  <option></option>
                   <option value='male'>Male</option>
                   <option value='female'>Female</option>
                 </select>
@@ -74,6 +93,7 @@ const AddPet = () => {
                   onChange={(e) => setPetHealth(e.target.value)}
                   required
                 >
+                 <option></option>
                   <option value='vaccinated'>Vaccinated</option>
                   <option value='not-vaccinated'>Not Vaccinated</option>
                 </select>
@@ -87,6 +107,8 @@ const AddPet = () => {
                   onChange={(e) => setPetSize(e.target.value)}
                   required
                 >
+ <option></option>
+                
                   <option value='large'>Large</option>
                   <option value='medium'>Medium</option>
                   <option value='small'>Small</option>
@@ -113,6 +135,7 @@ const AddPet = () => {
             </div>
           </div>
           <button className='button3' type="submit">Add</button>
+          <p className={`message ${messageType === "success" ? "success" : "error"}`}>{message}</p>
         </form>
       </div>
     </div>

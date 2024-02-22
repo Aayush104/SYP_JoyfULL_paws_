@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { users } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
@@ -17,6 +17,8 @@ require('./model/Index');
 // Middleware for parsing cookies
 app.use(cookieParser());
 
+//image use gaar  vaner permission deko
+app.use(express.static('uploads/'))
 //form bata aako data 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -35,7 +37,14 @@ app.get('/protected', isauthenticate, (req, res) => {
     res.sendStatus(200); // Send success response if user is authenticated
 });
 
-app.post('/Addpet',upload.single('petphoto'), Addpet) //, upload.single('image')
+
+//Pet haru ko detail datbase ma halney
+app.post('/Addpet',upload.single('petphoto'), Addpet);
+
+
+//detail lai aba screen ma dekhauna
+
+app.get('/main', getPetdetail)
 
 // Start server
 app.listen(5000, () => {

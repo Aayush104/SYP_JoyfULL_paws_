@@ -3,7 +3,7 @@ import './Register.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import paw from "../../img/paw_print.jpg";
-import logo from "../../img/Logo.png";
+
 
 import { motion } from 'framer-motion';
 
