@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Addpet.css';
 import axios from 'axios';
+import { color } from 'framer-motion';
 
 const AddPet = () => {
   const [petname, setPetName] = useState('');
@@ -67,7 +68,7 @@ const AddPet = () => {
             <div className='left_form'>
               <div className='l-1'>
                 <label htmlFor="petName">Pet Name:</label><br />
-                <input type="text" id="petName" name="petName" value={petname} onChange={(e) => setPetName(e.target.value)} required />
+                <input type="text" id="petName" name="petName" placeholder='Enter Your Pet Name' value={petname} onChange={(e) => setPetName(e.target.value)} required />
               </div>
               <div className='l-1'>
                 <label htmlFor="petGender">Add Pet Gender:</label><br />
@@ -76,10 +77,10 @@ const AddPet = () => {
                   name='petGender'
                   value={petgender}
                   onChange={(e) => setPetGender(e.target.value)}
-                  required
+                  placeholder='Enter Your Pet Gender'
                 >
                 
-                  <option></option>
+                <option value='' disabled>Your Pet Gender ?</option>
                   <option value='male'>Male</option>
                   <option value='female'>Female</option>
                 </select>
@@ -93,7 +94,7 @@ const AddPet = () => {
                   onChange={(e) => setPetHealth(e.target.value)}
                   required
                 >
-                 <option></option>
+                 <option value='' disabled>Pet Vaccination</option>
                   <option value='vaccinated'>Vaccinated</option>
                   <option value='not-vaccinated'>Not Vaccinated</option>
                 </select>
@@ -105,28 +106,29 @@ const AddPet = () => {
                   name='petSize'
                   value={petsize}
                   onChange={(e) => setPetSize(e.target.value)}
+              
                   required
                 >
- <option></option>
+     <option value='' disabled>Your Pet Size ?</option>
                 
-                  <option value='large'>Large</option>
+                  <option value='large' >Large</option>
                   <option value='medium'>Medium</option>
                   <option value='small'>Small</option>
                 </select>
               </div>
               <div className='l-1'>
                 <label htmlFor="petAge">Age:</label><br />
-                <input type="text" id="petAge" name="petAge" value={petage} onChange={(e) => setPetAge(e.target.value)} required />
+                <input type="text" placeholder='Your Pet Age?' id="petAge" name="petAge" value={petage} onChange={(e) => setPetAge(e.target.value)} required />
               </div>
             </div>
             <div className='right_form'>
               <div className='l-1'>
                 <label htmlFor="petLikings">Pet Likings:</label><br />
-                <textarea id="petLikings" name="petLikings" rows="4" cols="50" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required ></textarea>
+                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="4" cols="50" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required ></textarea>
               </div>
               <div className='l-1'>
                 <label htmlFor="aboutPet">About pet:</label><br />
-                <textarea id="aboutPet" name="aboutPet" rows="4" cols="50" value={aboutpet} onChange={(e) => setAboutPet(e.target.value)} required ></textarea>
+                <textarea id="aboutPet" placeholder= "Write About Your pet..." name="aboutPet" rows="4" cols="50" value={aboutpet} onChange={(e) => setAboutPet(e.target.value)} required ></textarea>
               </div>
               <div className='l-2'>
                 <label htmlFor="petPhoto">Pet Photo:</label><br />

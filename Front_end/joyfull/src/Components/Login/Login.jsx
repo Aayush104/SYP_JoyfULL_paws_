@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 import Cookies from 'js-cookie'
+import paw from "../../img/log_paw.png";
 const Login = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -47,7 +48,7 @@ const Login = () => {
             </NavLink>
             <div className='w-log'>
                 <div className='l-container'>
-                    <span>Log in</span>
+                    <span>JoyFull Paws</span>
                     <form className="login" onSubmit={handleSubmit}>
                         <div className='Email'>
                             <label>Email:</label>
@@ -57,6 +58,10 @@ const Login = () => {
                             <label>Password:</label>
                             <input type="password" id="password" placeholder='Enter Password' name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         </div>
+                        <p>Forget Password ?</p>
+
+                    <img src={paw} className='paws_img'></img>
+                       
                         <button type="submit" className='l-button'>Login</button>
                     </form>
                     <NavLink to='/register'>

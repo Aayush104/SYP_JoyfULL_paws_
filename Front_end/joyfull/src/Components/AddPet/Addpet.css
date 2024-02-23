@@ -91,3 +91,13 @@ border: 1px solid #ccc;
     color: red;
   }
   
+/* .l-1  select .sie{
+  font-size: 10px;
+}
+  select option{
+    font-size: 10px;
+  } */
+
+  .l-1 textarea{
+    font-family: Arial, Helvetica, sans-serif;
+  }
