@@ -17,6 +17,19 @@ require('./model/Index');
 // Middleware for parsing cookies
 app.use(cookieParser());
 
+
+//chcek if token is  or not for responseiv navbar
+app.use((req,res,next)=>{
+
+    res.locals.currentUser = req.cookies.token
+    next()
+    
+
+})
+
+
+
+
 //image use gaar  vaner permission deko
 app.use(express.static('uploads/'))
 //form bata aako data 

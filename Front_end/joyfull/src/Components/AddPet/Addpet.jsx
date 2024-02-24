@@ -47,10 +47,12 @@ const AddPet = () => {
         setMessage("Fill all details. Please try again.");
         setMessageType("error");
       }
+      
     } catch (error) {
       console.error('Error:', error);
-      setMessage("Failed to add pet. Please try again.");
+      setMessage("Fill all valid details. Please try again.");
       setMessageType("error");
+    
     }
   };
 

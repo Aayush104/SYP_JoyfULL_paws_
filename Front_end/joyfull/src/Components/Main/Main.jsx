@@ -31,6 +31,7 @@ const Main = () => {
         setDetails(response.data);
       } catch (error) {
         console.error('Error fetching pet details:', error);
+       
       }
     };
     fetchDetails();
