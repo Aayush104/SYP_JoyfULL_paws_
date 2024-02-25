@@ -126,7 +126,7 @@ const AddPet = () => {
             <div className='right_form'>
               <div className='l-1'>
                 <label htmlFor="petLikings">Pet Likings:</label><br />
-                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="4" cols="50" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required ></textarea>
+                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="4" cols="50" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required maxLength="200"></textarea>
               </div>
               <div className='l-1'>
                 <label htmlFor="aboutPet">About pet:</label><br />

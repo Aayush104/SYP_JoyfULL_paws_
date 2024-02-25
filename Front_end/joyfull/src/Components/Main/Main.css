@@ -64,6 +64,10 @@ body{
     position: relative;
   }
    
+  .featured_pets  .head .paw_pic{
+    margin-top: 2px;
+
+  }
   .featured_pets  .head span:nth-child(1){
     color: #FBAE02;
     font-size: 18px;
@@ -92,72 +96,6 @@ body{
     font-size: 3rem;
     text-transform: capitalize;
   }
-/* 
- 
-  .pet_box .petcard{
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .pet_box img{
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-
-.pet_box_span{
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.5rem 2rem 2rem 2rem;
-
-}
-
-.pet_box_span span:nth-child(1){
-  font-weight: 700;
-  font-family: cursive;
-  font-size: 22px;
-}
-.pet_box_span span:nth-child(2){
-
-  font-size: 14px;
-  text-align: justify;
-  color: #919090;
-}
-
-.read_btn{
- width: 100px;
- margin-top: 10px;
- cursor: pointer;
- background-color: #fa4f4f;
- border: none;
- border-radius: 20px;
- color: #fff;
- padding: 0.5rem ;
- transition: all 0.3s ease-in-out;
- 
-}
-.read_btn:hover{
-
- background-color: #fa634f;
-
- 
-}
-
-.main_pet{
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-
- 
-  gap: 3rem;
-}
-
-.head img{
-  margin-top: 10px
-} */
 
 .petsbox {
   display: grid;
@@ -173,7 +111,7 @@ body{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
  
- 
+ gap: 1rem;
   flex-direction: column;
 }
 
@@ -198,4 +136,10 @@ body{
 
 .read_btn:hover {
   background-color: #f44b48;
+}
+
+.pet_box_span span:nth-child(2){
+  font-weight: bold;
+  font-size: 18px;
+ color: var(--);
 }

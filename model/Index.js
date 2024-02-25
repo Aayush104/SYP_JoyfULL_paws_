@@ -30,6 +30,7 @@ sequelize
 
     db.Sequelize = Sequelize;
     db.sequelize = sequelize;
+    
 
     db.users= require('./Usermodel.js')(sequelize, DataTypes);
 

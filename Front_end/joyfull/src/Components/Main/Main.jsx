@@ -92,6 +92,7 @@ const Main = () => {
             src={paw} 
             alt="" 
             width="50px" 
+          className='paw_pic'
           
             animate={{ rotate: [0, 20, 0], 
             transition: { duration: 1, repeat: Infinity } }} // Continuous rotation animation
@@ -108,7 +109,7 @@ const Main = () => {
               <div className='pet_box_span' key={detail.id}>
               <img src={detail.PetPhoto} className='pet-image' />
                 <span>{detail.PetName}</span>
-                <span>{detail.AboutPet.slice(0,20)}</span>
+                <span>{detail.PetLikings	}</span>
                 <button className='read_btn'>Read More</button>
               </div>
           
