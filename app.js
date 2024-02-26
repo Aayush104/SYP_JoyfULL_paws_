@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { users } = require('./model/Index');
+const { users, pets } = require('./model/Index');
 const cors = require('cors');
 const { createUser, userLogin,Addpet, getPetdetail } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
@@ -59,7 +59,37 @@ app.post('/Addpet',upload.single('petphoto'), Addpet);
 
 app.get('/main', getPetdetail)
 
+
+//single page blog
+
+app.get("/Detail/:id", async (req,res)=>{
+
+    try {
+
+        const id = req.params.id
+
+        const alldetails = await pets.findAll({
+            where :{
+                ID : id
+            }
+        })
+    
+        console.log(alldetails)
+    
+        res.json (alldetails)
+        
+    } catch (error) {
+        
+        res.status(200).json(error,"internal server error")
+    }
+
+   
+
+})
 // Start server
 app.listen(5000, () => {
     console.log(`Server is running on port 5000`);
 });
+
+
+

@@ -10,6 +10,7 @@ import Testimonial from '../Testimonial/Testimonial';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 const Main = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 100 }, // y vaneko kaha hunxa view ma aaunu vanda aagdai vaneko
@@ -110,7 +111,12 @@ const Main = () => {
               <img src={detail.PetPhoto} className='pet-image' />
                 <span>{detail.PetName}</span>
                 <span>{detail.PetLikings	}</span>
-                <button className='read_btn'>Read More</button>
+
+                <NavLink to={`/Detail/${detail.ID}`}>
+  <button className='read_btn'>Read More</button>
+</NavLink>
+
+                
               </div>
           
           ))}

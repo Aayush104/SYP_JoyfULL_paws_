@@ -67,8 +67,7 @@
 }
 
 .active{
-    text-decoration: underline;
-    color: var(--skyblue);
+   color: red;
   
 }
 
