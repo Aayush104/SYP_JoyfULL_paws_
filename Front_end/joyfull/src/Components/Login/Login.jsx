@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 import Cookies from 'js-cookie'
+// import Footer from '../Footer/Footer';
+
 import paw from "../../img/log_paw.png";
 const Login = () => {
     const [password, setPassword] = useState('');
@@ -46,6 +48,8 @@ const Login = () => {
                     Back
                 </p>
             </NavLink>
+
+           
             <div className='w-log'>
                 <div className='l-container'>
                     <span>JoyFull Paws</span>
@@ -70,6 +74,8 @@ const Login = () => {
                     {message && <p className='error-message'>{message}</p>}
                 </div>
             </div>
+
+            
         </div>
     );
 };

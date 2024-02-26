@@ -1,14 +1,20 @@
 .W-Addpet{
     display: flex;
     align-items: center;
-    height: 90vh;
+    /* height: 100vh; */
     justify-content: center;
     flex-direction: column;
 
 }
+
+.W-Addpet h2{
+  margin-top: 2rem;
+  font-family: cursive;
+  font-size: 2.8rem;
+}
 .pet_form{
    
-   background-color: rgba(0, 0, 0, 0.099);
+   background-color: #ccc;
    padding: 2rem 2rem 1rem 2rem;
    border-radius: 10px;
    border: 1px solid #ccc;
@@ -25,8 +31,13 @@
     display: flex;
     gap: 2rem;
 }
+
+
+.form_p .l-1{
+  margin-top: 1rem;
+}
 .form_p .l-1 input{
-    width: 14rem;
+    width: 20rem;
 }
 .form_p .l-1 input,textarea{
     padding: 8px;
@@ -49,10 +60,14 @@ font-size: 16px;
 padding: 8px;  
 border: 1px solid #ccc;
 border-radius: 8px;
-width: 15rem;
+width: 20rem;
 }
 .form_p .l-2 label{
 font-size: 16px;   
+}
+
+.form_p .l-2{
+  margin-top: 1rem;
 }
 .form_p .l-2 input{
 background-color: rgba(0, 0, 0, 0);   
@@ -100,4 +115,5 @@ border: 1px solid #ccc;
 
   .l-1 textarea{
     font-family: Arial, Helvetica, sans-serif;
+    
   }

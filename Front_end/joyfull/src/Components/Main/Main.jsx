@@ -61,7 +61,7 @@ const Main = () => {
           transition={transition}
           initial= {initialPosition}
           whileInView={finalPosition}
-          >Where Every Adoption🦄 </motion.span>
+          >Where Every Adoption </motion.span>
           <motion.span
           transition={transition}
           initial= {initialPosition}

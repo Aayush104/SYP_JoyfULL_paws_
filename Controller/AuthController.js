@@ -81,12 +81,13 @@ exports.Addpet = async (req, res) =>{
         petage,
         petlikings,
         aboutpet,
+        breed
         } = req.body
 
         const filename = req.file.filename
        
 
-        if (!petname || !pethealth || !petsize || !petage || !petlikings || !aboutpet || !petgender || !filename){
+        if (!petname || !pethealth || !petsize || !petage || !petlikings || !aboutpet || !petgender || !breed || !filename){
           return  res.json("fill form")
         }
 
@@ -101,6 +102,7 @@ try {
             Age : petage,
             PetLikings : petlikings,
             AboutPet : aboutpet,
+            Breed : breed,
             PetPhoto : process.env.IMAGE_URL + filename
     })
 
@@ -127,3 +129,5 @@ exports.getPetdetail = async(req,res)=>{
         res.status(500).json({ error: 'Internal server error' });
     }
 }
+
+

@@ -141,5 +141,11 @@ body{
 .pet_box_span span:nth-child(2){
   font-weight: bold;
   font-size: 18px;
- color: var(--);
+ 
+}
+.pet_box_span span:nth-child(3){
+
+  font-size: 15px;
+text-align: justify;
+color: #858383;
 }

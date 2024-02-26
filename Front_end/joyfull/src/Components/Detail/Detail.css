@@ -1,0 +1,78 @@
+.m-single{
+    display: flex;
+   width: 100%;
+   height: 75vh;
+   background-color: #efefef;
+   gap: 1rem;
+}
+
+.m-single img{
+    width: 48%;
+}
+
+.detail_contain{
+    margin:5.6rem 2rem 0rem 1.8rem;
+   
+}
+
+.detail_contain p{
+
+    font-size :2.5rem;
+    font-weight: 600;
+}
+    
+ .right{
+    display: flex;
+padding-left: 1.8rem;
+
+gap: 8rem;
+    
+   
+}
+
+.right .detail_span p{
+     font-weight: 700;
+     text-transform: capitalize;
+
+}
+.right .detail_span p span{
+     font-weight: 200;
+     color: #474646;
+
+}
+
+.desrciption{
+    padding-left: 1.8rem;
+    padding-top: 1rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.desrciption .Applybtm{
+   
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 180px;
+    cursor: pointer;
+    background: var(--heading);
+    color: #fff;
+    border-radius: 20px;
+
+}
+.desrciption .Applybtm:hover{
+   
+ background: rgb(0, 128, 115);
+
+}
+.desrciption span{
+ color: #686868;
+ font-size: 15.5px;
+}
+
+.About_pets{
+    padding: 2rem 6rem 2rem 6rem;
+}
+.About_pets h2{
+ font-size: 2.6rem;
+}

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Addpet.css';
 import axios from 'axios';
-import { color } from 'framer-motion';
+// import { color } from 'framer-motion';
+import Footer from '../Footer/Footer';
+import InnerNav from '../InnerNav/InnerNav';
 
 const AddPet = () => {
   const [petname, setPetName] = useState('');
@@ -11,6 +13,7 @@ const AddPet = () => {
   const [petage, setPetAge] = useState('');
   const [petlikings, setPetLikings] = useState('');
   const [aboutpet, setAboutPet] = useState('');
+  const [breed, setbreed] = useState('');
   const [petphoto, setPetPhoto] = useState(null); // Store file object
 
   const [message, setMessage] = useState('');
@@ -27,6 +30,7 @@ const AddPet = () => {
     formData.append('petage', petage);
     formData.append('petlikings', petlikings);
     formData.append('aboutpet', aboutpet);
+    formData.append('breed', breed);
     formData.append('petphoto', petphoto); 
 
     try {
@@ -42,6 +46,7 @@ const AddPet = () => {
         setPetGender('');
         setPetLikings('');
         setAboutPet('');
+        setbreed('');
 
       } else {
         setMessage("Fill all details. Please try again.");
@@ -62,7 +67,12 @@ const AddPet = () => {
   };
 
   return (
+    <>
+     <div>
+     <InnerNav />
+   
     <div className='W-Addpet'>
+    
       <h2>List Your pet</h2>
       <div className='pet_form'>
         <form onSubmit={handleSubmit}>
@@ -122,15 +132,20 @@ const AddPet = () => {
                 <label htmlFor="petAge">Age:</label><br />
                 <input type="text" placeholder='Your Pet Age?' id="petAge" name="petAge" value={petage} onChange={(e) => setPetAge(e.target.value)} required />
               </div>
+              <div className='l-1'>
+                <label htmlFor="petAge">Breed:</label><br />
+                <input type="text" placeholder='Your pet Breed ?' id="breed" name="breed" value={breed} onChange={(e) => setbreed(e.target.value)} required />
+              </div>
             </div>
             <div className='right_form'>
+          
               <div className='l-1'>
                 <label htmlFor="petLikings">Pet Likings:</label><br />
-                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="4" cols="50" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required maxLength="200"></textarea>
+                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="6" cols="80" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required maxLength="00"></textarea>
               </div>
               <div className='l-1'>
                 <label htmlFor="aboutPet">About pet:</label><br />
-                <textarea id="aboutPet" placeholder= "Write About Your pet..." name="aboutPet" rows="4" cols="50" value={aboutpet} onChange={(e) => setAboutPet(e.target.value)} required ></textarea>
+                <textarea id="aboutPet" placeholder= "Write About Your pet..." name="aboutPet" rows="6" cols="80" value={aboutpet} onChange={(e) => setAboutPet(e.target.value)} required ></textarea>
               </div>
               <div className='l-2'>
                 <label htmlFor="petPhoto">Pet Photo:</label><br />
@@ -142,7 +157,13 @@ const AddPet = () => {
           <p className={`message ${messageType === "success" ? "success" : "error"}`}>{message}</p>
         </form>
       </div>
+     
     </div>
+    <Footer />
+    </div>
+   
+
+    </>
   );
 }
 

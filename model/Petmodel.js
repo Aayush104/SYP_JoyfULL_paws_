@@ -33,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        Breed: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         PetPhoto: {
             type: DataTypes.STRING,
             allowNull: false
