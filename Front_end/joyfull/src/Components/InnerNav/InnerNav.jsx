@@ -77,10 +77,14 @@ const InnerNav = () => {
         Add Pet
         </li>
         </NavLink>
+
+        <NavLink to= '/Mypost'>
     
         <li>
        <BsFillFileEarmarkPostFill className='Your_post' size= '1.1rem' />
         Your Post</li>
+
+        </NavLink>
     
         <NavLink to= '/'>
         <li onClick={handleLogout}>

@@ -31,10 +31,15 @@ sequelize
     db.Sequelize = Sequelize;
     db.sequelize = sequelize;
     
+  
+
 
     db.users= require('./Usermodel.js')(sequelize, DataTypes);
-
     db.pets= require('./Petmodel.js')(sequelize, DataTypes);
+
+      //relationship between two tables
+      db.users.hasMany(db.pets)
+      db.pets.belongsTo(db.users)
 
 db.sequelize.sync({ force: false }).then(() =>{
     console.log("yes re-sync done")

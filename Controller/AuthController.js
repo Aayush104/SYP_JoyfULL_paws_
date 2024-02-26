@@ -2,6 +2,8 @@ const { users, pets } = require("../model/Index");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+
+
 //Register User in Database
 exports.createUser =  async (req, res) => {
     const { Username, Email, Password, Confirm } = req.body;
@@ -31,8 +33,10 @@ exports.createUser =  async (req, res) => {
         }); 
         res.send('Registration successful');
     } catch (error) {
+       
         console.error('Error registering user:', error);
        return res.status(500).send('Error registering user');
+       
     }
 };
 
@@ -71,50 +75,60 @@ exports.userLogin = async (req, res) => {
 };
 
 
-//Add pet in database
-exports.Addpet = async (req, res) =>{
 
-    const {petname,
-        petgender,
-        pethealth,
-        petsize,
-        petage,
-        petlikings,
-        aboutpet,
-        breed
-        } = req.body
 
-        const filename = req.file.filename
-       
 
-        if (!petname || !pethealth || !petsize || !petage || !petlikings || !aboutpet || !petgender || !breed || !filename){
-          return  res.json("fill form")
+
+// Assuming you have defined your Sequelize models for pets and users
+
+exports.Addpet = async (req, res) => {
+    const { petname, petgender, pethealth, petsize, petage, petlikings, aboutpet, breed } = req.body;
+    const filename = req.file.filename;
+
+    try {
+        // Retrieve the token from cookies or headers
+        const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+
+        if (!token) {
+            return res.status(401).json({ message: "Token not provided" });
         }
 
+        // Verify the token to get the user information
+        const decodedToken = jwt.verify(token, process.env.SECRETKEY);
 
-try {
-    
-    await pets.create({
-        PetName : petname,
-            PetGender :petgender,	
-            Health	: pethealth,
-            Petsize : petsize,
-            Age : petage,
-            PetLikings : petlikings,
-            AboutPet : aboutpet,
-            Breed : breed,
-            PetPhoto : process.env.IMAGE_URL + filename
-    })
+        if (!decodedToken) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
 
-    res.json("success")
-} catch (error) {
+        // Find the user in the database
+        const user = await users.findByPk(decodedToken.id);
 
-    return res.status(402).send("Internal error occured")
-}
+        console.log(user)
 
-          
-}
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
+        // Create the pet and associate it with the user
+        const newPet = await pets.create({
+            PetName: petname,
+            PetGender: petgender,
+            Health: pethealth,
+            Petsize: petsize,
+            Age: petage,
+            PetLikings: petlikings,
+            AboutPet: aboutpet,
+            Breed: breed,
+            PetPhoto: process.env.IMAGE_URL + filename,
+            userID: user.ID // Assuming you have a foreign key userId in your pets table
+        });
+
+        res.json("success");
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send("Internal error occurred");
+    }
+};
 
 //get pet details from database
 
@@ -130,4 +144,30 @@ exports.getPetdetail = async(req,res)=>{
     }
 }
 
+
+
+exports.singleDetail = async (req,res)=>{
+
+    try {
+
+        const id = req.params.id
+
+        const alldetails = await pets.findAll({
+            where :{
+                ID : id
+            }
+        })
+    
+        console.log(alldetails)
+    
+        res.json (alldetails)
+        
+    } catch (error) {
+        
+        res.status(200).json(error,"internal server error")
+    }
+
+   
+
+}
 

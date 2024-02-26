@@ -27,7 +27,10 @@ function Register() {
 
         if (!email || !username || !password || !ConfirmPassword) {
             setMessage('Please Fill All Inputs');
-        } else {
+        } else if(password.length < 8){
+            setMessage('Password must be at least 8 characters long');
+        }
+        else {
             try {
                 const response = await axios.post('http://localhost:5000/register', {
                     Email: email,
@@ -49,6 +52,8 @@ function Register() {
                     setConfirmPassword('');
                 }
             } catch (error) {
+
+              
                 if (error.response && error.response.status === 400) {
                     setMessage('Email already exists. Please use another email.');
                 } else {

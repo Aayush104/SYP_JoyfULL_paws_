@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Addpet.css';
 import axios from 'axios';
-// import { color } from 'framer-motion';
 import Footer from '../Footer/Footer';
 import InnerNav from '../InnerNav/InnerNav';
+import cookies from 'js-cookie';
 
 const AddPet = () => {
   const [petname, setPetName] = useState('');
@@ -13,15 +13,15 @@ const AddPet = () => {
   const [petage, setPetAge] = useState('');
   const [petlikings, setPetLikings] = useState('');
   const [aboutpet, setAboutPet] = useState('');
-  const [breed, setbreed] = useState('');
-  const [petphoto, setPetPhoto] = useState(null); // Store file object
-
+  const [breed, setBreed] = useState('');
+  const [petphoto, setPetPhoto] = useState(null);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const userId = cookies.get('token'); // Fetch user token from cookies
     const formData = new FormData();
     formData.append('petname', petname);
     formData.append('petgender', petgender);
@@ -31,37 +31,39 @@ const AddPet = () => {
     formData.append('petlikings', petlikings);
     formData.append('aboutpet', aboutpet);
     formData.append('breed', breed);
-    formData.append('petphoto', petphoto); 
+    formData.append('petphoto', petphoto);
 
     try {
-      const response = await axios.post("http://localhost:5000/Addpet", formData);
+      const response = await axios.post("http://localhost:5000/Addpet", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${userId}` // Include the token in the request headers
+        }
+      });
 
       if (response.data === 'success') {
         setMessage("Pet Added successfully");
         setMessageType("success");
-        setAboutPet('');
-        setPetAge('')
         setPetName('');
-        setPetHealth('');
         setPetGender('');
+        setPetHealth('');
+        setPetSize('');
+        setPetAge('');
         setPetLikings('');
         setAboutPet('');
-        setbreed('');
-
+        setBreed('');
+        setPetPhoto(null);
       } else {
         setMessage("Fill all details. Please try again.");
         setMessageType("error");
       }
-      
     } catch (error) {
       console.error('Error:', error);
       setMessage("Fill all valid details. Please try again.");
       setMessageType("error");
-    
     }
   };
 
-  // Handle file input change
   const handleFileChange = (e) => {
     setPetPhoto(e.target.files[0]);
   };
@@ -134,14 +136,14 @@ const AddPet = () => {
               </div>
               <div className='l-1'>
                 <label htmlFor="petAge">Breed:</label><br />
-                <input type="text" placeholder='Your pet Breed ?' id="breed" name="breed" value={breed} onChange={(e) => setbreed(e.target.value)} required />
+                <input type="text" placeholder='Your pet Breed ?' id="breed" name="breed" value={breed} onChange={(e) => setBreed(e.target.value)} required />
               </div>
             </div>
             <div className='right_form'>
           
               <div className='l-1'>
                 <label htmlFor="petLikings">Pet Likings:</label><br />
-                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="6" cols="80" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required maxLength="00"></textarea>
+                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="6" cols="80" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required maxLength="200"></textarea>
               </div>
               <div className='l-1'>
                 <label htmlFor="aboutPet">About pet:</label><br />
@@ -161,8 +163,6 @@ const AddPet = () => {
     </div>
     <Footer />
     </div>
-   
-
     </>
   );
 }

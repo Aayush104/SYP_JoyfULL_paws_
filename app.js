@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet, getPetdetail } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail, singleDetail } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
@@ -16,19 +16,6 @@ require('./model/Index');
 
 // Middleware for parsing cookies
 app.use(cookieParser());
-
-
-//chcek if token is  or not for responseiv navbar
-app.use((req,res,next)=>{
-
-    res.locals.currentUser = req.cookies.token
-    next()
-    
-
-})
-
-
-
 
 //image use gaar  vaner permission deko
 app.use(express.static('uploads/'))
@@ -62,30 +49,7 @@ app.get('/main', getPetdetail)
 
 //single page blog
 
-app.get("/Detail/:id", async (req,res)=>{
-
-    try {
-
-        const id = req.params.id
-
-        const alldetails = await pets.findAll({
-            where :{
-                ID : id
-            }
-        })
-    
-        console.log(alldetails)
-    
-        res.json (alldetails)
-        
-    } catch (error) {
-        
-        res.status(200).json(error,"internal server error")
-    }
-
-   
-
-})
+app.get("/Detail/:id", singleDetail)
 // Start server
 app.listen(5000, () => {
     console.log(`Server is running on port 5000`);
