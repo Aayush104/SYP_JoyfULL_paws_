@@ -79,15 +79,14 @@ exports.userLogin = async (req, res) => {
 
 
 
-// Assuming you have defined your Sequelize models for pets and users
-
+//add pet in database
 exports.Addpet = async (req, res) => {
     const { petname, petgender, pethealth, petsize, petage, petlikings, aboutpet, breed } = req.body;
     const filename = req.file.filename;
 
     try {
         // Retrieve the token from cookies or headers
-        const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+        const token =  req.headers.authorization?.split(' ')[1];
 
         if (!token) {
             return res.status(401).json({ message: "Token not provided" });
@@ -120,7 +119,7 @@ exports.Addpet = async (req, res) => {
             AboutPet: aboutpet,
             Breed: breed,
             PetPhoto: process.env.IMAGE_URL + filename,
-            userID: user.ID // Assuming you have a foreign key userId in your pets table
+            userID: user.ID 
         });
 
         res.json("success");
@@ -130,8 +129,7 @@ exports.Addpet = async (req, res) => {
     }
 };
 
-//get pet details from database
-
+//get pet details from database and show in main screen
 
 exports.getPetdetail = async(req,res)=>{
 
@@ -153,12 +151,17 @@ exports.singleDetail = async (req,res)=>{
         const id = req.params.id
 
         const alldetails = await pets.findAll({
-            where :{
+            where :
+            {
                 ID : id
+            },
+            
+            include :
+            {
+                model : users
             }
         })
-    
-        console.log(alldetails)
+   
     
         res.json (alldetails)
         

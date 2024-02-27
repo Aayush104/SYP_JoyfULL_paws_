@@ -54,6 +54,7 @@ const Detail = () => {
 
 <p>Breed: <span>{detail[0].Breed}</span></p>
 <p>Size: <span>{detail[0].Petsize}</span></p>
+<p> Owner: <span>{detail[0].user.UserName}</span></p>
 
 
 
@@ -71,13 +72,14 @@ const Detail = () => {
      )}
 
 {detail && detail[0] &&(
-
+<>
 <div className='About_pets'>
 <h2> About {detail[0].PetName}</h2>
-
 <p>{detail[0].AboutPet}</p>
 </div>
-  
+
+
+</>
 )}
 
      <Footer />

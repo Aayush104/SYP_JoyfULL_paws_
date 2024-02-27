@@ -76,3 +76,10 @@ gap: 8rem;
 .About_pets h2{
  font-size: 2.6rem;
 }
+
+.owner{
+    padding-right:4rem ;
+    text-align: right;
+    font-family:  cursive;
+    font-size: 1.2rem;
+}
