@@ -30,7 +30,6 @@ const Mypost = () => {
     <div>
       <Innernav />
       <div className='my_post'>
-
     
       <div className='featured_pets'>
       <div className='main_pet petsbox'>

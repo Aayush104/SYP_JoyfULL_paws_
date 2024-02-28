@@ -11,14 +11,40 @@ import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 import { LuLogOut } from "react-icons/lu";
 import { NavLink, } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { useEffect,useState } from 'react';
+import axios from 'axios';
+
 const InnerNav = () => {
 
+
+  const userId = Cookies.get('token');
+  const [detail,setDetail] = useState([])
 
   const handleLogout = ()=>{
     Cookies.remove('token');
   
     
   }
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/user', {
+          headers: {
+            Authorization: `Bearer ${userId}`,
+          
+      },
+    }); 
+    setDetail(response.data)
+  }
+    catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+      
+    }
+    fetchDetails();
+  }, []);
+
   return (
     <div className="n-wrapper">
     <img src={logo} alt="Logo" />
@@ -62,11 +88,27 @@ const InnerNav = () => {
         </NavLink>
       <li className='nav-link link'>
       <div className='h-link'>
-      <CgProfile  className='Admin'  size='1.8rem'/>
+      
+      
+
+     
         
       </div>
-        Admin
-         <RiArrowDropDownLine className="admin_arrow" size='1.8rem' />
+      <div className='addmin'>
+      <CgProfile  className='Admin'  size='1.8rem'/>
+      <div>
+      {detail && detail[0] &&
+      detail[0].UserName
+      }
+      <RiArrowDropDownLine className="admin_arrow" size='1.8rem' />
+      </div>
+    
+      </div>
+     
+
+   
+        
+        
          
          <ul className='drop-down'>
 
@@ -106,4 +148,4 @@ const InnerNav = () => {
   )
 }
 
-export default InnerNav
+export default  InnerNav

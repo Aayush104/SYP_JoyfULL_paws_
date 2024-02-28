@@ -62,7 +62,7 @@ app.get('/Mypost', async (req,res)=>{
         const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
         
         const userId = decodedToken.id
-        // console.log(userId)
+       
        
         const mypost = await pets.findAll({
        
@@ -79,6 +79,32 @@ app.get('/Mypost', async (req,res)=>{
         return res.status(500).send("Internal error occurred");
     }
    
+})
+
+
+app.get('/user',async(req,res)=>{
+
+    try {
+        
+        const token =  req.headers.authorization?.split(' ')[1];
+        const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
+        
+        const userId = decodedToken.id
+        // console.log(userId)
+    
+        const Username = await users.findAll({
+            where :{
+                ID : userId
+            }
+        })
+        res.json(Username)
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send("Internal error occurred");
+    }
+
+   
+
 })
 
 // Start server

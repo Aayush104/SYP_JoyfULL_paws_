@@ -9,7 +9,7 @@ import { IoInformation } from 'react-icons/io5';
 import Testimonial from '../Testimonial/Testimonial';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { useState,useEffect } from 'react';         
 import { NavLink } from 'react-router-dom';
 const Main = () => {
   const fadeIn = {

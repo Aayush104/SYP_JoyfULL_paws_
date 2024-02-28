@@ -101,7 +101,7 @@ body{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem; 
-  padding: 2rem 0 2rem 0;
+  padding: 4rem 0 0 0;
 }
 
 .pet_box_span {
