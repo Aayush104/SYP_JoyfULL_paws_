@@ -6,6 +6,7 @@ const { createUser, userLogin,Addpet, getPetdetail, singleDetail } = require('./
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
+const jwt = require('jsonwebtoken');
 const upload = multer({storage:storage})
 //front end saga connection ko lagi
 app.use(cors({
@@ -47,9 +48,39 @@ app.post('/Addpet',upload.single('petphoto'), Addpet);
 app.get('/main', getPetdetail)
 
 
-//single page blog
+//single page pet details
 
 app.get("/Detail/:id", singleDetail)
+
+//mypost page
+
+app.get('/Mypost', async (req,res)=>{
+
+    try {
+        
+        const token =  req.headers.authorization?.split(' ')[1];
+        const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
+        
+        const userId = decodedToken.id
+        // console.log(userId)
+       
+        const mypost = await pets.findAll({
+       
+           where : {
+               userID : userId
+           }
+        })
+       
+        // console.log(mypost)
+        res.json(mypost)
+    } catch (error) {
+        
+        console.error(error)
+        return res.status(500).send("Internal error occurred");
+    }
+   
+})
+
 // Start server
 app.listen(5000, () => {
     console.log(`Server is running on port 5000`);
