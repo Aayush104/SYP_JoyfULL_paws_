@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'; // Assuming you're using react-route
 import Innernav from '../InnerNav/InnerNav';
 import cookies from 'js-cookie';
 import axios from 'axios';
+import './Mypost.css'
 
 const Mypost = () => {
   const userid = cookies.get('token');
@@ -29,16 +30,17 @@ const Mypost = () => {
   return (
     <div>
       <Innernav />
-      <div className='my_post'>
+     
     
-      <div className='featured_pets'>
-      <div className='main_pet petsbox'>
+      <div className='my_pet'>
+      <h2>Your Post</h2>
+      <div className='petbox '>
         {detail.map((details) => (
           <div className='pet_box_span' key={details.id}>
             <img src={details.PetPhoto} alt='Pet' className='pet-image' />
             <span>{details.PetName}</span>
             <span>{details.PetLikings}</span>
-            <NavLink to={`/Detail/${details.ID}`}>
+            <NavLink to={`/SingleDetail/${details.ID}`}>
               <button className='read_btn'>Read More</button>
             </NavLink>
           </div>
@@ -46,7 +48,7 @@ const Mypost = () => {
       </div>
     </div>
     </div>
-    </div>
+  
   );
 };
 

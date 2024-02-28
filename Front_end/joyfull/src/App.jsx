@@ -19,6 +19,7 @@ import Protect from './Components/Protect/Protect';
 import Addpet from './Components/AddPet/Addpet';
 import Detail from './Components/Detail/Detail';
 import Mypost from './Components/Mypost/Mypost';
+import  SingleDetail from './Components/SingleDetail/SingleDetail';
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/innercontact" element={<Protect><InnerContact /></Protect>} />
           <Route path="/Addpet" element={<Protect><Addpet /></Protect>} />
           <Route path="/Detail/:id" element={<Protect><Detail /></Protect>} />
+          <Route path="/SingleDetail/:id" element={<Protect><SingleDetail /></Protect>} />
           <Route path="/Mypost" element={<Protect><Mypost /></Protect>} />
 
         

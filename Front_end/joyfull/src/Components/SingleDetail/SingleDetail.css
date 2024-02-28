@@ -1,0 +1,38 @@
+.d-btns{
+   
+    display: flex;
+    gap: 2rem;
+    align-items:center;
+    justify-content: right;
+    padding-right: 2rem;
+    
+}
+
+.d-btns .edit_btn{
+    padding: 6px 20px 6px 20px;
+    background: rgb(16, 143, 186);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+
+    
+}
+.d-btns .delete_btn{
+    padding: 6px 20px 6px 20px;
+    background: rgb(255, 39, 31);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.d-btns .edit_btn:hover{
+    box-shadow: 0 0 10px rgba(12, 162, 189, 0.697);
+}
+
+.d-btns .delete_btn:hover{
+    box-shadow: 0 0 10px rgba(255, 33, 8, 0.83);
+}
