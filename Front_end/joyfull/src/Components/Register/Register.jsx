@@ -48,7 +48,7 @@ function Register() {
                     
                     setTimeout(()=>{
                         window.alert("You have been registered successfully!! Please login");
-                    }, 300);
+                    }, 500);
       
                 }
 

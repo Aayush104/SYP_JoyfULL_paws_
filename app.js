@@ -63,40 +63,68 @@ app.get('/user', userInfo)
 
 app.get('/Edit/:id', editBlogdata)
 
+app.post('/Edit/:id', upload.single('petphoto'), async (req, res) => {
+    try {
+        const id = req.params.id;
+        const {
+            petname,
+            pethealth,
+            petgender,
+            petsize,
+            petage,
+            petlikings,
+            aboutpet,
+            breed
+        } = req.body;
 
-app.post('/Edit/:id', async(req,res)=>{ // Note the colon before id
-    const id = req.params.id;
-const {  petname,
-    pethealth,
-    petgender,
-    petsize,
-    petage,
-    petlikings,
-    aboutpet,
-    breed} = req.body
-  
-   
-   const edit_pet = await pets.update({
-   PetName: petname,
-    Health :pethealth,
-    PetSize: petsize,
-    PetLikings: petlikings,
-Age: petage,
-AboutPet: aboutpet,
-PetGender:petgender,
-Breed: breed},{
-    where :{
-        ID : id
+        // console.log(req.body);
+
+
+        const olddata = await pets.findAll({
+            where :{
+                ID : id
+            }
+        })
+
+        const file = req.file
+        let fileUrl;
+
+        if(file){
+            fileUrl = process.env.IMAGE_URL + req.file.filename
+
+        }else{
+            fileUrl = olddata[0].PetPhoto
+        }
+      
+        
+
+        const edit_pet = await pets.update({
+            PetName: petname,
+            Health: pethealth,
+            PetSize: petsize,
+            PetLikings: petlikings,
+            Age: petage,
+            AboutPet: aboutpet,
+            PetGender: petgender,
+            Breed: breed,
+            PetPhoto : fileUrl
+        }, {
+            where: {
+                ID: id
+            }
+        });
+
+        if (edit_pet) {
+            res.send("update successful");
+        } else {
+            res.status(404).send("Pet not found");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal server error");
     }
+});
 
-
-    
-   }) 
-
-   res.send("update successfull")}
-
-   
-);
 
 // Start server
 app.listen(5000, () => {
