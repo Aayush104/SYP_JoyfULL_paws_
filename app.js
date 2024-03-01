@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
@@ -61,34 +61,42 @@ app.get('/Mypost',myPost)
 app.get('/user', userInfo)
 
 
-app.get('/Edit/:id', async (req, res) => {
+app.get('/Edit/:id', editBlogdata)
+
+
+app.post('/Edit/:id', async(req,res)=>{ // Note the colon before id
     const id = req.params.id;
-    console.log(id);
+const {  petname,
+    pethealth,
+    petgender,
+    petsize,
+    petage,
+    petlikings,
+    aboutpet,
+    breed} = req.body
+  
    
-    try {
-        const get_data = await pets.findAll({
-            where :{
-                ID : id
-            }
-        })
-
-        console.log(get_data)
-        res.json(get_data)
-        
-    } catch (error) {
-        console.error(error,"internal server error")
-        res.status(500).send("internal server error")
-        
+   const edit_pet = await pets.update({
+   PetName: petname,
+    Health :pethealth,
+    PetSize: petsize,
+    PetLikings: petlikings,
+Age: petage,
+AboutPet: aboutpet,
+PetGender:petgender,
+Breed: breed},{
+    where :{
+        ID : id
     }
-})
 
 
-// app.post('/Edit:id', async(req,res)=>{
-//     const { petname, petgender, pethealth, petsize, petage, petlikings, aboutpet, breed } = req.body;
-//     console.log(petname)
+    
+   }) 
 
+   res.send("update successfull")}
 
-// })
+   
+);
 
 // Start server
 app.listen(5000, () => {

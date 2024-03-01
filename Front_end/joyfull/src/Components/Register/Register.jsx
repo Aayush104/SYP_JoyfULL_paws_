@@ -45,6 +45,11 @@ function Register() {
                     setUsername('');
                     setPassword('');
                     navigateTo('/Login');
+                    
+                    setTimeout(()=>{
+                        window.alert("You have been registered successfully!! Please login");
+                    }, 300);
+      
                 }
 
                 if (response.data === 'Password donot match') {

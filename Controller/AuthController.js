@@ -231,3 +231,26 @@ exports.userInfo = async(req,res)=>{
    
 
 }
+
+// prefill garna data lera uta pthako
+
+exports.editBlogdata = async (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+   
+    try {
+        const get_data = await pets.findAll({
+            where :{
+                ID : id
+            }
+        })
+
+        // console.log(get_data)
+        res.json(get_data)
+        
+    } catch (error) {
+        console.error(error,"internal server error")
+        res.status(500).send("internal server error")
+        
+    }
+}

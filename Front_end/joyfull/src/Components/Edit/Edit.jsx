@@ -5,25 +5,28 @@ import InnerNav from '../InnerNav/InnerNav';
 import Footer from '../Footer/Footer';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const Edit = () => {
+  const { id } = useParams();
+
   const [petname, setPetName] = useState('');
   const [petgender, setPetGender] = useState('');
   const [pethealth, setPetHealth] = useState('');
   const [petsize, setPetSize] = useState('');
   const [petage, setPetAge] = useState('');
-  const [breed, setBreed] = useState('');
   const [petlikings, setPetLikings] = useState('');
   const [aboutpet, setAboutPet] = useState('');
+  const [breed, setBreed] = useState('');
   const [petphoto, setPetPhoto] = useState(null);
-  const { id } = useParams();
-  const [valuess, setValues] = useState([]);
+  const navigateto = useNavigate()
+
 
   useEffect(() => {
     const get_data = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/Edit/${id}`);
-        setValues(response.data);
+      
         // Update state with fetched data
         if (response.data && response.data[0]) {
           const petData = response.data[0];
@@ -35,6 +38,7 @@ const Edit = () => {
           setBreed(petData.Breed);
           setPetLikings(petData.PetLikings);
           setAboutPet(petData.AboutPet);
+         setPetPhoto(petData.PetPhoto);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -44,40 +48,51 @@ const Edit = () => {
     get_data();
   }, [id]);
 
+ 
+ 
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('petname', petname);
-    formData.append('petgender', petgender);
-    formData.append('pethealth', pethealth);
-    formData.append('petsize', petsize);
-    formData.append('petage', petage);
-    formData.append('petlikings', petlikings);
-    formData.append('aboutpet', aboutpet);
-    formData.append('breed', breed);
-    formData.append('petphoto', petphoto);
-
+  
     try {
-      const response = await axios.post(`http://localhost:5000/Edit/${id}`, formData);
-      // Handle response if needed
+      const response = await axios.post(`http://localhost:5000/Edit/${id}`, {
+        petname,
+        pethealth,
+        petgender,
+        petsize,
+        petage,
+        petlikings,
+        aboutpet,
+        breed
+      });
+  
+    if(response.data && response.data == 'update successfull') {
+      navigateto(`/SingleDetail/${id}`)
+
+      setTimeout(()=>{
+        window.alert("Update successful");
+      }, 300);
+      
+     
+    }else{
+      window.alert("update failed")
+    }
     } catch (error) {
-      console.error('Error submitting data:', error);
+      console.error('Error adding pet:', error);
     }
   };
-
-  const handleFileChange = (e) => {
-    setPetPhoto(e.target.files[0]);
-  };
-
+  
+  
   return (
     <div>
       <InnerNav />
       <div className='m-edit'>
         <div className='W-Addpet'>
           <div className='pet_form'>
-            <form onSubmit={handleSubmit}>
+            <form  onSubmit={handleSubmit}>
               <div className='form_p'>
-                {valuess && valuess[0] && (
+               
                   <div className='left_form'>
                     <div className='l-1'>
                       <label htmlFor="petName">Pet Name:</label><br />
@@ -135,7 +150,7 @@ const Edit = () => {
                       <input type="text" placeholder='Your pet Breed ?' id="breed" name="breed" value={breed} onChange={(e) => setBreed(e.target.value)} required />
                     </div>
                   </div>
-                )}
+              
                 <div className='right_form'>
                   <div className='l-1'>
                     <label htmlFor="petLikings">Pet Likings:</label><br />
@@ -147,7 +162,7 @@ const Edit = () => {
                   </div>
                   <div className='l-2'>
                     <label htmlFor="petPhoto">Pet Photo:</label><br />
-                    <input type="file" id="petPhoto" name="petphoto" onChange={handleFileChange} required />
+                    <input type="file" id="petPhoto" name="petphoto"   />
                   </div>
                 </div>
               </div>
