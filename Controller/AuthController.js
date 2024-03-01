@@ -78,7 +78,7 @@ exports.userLogin = async (req, res) => {
 
 
 
-
+//pet ko lagi controller
 //add pet in database
 exports.Addpet = async (req, res) => {
     const { petname, petgender, pethealth, petsize, petage, petlikings, aboutpet, breed } = req.body;
@@ -143,6 +143,7 @@ exports.getPetdetail = async(req,res)=>{
 }
 
 
+//detail page ko backend
 
 exports.singleDetail = async (req,res)=>{
 
@@ -174,3 +175,59 @@ exports.singleDetail = async (req,res)=>{
 
 }
 
+
+//mypost render
+exports.myPost = async (req,res)=>{
+
+    try {
+        
+        const token =  req.headers.authorization?.split(' ')[1];
+        const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
+        
+        const userId = decodedToken.id
+       
+       
+        const mypost = await pets.findAll({
+       
+           where : {
+               userID : userId
+           }
+        })
+       
+        // console.log(mypost)
+        res.json(mypost)
+    } catch (error) {
+        
+        console.error(error)
+        return res.status(500).send("Internal error occurred");
+    }
+   
+}
+
+
+//user info getting
+
+exports.userInfo = async(req,res)=>{
+
+    try {
+        
+        const token =  req.headers.authorization?.split(' ')[1];
+        const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
+        
+        const userId = decodedToken.id
+        // console.log(userId)
+    
+        const Username = await users.findAll({
+            where :{
+                ID : userId
+            }
+        })
+        res.json(Username)
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send("Internal error occurred");
+    }
+
+   
+
+}

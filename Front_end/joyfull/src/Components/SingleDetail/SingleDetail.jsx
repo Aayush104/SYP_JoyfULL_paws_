@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Footer from '../Footer/Footer';
 import InnerNav from '../InnerNav/InnerNav';
@@ -84,8 +84,17 @@ const SingleDetail = () => {
   )}
   
   <div className='d-btns'>
+
+  {detail && detail[0] && (
+    <NavLink to={`/Edit/${detail[0].ID}`}>
   <button className='edit_btn'>Edit</button>
+  </NavLink>
+
+  )}
+ 
  <button className='delete_btn'>Delete</button>
+
+
   </div>
  
        <Footer />

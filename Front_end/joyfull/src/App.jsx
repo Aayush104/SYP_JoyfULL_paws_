@@ -20,6 +20,7 @@ import Addpet from './Components/AddPet/Addpet';
 import Detail from './Components/Detail/Detail';
 import Mypost from './Components/Mypost/Mypost';
 import  SingleDetail from './Components/SingleDetail/SingleDetail';
+import  Edit from './Components/Edit/Edit';
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
           <Route path="/Detail/:id" element={<Protect><Detail /></Protect>} />
           <Route path="/SingleDetail/:id" element={<Protect><SingleDetail /></Protect>} />
           <Route path="/Mypost" element={<Protect><Mypost /></Protect>} />
+          <Route path="/Edit/:id" element={<Protect><Edit /></Protect>} />
 
         
         </Routes>

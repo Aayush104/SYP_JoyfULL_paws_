@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet, getPetdetail, singleDetail } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
@@ -54,58 +54,41 @@ app.get("/Detail/:id", singleDetail)
 
 //mypost page
 
-app.get('/Mypost', async (req,res)=>{
+app.get('/Mypost',myPost)
 
-    try {
-        
-        const token =  req.headers.authorization?.split(' ')[1];
-        const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
-        
-        const userId = decodedToken.id
-       
-       
-        const mypost = await pets.findAll({
-       
-           where : {
-               userID : userId
-           }
-        })
-       
-        // console.log(mypost)
-        res.json(mypost)
-    } catch (error) {
-        
-        console.error(error)
-        return res.status(500).send("Internal error occurred");
-    }
+
+//useR information
+app.get('/user', userInfo)
+
+
+app.get('/Edit/:id', async (req, res) => {
+    const id = req.params.id;
+    console.log(id);
    
-})
-
-
-app.get('/user',async(req,res)=>{
-
     try {
-        
-        const token =  req.headers.authorization?.split(' ')[1];
-        const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
-        
-        const userId = decodedToken.id
-        // console.log(userId)
-    
-        const Username = await users.findAll({
+        const get_data = await pets.findAll({
             where :{
-                ID : userId
+                ID : id
             }
         })
-        res.json(Username)
+
+        console.log(get_data)
+        res.json(get_data)
+        
     } catch (error) {
-        console.error(error)
-        return res.status(500).send("Internal error occurred");
+        console.error(error,"internal server error")
+        res.status(500).send("internal server error")
+        
     }
-
-   
-
 })
+
+
+// app.post('/Edit:id', async(req,res)=>{
+//     const { petname, petgender, pethealth, petsize, petage, petlikings, aboutpet, breed } = req.body;
+//     console.log(petname)
+
+
+// })
 
 // Start server
 app.listen(5000, () => {
