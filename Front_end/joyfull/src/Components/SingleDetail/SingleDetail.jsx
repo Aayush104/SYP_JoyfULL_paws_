@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useParams, useNavigate  } from 'react-router-dom'
 import axios from 'axios';
 import Footer from '../Footer/Footer';
 import InnerNav from '../InnerNav/InnerNav';
@@ -7,6 +7,8 @@ import './SingleDetail.css'
 
 
 const SingleDetail = () => {
+
+  const navigateTo = useNavigate()
 
     const {id} = useParams();
 
@@ -28,6 +30,30 @@ const SingleDetail = () => {
   
       fetchData();
     }, [id])
+
+
+    const handleDelete = async (id)=>{
+      try{
+       const response =  await axios.delete(`http://localhost:5000/Delete/${id}`)
+    
+       if(response && response.data == 'successfully deleted'){
+        navigateTo('/Mypost')
+
+        setTimeout(()=>{
+   
+            window.alert("Your Post has been successfully deleted")
+        
+
+        },500)
+       }
+       
+
+      }catch(error){
+        console.log(error)
+
+      }
+
+    }
     return (
       <div className='w-single'>
       <InnerNav />
@@ -92,7 +118,9 @@ const SingleDetail = () => {
 
   )}
  
- <button className='delete_btn'>Delete</button>
+  <button className='delete_btn' onClick={() => handleDelete(detail[0].ID)}>Delete</button>
+
+
 
 
   </div>

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata, actualediting } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
@@ -60,72 +60,26 @@ app.get('/Mypost',myPost)
 //useR information
 app.get('/user', userInfo)
 
-
+//edit data prefill
 app.get('/Edit/:id', editBlogdata)
 
-app.post('/Edit/:id', upload.single('petphoto'), async (req, res) => {
-    try {
-        const id = req.params.id;
-        const {
-            petname,
-            pethealth,
-            petgender,
-            petsize,
-            petage,
-            petlikings,
-            aboutpet,
-            breed
-        } = req.body;
 
-        // console.log(req.body);
+//actuall editing data store and update
+app.post('/Edit/:id', upload.single('petphoto'), actualediting);
 
 
-        const olddata = await pets.findAll({
-            where :{
-                ID : id
-            }
-        })
+app.delete('/Delete/:id', async (req, res) => {
+    const id = req.params.id;
 
-        const file = req.file
-        let fileUrl;
-
-        if(file){
-            fileUrl = process.env.IMAGE_URL + req.file.filename
-
-        }else{
-            fileUrl = olddata[0].PetPhoto
+    await pets.destroy({
+        where :{
+            ID : id
         }
-      
-        
-
-        const edit_pet = await pets.update({
-            PetName: petname,
-            Health: pethealth,
-            PetSize: petsize,
-            PetLikings: petlikings,
-            Age: petage,
-            AboutPet: aboutpet,
-            PetGender: petgender,
-            Breed: breed,
-            PetPhoto : fileUrl
-        }, {
-            where: {
-                ID: id
-            }
-        });
-
-        if (edit_pet) {
-            res.send("update successful");
-        } else {
-            res.status(404).send("Pet not found");
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Internal server error");
-    }
-});
-
-
+    })
+ res.json("successfully deleted")
+   
+  });
+  
 // Start server
 app.listen(5000, () => {
     console.log(`Server is running on port 5000`);

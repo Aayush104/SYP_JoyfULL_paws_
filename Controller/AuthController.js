@@ -147,7 +147,7 @@ exports.getPetdetail = async(req,res)=>{
 
 exports.singleDetail = async (req,res)=>{
 
-    try {
+    try { 
 
         const id = req.params.id
 
@@ -252,5 +252,68 @@ exports.editBlogdata = async (req, res) => {
         console.error(error,"internal server error")
         res.status(500).send("internal server error")
         
+    }
+}
+
+
+exports.actualediting =  async (req, res) => {
+    try {
+        const id = req.params.id;
+        const {
+            petname,
+            pethealth,
+            petgender,
+            petsize,
+            petage,
+            petlikings,
+            aboutpet,
+            breed
+        } = req.body;
+
+        // console.log(req.body);
+
+
+        const olddata = await pets.findAll({
+            where :{
+                ID : id
+            }
+        })
+
+        const file = req.file
+        let fileUrl;
+
+        if(file){
+            fileUrl = process.env.IMAGE_URL + req.file.filename
+
+        }else{
+            fileUrl = olddata[0].PetPhoto
+        }
+      
+        
+
+        const edit_pet = await pets.update({
+            PetName: petname,
+            Health: pethealth,
+            PetSize: petsize,
+            PetLikings: petlikings,
+            Age: petage,
+            AboutPet: aboutpet,
+            PetGender: petgender,
+            Breed: breed,
+            PetPhoto : fileUrl
+        }, {
+            where: {
+                ID: id
+            }
+        });
+
+        if (edit_pet) {
+            res.send("update successful");
+        } else {
+            res.status(404).send("Pet not found");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal server error");
     }
 }

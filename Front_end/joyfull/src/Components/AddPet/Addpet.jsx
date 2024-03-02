@@ -17,6 +17,7 @@ const AddPet = () => {
   const [petphoto, setPetPhoto] = useState(null);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +66,7 @@ const AddPet = () => {
   };
 
   const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
     setPetPhoto(e.target.files[0]);
   };
 
@@ -152,6 +154,7 @@ const AddPet = () => {
               <div className='l-2'>
                 <label htmlFor="petPhoto">Pet Photo:</label><br />
                 <input type="file" id="petPhoto" name="petphoto" onChange={handleFileChange} required />
+                <p>{selectedFile ? `Selected File: ${selectedFile.name}` : "No file selected"}</p>
               </div>
             </div>
           </div>
