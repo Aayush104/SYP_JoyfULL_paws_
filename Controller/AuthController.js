@@ -1,7 +1,7 @@
 const { users, pets } = require("../model/Index");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
+const fs = require('fs')
 
 
 //Register User in Database
@@ -256,6 +256,7 @@ exports.editBlogdata = async (req, res) => {
 }
 
 
+//editing in pets
 exports.actualediting =  async (req, res) => {
     try {
         const id = req.params.id;
@@ -290,7 +291,7 @@ exports.actualediting =  async (req, res) => {
         }
       
         
-
+       
         const edit_pet = await pets.update({
             PetName: petname,
             Health: pethealth,
@@ -306,7 +307,24 @@ exports.actualediting =  async (req, res) => {
                 ID: id
             }
         });
+        const image_data = olddata[0].PetPhoto
+        console.log(image_data) //http://localhost:5000/1709089109471-1stpet.jpg 
+  
+        const lengthofhost = "http://localhost:5000/".length
+        console.log(lengthofhost) //22 aayo length
+  
+  
+        const filenameinuploadefolder = image_data.slice(lengthofhost)
+        console.log(filenameinuploadefolder) //1709089109471-1stpet.jpg
 
+        fs.unlink('uploads/'+filenameinuploadefolder,(err)=>{
+            if(err){
+                console.log("ERROR vayo",err)
+            }else{
+                console.log("File deleted successfully")
+            }
+        })
+  
         if (edit_pet) {
             res.send("update successful");
         } else {
@@ -317,3 +335,45 @@ exports.actualediting =  async (req, res) => {
         res.status(500).send("Internal server error");
     }
 }
+
+
+//delete pet details
+exports.deleteFile = async (req, res) => {
+    const id = req.params.id;
+
+    const olddata = await pets.findAll({
+        where :{
+            ID : id
+        }
+    })
+    const image_data = olddata[0].PetPhoto
+    console.log(image_data) //http://localhost:5000/1709089109471-1stpet.jpg 
+
+    const lengthofhost = "http://localhost:5000/".length
+    console.log(lengthofhost) //22 aayo length
+
+
+    const filenameinuploadefolder = image_data.slice(lengthofhost)
+    console.log(filenameinuploadefolder) //1709089109471-1stpet.jpg
+
+    fs.unlink('uploads/'+filenameinuploadefolder,(err)=>{
+        if(err){
+            console.log("ERROR vayo",err)
+        }else{
+            console.log("File deleted successfully")
+        }
+    })
+
+   
+
+    await pets.destroy({
+        where :{
+            ID : id
+        }
+    })
+ res.json("successfully deleted")
+   
+  }
+
+
+

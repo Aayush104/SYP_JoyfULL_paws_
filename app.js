@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata, actualediting } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata, actualediting, deleteFile } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
@@ -68,17 +68,8 @@ app.get('/Edit/:id', editBlogdata)
 app.post('/Edit/:id', upload.single('petphoto'), actualediting);
 
 
-app.delete('/Delete/:id', async (req, res) => {
-    const id = req.params.id;
-
-    await pets.destroy({
-        where :{
-            ID : id
-        }
-    })
- res.json("successfully deleted")
-   
-  });
+//delete pets
+app.delete('/Delete/:id', deleteFile);
   
 // Start server
 app.listen(5000, () => {
