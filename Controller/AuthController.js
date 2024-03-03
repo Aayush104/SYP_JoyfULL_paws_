@@ -1,8 +1,9 @@
 const { users, pets } = require("../model/Index");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const fs = require('fs')
-
+const fs = require('fs');
+const { assert } = require("console");
+const { Op } = require('sequelize');
 
 //Register User in Database
 exports.createUser =  async (req, res) => {
@@ -130,11 +131,21 @@ exports.Addpet = async (req, res) => {
 };
 
 //get pet details from database and show in main screen
-
-exports.getPetdetail = async(req,res)=>{
-
+exports.getPetdetail = async (req, res) => {
     try {
-        const petDetail = await pets.findAll();
+        const token = req.headers.authorization?.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.SECRETKEY);
+        const userId = decodedToken.id;
+
+        const petDetail = await pets.findAll({
+            where: {
+                userID:  {
+                    [Op.ne]: userId // [op.ne work as not equal to operator]
+                }
+            }
+        });
+
+        console.log(petDetail);
         res.json(petDetail);
     } catch (error) {
         console.error('Error fetching pet details:', error);

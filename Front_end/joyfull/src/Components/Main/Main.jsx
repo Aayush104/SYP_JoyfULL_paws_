@@ -11,6 +11,7 @@ import Footer from '../Footer/Footer';
 import axios from 'axios';
 import { useState,useEffect } from 'react';         
 import { NavLink } from 'react-router-dom';
+import cookies from 'js-cookie'
 const Main = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 100 }, // y vaneko kaha hunxa view ma aaunu vanda aagdai vaneko
@@ -21,14 +22,18 @@ const Main = () => {
   const initialPosition = { y: -200 } // Initial position off-screen
   const finalPosition = { y: 0 }
 
-
+  const userid = cookies.get('token');
 
   // yaha dekhi backend saga connect garinxa
   const [details, setDetails] = useState([]);
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/main');
+        const response = await axios.get('http://localhost:5000/main',{
+          headers :{
+            "Authorization": `bearer ${userid}`
+          }
+      });
         setDetails(response.data);
       } catch (error) {
         console.error('Error fetching pet details:', error);
