@@ -1,24 +1,32 @@
+
+
 .W-Addpet{
     display: flex;
     align-items: center;
-    /* height: 100vh; */
+    height: 128vh;
     justify-content: center;
     flex-direction: column;
+    background: linear-gradient(to bottom right, #3594b3 0%, #306c84 1.2%, #346f64);
+
+  
+
+ 
 
 }
 
 .W-Addpet h2{
   margin-top: 2rem;
-  font-family: cursive;
+ color: #fff;
   font-size: 2.8rem;
 }
 .pet_form{
    
-   background-color: #ccc;
-   padding: 2rem 2rem 1rem 2rem;
+   background-color: #00000041;
+
+   padding: 2rem 2rem 1.5rem 2rem;
    border-radius: 10px;
    border: 1px solid #ccc;
- 
+ box-shadow: 0 0 8px rgba(115, 115, 115, 0.4);
     
 }
 
@@ -40,30 +48,34 @@
     width: 20rem;
 }
 .form_p .l-1 input,textarea{
-    padding: 8px;
+    padding: 10px;
   border-radius: 5px;
   border: none;
   outline: none;
-;
 resize: none;
-  border-bottom: 1px solid #f1f1f1;
-  color: #333;
+  border-bottom: 1px solid #b3b3b3;
+  color: #5a5959;
   margin-top: 4px;
   margin-bottom: 2px;
+  font-size: 15px;
 
 }
 .form_p .l-1 label{
-font-size: 16px;   
+font-size: 16px; 
+color: #fff;  
 }
 .form_p .l-1 select{
-font-size: 16px; 
-padding: 8px;  
+font-size: 15px; 
+padding: 10px;  
 border: 1px solid #ccc;
 border-radius: 8px;
-width: 20rem;
+width: 21rem;
+color: #5a5959;
+
 }
 .form_p .l-2 label{
-font-size: 16px;   
+font-size: 16px;  
+color: #fff; 
 }
 
 .form_p .l-2{
@@ -83,8 +95,8 @@ border: 1px solid #ccc;
 }
 
 .pet_form form button{
-    margin-top: 6px;
-    background: rgb(208, 55, 121);
+    margin-top: 1.5rem;
+    background: rgb(13, 159, 127);
     color: white;
     border: none;
     border-radius: 8px;
@@ -106,14 +118,29 @@ border: 1px solid #ccc;
     color: red;
   }
   
-/* .l-1  select .sie{
-  font-size: 10px;
-}
-  select option{
-    font-size: 10px;
-  } */
+
 
   .l-1 textarea{
     font-family: Arial, Helvetica, sans-serif;
     
+  }
+
+  .l-2 p{
+    color: #fff;
+  }
+  
+  .buttonss{
+    display: flex;
+    justify-content: space-between;
+  }
+  .buttonss .button4{
+    margin-top: 1.5rem;
+    background:  rgb(13, 110, 159);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 11px 26px 11px 26px;
+    cursor: pointer;
+   
   }

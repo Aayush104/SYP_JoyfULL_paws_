@@ -4,6 +4,7 @@ import axios from 'axios';
 import Footer from '../Footer/Footer';
 import InnerNav from '../InnerNav/InnerNav';
 import cookies from 'js-cookie';
+import { NavLink } from 'react-router-dom';
 
 const AddPet = () => {
   const [petname, setPetName] = useState('');
@@ -77,7 +78,7 @@ const AddPet = () => {
    
     <div className='W-Addpet'>
     
-      <h2>List Your pet</h2>
+      <h2>List Your Pet</h2>
       <div className='pet_form'>
         <form onSubmit={handleSubmit}>
           <div className='form_p'>
@@ -158,13 +159,20 @@ const AddPet = () => {
               </div>
             </div>
           </div>
+          <div className='buttonss'>
           <button className='button3' type="submit">Add</button>
+          <NavLink to= '/main'>
+          <button className='button4'>Back</button>
+          </NavLink>
+        
+          </div>
+        
           <p className={`message ${messageType === "success" ? "success" : "error"}`}>{message}</p>
         </form>
       </div>
-     
     </div>
-    <Footer />
+  
+ 
     </div>
     </>
   );

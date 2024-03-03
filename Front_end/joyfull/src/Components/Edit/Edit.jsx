@@ -3,7 +3,7 @@ import './Edit.css'
 
 import InnerNav from '../InnerNav/InnerNav';
 import Footer from '../Footer/Footer';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -106,7 +106,9 @@ const Edit = () => {
     <div>
       <InnerNav />
       <div className='m-edit'>
-        <div className='W-Addpet'>
+      <div className='w-edit'>
+        {/* <div className='W-Addpet'> */}
+        <h2>Edit Your Pet details</h2>
           <div className='pet_form'>
             <form onSubmit={handleSubmit}>
               <div className='form_p'>
@@ -184,12 +186,18 @@ const Edit = () => {
                   </div>
                 </div>
               </div>
-              <button className='button3' type="submit">Add</button>
+              <div className='buttonss'>
+          <button className='button3' type="submit">Add</button>
+          <NavLink to= '/Mypost'>
+          <button className='button4'>Back</button>
+          </NavLink>
+        
+          </div>
             </form>
           </div>
         </div>
       </div>
-      <Footer />
+     
     </div>
   );
 }
