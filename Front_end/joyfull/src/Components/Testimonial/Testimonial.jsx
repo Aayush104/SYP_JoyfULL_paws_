@@ -92,7 +92,7 @@ const Testimonial = () => {
               spaceBetween={50}
               slidesPerView={3}
             
-              autoplay ={{ delay: 5000,
+              autoplay ={{ delay: 3000,
               disableOnInteraction: true}}
               pagination={{ clickable: true }}
            

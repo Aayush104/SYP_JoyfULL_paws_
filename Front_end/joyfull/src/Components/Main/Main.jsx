@@ -12,6 +12,8 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';         
 import { NavLink } from 'react-router-dom';
 import cookies from 'js-cookie'
+
+
 const Main = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 100 }, // y vaneko kaha hunxa view ma aaunu vanda aagdai vaneko
@@ -56,6 +58,7 @@ const Main = () => {
           whileInView={finalPosition}
           >Welcome to JoyfulPaw🤍 </motion.span>
       
+        
           <motion.span
           transition={transition}
           initial= {initialPosition}
@@ -72,6 +75,7 @@ const Main = () => {
           initial= {initialPosition}
           whileInView={finalPosition}
           >Tells a Story!📖 </motion.span>
+
           
         </div>
         <motion.div
@@ -84,11 +88,16 @@ const Main = () => {
           <img
             src="https://fullkit.moxcreative.com/pawpaw/wp-content/uploads/sites/12/2022/07/pet_home_.png"
             alt="Pet Home"
-            width="480"
-            height="340"
+            width="550"
+            height="400"
             className='pets'
           />
+
+
+          
         </motion.div>
+
+        
       </div>
 <Information />
       <div className='featured_pets'>

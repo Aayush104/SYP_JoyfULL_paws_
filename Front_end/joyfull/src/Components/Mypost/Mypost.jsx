@@ -4,6 +4,7 @@ import Innernav from '../InnerNav/InnerNav';
 import cookies from 'js-cookie';
 import axios from 'axios';
 import './Mypost.css'
+import Footer from '../Footer/Footer';
 
 const Mypost = () => {
   const userid = cookies.get('token');
@@ -30,10 +31,12 @@ const Mypost = () => {
   return (
     <div>
       <Innernav />
-     
     
       <div className='my_pet'>
-      <h2>Your Post</h2>
+<div className='span_head'>
+<span>Your Post</span>
+</div>
+      
       <div className='petbox '>
         {detail.map((details) => (
           <div className='pet_box_span' key={details.id}>
@@ -47,6 +50,8 @@ const Mypost = () => {
         ))}
       </div>
     </div>
+
+    <Footer />
     </div>
   
   );

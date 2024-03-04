@@ -1,12 +1,21 @@
 .my_pet{
-    padding: 0 4rem 0 4rem;
+    padding: 0 4rem  4rem;
     margin: 0;
 }
 
-.my_pet h2{
-    text-align: center;
-    font-size: 30px;
+.my_pet .span_head{
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.my_pet span:nth-child(1){
+
+    font-size: 3.8rem;
     color: var(--heading);
+    font-weight: 700;
+    padding-top: 1rem;
+    display: block;
+    margin: 0 auto;
 }
 
 .petbox {
