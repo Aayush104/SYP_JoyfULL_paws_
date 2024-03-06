@@ -3,7 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 import Cookies from 'js-cookie'
-// import Footer from '../Footer/Footer';
+
+
 
 import paw from "../../img/log_paw.png";
 const Login = () => {
@@ -62,7 +63,10 @@ const Login = () => {
                             <label>Password:</label>
                             <input type="password" id="password" placeholder='Enter Password' name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         </div>
+                        <NavLink to= '/forget'>
                         <p>Forget Password ?</p>
+                        </NavLink>
+                    
 
                     <img src={paw} className='paws_img'></img>
                        

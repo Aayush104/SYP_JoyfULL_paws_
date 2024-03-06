@@ -21,13 +21,14 @@ import Detail from './Components/Detail/Detail';
 import Mypost from './Components/Mypost/Mypost';
 import  SingleDetail from './Components/SingleDetail/SingleDetail';
 import  Edit from './Components/Edit/Edit';
+import Forget  from './Components/Forget/Forget';
 
 const App = () => {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route
+          <Route       
             path="/"
             index
             element={
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="/SingleDetail/:id" element={<Protect><SingleDetail /></Protect>} />
           <Route path="/Mypost" element={<Protect><Mypost /></Protect>} />
           <Route path="/Edit/:id" element={<Protect><Edit /></Protect>} />
+          <Route path="/forget" element={<Forget/>} />
 
         
         </Routes>

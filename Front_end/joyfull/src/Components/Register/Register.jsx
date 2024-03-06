@@ -7,7 +7,7 @@ import paw from "../../img/paw_print.jpg";
 
 import { motion } from 'framer-motion';
 
-function Register() {
+function Register() {   
 
 
     const transition = { duration: 2, type: 'autumn' }
@@ -38,7 +38,7 @@ function Register() {
                     Password: password,
                     Confirm: ConfirmPassword
                 });
-
+          
                 if (response.data === 'Registration successful') {
                     console.log("User has been created");
                     setEmail('');
@@ -107,7 +107,7 @@ function Register() {
                         <form method="POST" className='register' id='register' onSubmit={handleSubmit}>
                             <div className="r_input">
                                 <label>Username:</label>
-                                <input
+                                <input    
                                     type="text"
                                     placeholder='Enter Your Name'
                                     name="username"

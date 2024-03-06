@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata, actualediting, deleteFile } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata, actualediting, deleteFile, forgotPassword } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
@@ -21,8 +21,8 @@ app.use(cookieParser());
 //image use gaar  vaner permission deko
 app.use(express.static('uploads/'))
 //form bata aako data 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json()) // parse gaar or handel gaar vanya form bata aako data
+app.use(express.urlencoded({extended:true}))
 
 //dot env file lai acess garna 
 require('dotenv').config();
@@ -47,7 +47,7 @@ app.post('/Addpet',upload.single('petphoto'), Addpet);
 
 app.get('/main', getPetdetail)
 
-
+   
 //single page pet details
 
 app.get("/Detail/:id", singleDetail)
@@ -70,6 +70,10 @@ app.post('/Edit/:id', upload.single('petphoto'), actualediting);
 
 //delete pets
 app.delete('/Delete/:id', deleteFile);
+
+//forgot password
+
+app.post('/forgotpass', forgotPassword)
   
 // Start server
 app.listen(5000, () => {

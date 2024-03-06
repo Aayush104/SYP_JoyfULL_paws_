@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const fs = require('fs');
 const { assert } = require("console");
 const { Op } = require('sequelize');
+const sendEmailPreparing = require("../Services/SendEmail");
 
 //Register User in Database
 exports.createUser =  async (req, res) => {
@@ -26,7 +27,7 @@ exports.createUser =  async (req, res) => {
             return res.send("Password donot match")
             
         }
-
+    
         await users.create({
             UserName: Username,
             Email: Email,
@@ -293,9 +294,29 @@ exports.actualediting =  async (req, res) => {
 
         const file = req.file
         let fileUrl;
+      
 
         if(file){
             fileUrl = process.env.IMAGE_URL + req.file.filename
+            const image_data = olddata[0].PetPhoto
+    console.log(image_data) //http://localhost:5000/1709089109471-1stpet.jpg 
+
+    const lengthofhost = "http://localhost:5000/".length
+    console.log(lengthofhost) //22 aayo length
+
+
+    const filenameinuploadefolder = image_data.slice(lengthofhost)
+    console.log(filenameinuploadefolder) //1709089109471-1stpet.jpg
+
+    fs.unlink('uploads/'+filenameinuploadefolder,(err)=>{
+        if(err){
+            console.log("ERROR vayo",err)
+        }else{
+            console.log("File deleted successfully")
+        }
+    })
+
+
 
         }else{
             fileUrl = olddata[0].PetPhoto
@@ -318,24 +339,7 @@ exports.actualediting =  async (req, res) => {
                 ID: id
             }
         });
-        const image_data = olddata[0].PetPhoto
-        console.log(image_data) //http://localhost:5000/1709089109471-1stpet.jpg 
-  
-        const lengthofhost = "http://localhost:5000/".length
-        console.log(lengthofhost) //22 aayo length
-  
-  
-        const filenameinuploadefolder = image_data.slice(lengthofhost)
-        console.log(filenameinuploadefolder) //1709089109471-1stpet.jpg
-
-        fs.unlink('uploads/'+filenameinuploadefolder,(err)=>{
-            if(err){
-                console.log("ERROR vayo",err)
-            }else{
-                console.log("File deleted successfully")
-            }
-        })
-  
+        
         if (edit_pet) {
             res.send("update successful");
         } else {
@@ -384,6 +388,35 @@ exports.deleteFile = async (req, res) => {
     })
  res.json("successfully deleted")
    
+  }
+
+  //Fprgot password
+
+exports.forgotPassword = async (req,res)=>{
+const {email} = req.body
+
+const check = await users.findAll({
+    where :{
+        Email : email
+    }
+
+})
+
+console.log(check)
+if(check.length == 0){
+     res.send("Invalid")
+}else{
+   await sendEmailPreparing({
+    email : check[0].Email,
+    subject :"forgot Password otp",
+    otp: 1234
+
+    })
+    console.log("email sent successfully")
+}
+
+
+    
   }
 
 
