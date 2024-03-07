@@ -22,6 +22,7 @@ import Mypost from './Components/Mypost/Mypost';
 import  SingleDetail from './Components/SingleDetail/SingleDetail';
 import  Edit from './Components/Edit/Edit';
 import Forget  from './Components/Forget/Forget';
+import Otp  from './Components/Otp/Otp';
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
           <Route path="/Mypost" element={<Protect><Mypost /></Protect>} />
           <Route path="/Edit/:id" element={<Protect><Edit /></Protect>} />
           <Route path="/forget" element={<Forget/>} />
+          <Route path="/Otp/:email" element={<Otp/>} />
 
         
         </Routes>

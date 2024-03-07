@@ -2,11 +2,14 @@ import React, {useState} from 'react'
 import "./Forget.css";
 import Navbar from '../Navbar/Navbar';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';4
+import Otp from '../Otp/Otp';
 
 const Forget = () => {
     
     const [email ,setEmail] = useState('');
     const [message ,setMessage] = useState('');
+    const navigateTo = useNavigate()
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -15,9 +18,20 @@ const Forget = () => {
             email
         })
 if (response && response.data == "Invalid"){
-    setMessage('Invalid Password')
+    setMessage('Invalid Email')
+}
+if (response && response.data == "success"){
+  setMessage('Otp sent Successfully')
+
+
+  setTimeout(() => {
+    console.log(email)
+    navigateTo(`/Otp/${email}`)
+  },3000);
+ 
 }
     }
+
 
   return (
     <>
@@ -25,7 +39,7 @@ if (response && response.data == "Invalid"){
   <div className="forget-container">
     <h2>Forget Password</h2>
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="email_form">
         <label htmlFor="email">Email:</label>
         <input
           type="email"
@@ -38,10 +52,13 @@ if (response && response.data == "Invalid"){
           required
         />
       </div>
-      <button type="submit">Send Otp</button>
+    
+      <button type="submit" className='otp_btn'>Send Otp</button>
+    
+     
       
     </form>
-    {message && <p className='message'>{message}</p>}
+    {message && <p className='forgot_message'>{message}</p>}
   </div>
     </>
   

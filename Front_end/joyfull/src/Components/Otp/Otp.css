@@ -1,0 +1,49 @@
+.verify_btn{
+    padding: 8px;
+    border-radius: 6px;
+    background: rgb(8, 93, 132);
+    border: none;
+    color: #fff;
+    width: 100px;
+    cursor: pointer;
+    
+    
+
+}
+.verify_btn:hover{
+   
+    background: rgb(8, 126, 132);
+
+    
+    
+
+}
+
+.form_otp{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+}
+.w-otp{
+    max-width: 400px;
+  margin: 2rem auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+label{
+  
+    font-size: 17px;
+}
+
+.input_form input{
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+
+}

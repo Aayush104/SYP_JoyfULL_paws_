@@ -402,16 +402,30 @@ const check = await users.findAll({
 
 })
 
-console.log(check)
+// console.log(check)
 if(check.length == 0){
      res.send("Invalid")
 }else{
+
+   
+    const generateOtp = Math.floor(10000 * Math.random(9999))
+console.log(generateOtp)
+   
+    // console.log(generateOtp)
+    //OTP code generate garxa yesley
    await sendEmailPreparing({
     email : check[0].Email,
     subject :"forgot Password otp",
-    otp: 1234
+    otp: generateOtp
 
     })
+
+    //random generate vako otp lai hamiley user ko utp bvaney column ma haldai xau 
+   check[0].Otp = generateOtp
+   check[0]. OtpGeneratedTime = Date.now()
+   await check[0].save() //esley hamro otp ra generate otp column ma fdata save garna kaam garxa without this data column ma gayera basdaina
+   res.send('success')
+
     console.log("email sent successfully")
 }
 

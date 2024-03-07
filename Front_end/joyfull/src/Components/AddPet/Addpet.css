@@ -3,21 +3,16 @@
 .W-Addpet{
     display: flex;
     align-items: center;
-    height: 128vh;
+    height: 150vh;
     justify-content: center;
     flex-direction: column;
 
 background: linear-gradient(to bottom right, #2d7c97 0%, #449d8d 33%, #82c0a2 66%, #30708b);
 
-
-  
-
- 
-
 }
 
 .W-Addpet h2{
-  /* margin-top: 2rem; */
+  margin-top: -2rem;
  color: #fff;
   font-size: 2.8rem;
 }

@@ -1,6 +1,6 @@
 .m-edit{
     display: flex;
-    height: 128vh;
+    height: 150vh;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -10,6 +10,7 @@
 .w-edit h2{
     color: #fff;
     font-size: 2.8rem;
+    margin-top: -2rem;
     font-weight: 700;
     text-align: center;
     text-transform: capitalize;
