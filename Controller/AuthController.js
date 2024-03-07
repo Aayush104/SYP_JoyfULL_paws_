@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const fs = require('fs');
 const { assert } = require("console");
-const { Op } = require('sequelize');
+const { Op, DATE } = require('sequelize');
 const sendEmailPreparing = require("../Services/SendEmail");
 
 //Register User in Database
@@ -434,4 +434,42 @@ console.log(generateOtp)
   }
 
 
+  //for to handle otp
+
+  exports.handleOtp = async (req,res) =>{
+    const otp = req.body.otp
+    const email = req.params.id //params.id naqai lekhna parxa tyo params ko value lina 
+     
+    if(!otp || !email ){
+        res.send("Please send email,otp")
+    }
+    console.log(otp,email)
+
+    const userdata = await users.findAll({
+        where :{
+            Email:email,
+            Otp : otp
+        }
+    })
+    // console.log(userdata) //esma data aauna duitai value true hunai aprxa
+
+    if(userdata.length == 0){
+        console.log("invalid")
+       return res.json("Invalid Otp")
+    }else{
+
+        const CurrentTime = Date.now() //current time
+        const otpGeneratetTime = userdata[0].OtpGeneratedTime //past time
+
+        if(CurrentTime - otpGeneratetTime <= 120000 ){
+            console.log('valid')
+            return res.json("valid")
+
+        }else{
+            console.log("otp expire")
+            res.json("otp expire")
+        }
+       
+    }
+  }
 

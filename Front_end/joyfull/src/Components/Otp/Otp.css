@@ -22,12 +22,12 @@
 .form_otp{
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
     
 }
 .w-otp{
     max-width: 400px;
-  margin: 2rem auto;
+  margin: 8rem auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -46,4 +46,30 @@ label{
     border-radius: 10px;
     outline: none;
 
+}
+
+.w-otp span{
+    font-size: 14px;
+    color: rgb(12, 91, 125);
+   
+    cursor: pointer;
+    transform: all 0.5s linear;
+    
+}
+.w-otp span:hover{
+    font-size: 15px;
+    text-decoration: underline;
+    
+
+}
+
+
+.error_otp{
+    text-align: center;
+    color: red;
+}
+
+.success_otp{
+    text-align: center;
+    color: green;
 }

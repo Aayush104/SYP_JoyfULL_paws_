@@ -3,7 +3,7 @@ import "./Forget.css";
 import Navbar from '../Navbar/Navbar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';4
-import Otp from '../Otp/Otp';
+// import Otp from '../Otp/Otp';
 
 const Forget = () => {
     
@@ -22,12 +22,12 @@ if (response && response.data == "Invalid"){
 }
 if (response && response.data == "success"){
   setMessage('Otp sent Successfully')
-
+  navigateTo(`/Otp/${email}`)
 
   setTimeout(() => {
     console.log(email)
-    navigateTo(`/Otp/${email}`)
-  },3000);
+    window.alert('Otp sent Successfully')
+  },500);
  
 }
     }
