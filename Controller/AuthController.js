@@ -461,11 +461,15 @@ console.log(generateOtp)
         const CurrentTime = Date.now() //current time
         const otpGeneratetTime = userdata[0].OtpGeneratedTime //past time
 
-        if(CurrentTime - otpGeneratetTime <= 120000 ){
-            console.log('valid')
+        if(CurrentTime - otpGeneratetTime <= 240000 ){
+            
             return res.json("valid")
 
         }else{
+            console.log('valid')
+            userdata[0].Otp = null //ekchoti use bhaesakya otp lai null banaideko
+   userdata[0]. OtpGeneratedTime = null
+   await userdata[0].save()
             console.log("otp expire")
             res.json("otp expire")
         }
@@ -473,3 +477,53 @@ console.log(generateOtp)
     }
   }
 
+exports.updatePass = async (req,res)=>{
+
+    const confirm = req.body.confirmpass;
+    const newPass = req.body.newpass;
+    const email = req.params.id
+ //    console.log(email)
+ 
+    try {
+     if(confirm === newPass){
+ 
+         const check = await users.findAll({
+             where :{
+                 Email: email
+             }
+         })
+         // console.log(check)
+         
+         if(!check){
+             res.send("user not found")
+         }
+         
+         else{
+             const updatepass = await users.update({
+                 Password : bcrypt.hashSync(confirm, 10) 
+               
+             },{
+                 where:{
+                     
+                     Email : email
+                 }
+             })
+            res.send("Changed")
+         }
+         
+             }
+    } catch (error) {
+     console.error(error)
+     res.status(401).send('An error Occured')
+     
+    }
+
+ 
+         
+ 
+ 
+ 
+ 
+  
+ 
+ }

@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
-const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata, actualediting, deleteFile, forgotPassword, handleOtp } = require('./Controller/AuthController');
+const { createUser, userLogin,Addpet, getPetdetail, singleDetail, myPost, userInfo, editBlogdata, actualediting, deleteFile, forgotPassword, handleOtp, updatePass } = require('./Controller/AuthController');
 const cookieParser = require('cookie-parser');
 const { isauthenticate } = require('./Middleware/isauthenticate'); 
 const{multer, storage} = require("./Services/MulterConfig");
 const jwt = require('jsonwebtoken');
 const upload = multer({storage:storage})
+const bcrypt = require('bcrypt')
 //front end saga connection ko lagi
 app.use(cors({
     origin: 'http://localhost:5173', 
@@ -75,7 +76,12 @@ app.delete('/Delete/:id', deleteFile);
 
 app.post('/forgotpass', forgotPassword)
 
+//otp verify and all
 app.post("/handleotp/:id", handleOtp)
+
+//Password update garney after otp verify
+
+app.post('/updatepass/:id',updatePass)
   
 // Start server
 app.listen(5000, () => {

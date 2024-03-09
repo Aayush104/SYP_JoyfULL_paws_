@@ -58,7 +58,7 @@ const App = () => {
           <Route path="/Mypost" element={<Protect><Mypost /></Protect>} />
           <Route path="/Edit/:id" element={<Protect><Edit /></Protect>} />
           <Route path="/forget" element={<Forget/>} />
-          <Route path="/resetPassword" element={<Resetpassword/>} />
+          <Route path="/resetPassword/:email" element={<Resetpassword/>} />
           <Route path="/Otp/:email" element={<Otp/>} />
 
         

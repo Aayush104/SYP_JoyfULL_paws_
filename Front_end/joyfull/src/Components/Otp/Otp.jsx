@@ -12,6 +12,8 @@ const Otp = () => {
   const { email } = useParams();
   const navigateTo = useNavigate()
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,7 +25,11 @@ const Otp = () => {
         setMessage("Otp has been expired");
       }
     else  if (response && response.data === "valid") {
-      navigateTo('/resetPassword')
+      // navigateTo(`/resetPassword/${email}&?otp=${otp}`)
+
+      navigateTo(`/resetPassword/${email}`)
+
+
       }else{
         setMessage("Invalid Otp")
       }
