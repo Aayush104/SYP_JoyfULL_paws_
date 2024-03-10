@@ -11,6 +11,7 @@ const [message, setmessage] = useState('');
 const navigateTo = useNavigate()
 
 const{email}=  useParams();
+const {otp} = useParams()
 
 const handleSubmit = async (e)=>{
   e.preventDefault()
@@ -24,7 +25,7 @@ if(confirmpass !== newpass){
 
 }
   else{
-  const response = await axios.post(`http://localhost:5000/updatepass/${email}`,{
+  const response = await axios.post(`http://localhost:5000/updatepass/${email}/${otp}`,{
     confirmpass,
     newpass
   })

@@ -12,7 +12,6 @@ const Otp = () => {
   const { email } = useParams();
   const navigateTo = useNavigate()
 
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +26,11 @@ const Otp = () => {
     else  if (response && response.data === "valid") {
       // navigateTo(`/resetPassword/${email}&?otp=${otp}`)
 
-      navigateTo(`/resetPassword/${email}`)
+      navigateTo({
+        pathname: `/resetPassword/${email}/${otp}`,
+      
+      });
+      
 
 
       }else{

@@ -443,7 +443,7 @@ console.log(generateOtp)
     if(!otp || !email ){
         res.send("Please send email,otp")
     }
-    console.log(otp,email)
+    // console.log(otp,email)
 
     const userdata = await users.findAll({
         where :{
@@ -452,7 +452,7 @@ console.log(generateOtp)
         }
     })
     // console.log(userdata) //esma data aauna duitai value true hunai aprxa
-
+console.log(userdata)
     if(userdata.length == 0){
         console.log("invalid")
        return res.json("Invalid Otp")
@@ -461,15 +461,17 @@ console.log(generateOtp)
         const CurrentTime = Date.now() //current time
         const otpGeneratetTime = userdata[0].OtpGeneratedTime //past time
 
-        if(CurrentTime - otpGeneratetTime <= 240000 ){
+        if(CurrentTime - otpGeneratetTime <= 240000){
+         
             
             return res.json("valid")
 
         }else{
-            console.log('valid')
+            
             userdata[0].Otp = null //ekchoti use bhaesakya otp lai null banaideko
-   userdata[0]. OtpGeneratedTime = null
-   await userdata[0].save()
+            userdata[0].OtpGeneratedTime = null
+            await userdata[0].save()
+            
             console.log("otp expire")
             res.json("otp expire")
         }
@@ -481,26 +483,32 @@ exports.updatePass = async (req,res)=>{
 
     const confirm = req.body.confirmpass;
     const newPass = req.body.newpass;
-    const email = req.params.id
- //    console.log(email)
+    const email = req.params.email
+    const otp = req.params.otp
+    console.log("This is Otp::", otp)
  
     try {
      if(confirm === newPass){
  
          const check = await users.findAll({
              where :{
-                 Email: email
+                 Email: email,
+                 Otp : otp
              }
          })
          // console.log(check)
          
          if(!check){
-             res.send("user not found")
+            return res.send("user not found")
          }
-         
-         else{
+        //  const CurrentTime = Date.now() //current time
+        //  const otpGeneratetTime = check[0].OtpGeneratedTime //past time
+ 
+        
              const updatepass = await users.update({
-                 Password : bcrypt.hashSync(confirm, 10) 
+                 Password : bcrypt.hashSync(confirm, 10) ,
+                 Otp: null,
+                 OtpGeneratedTime: null
                
              },{
                  where:{
@@ -511,7 +519,7 @@ exports.updatePass = async (req,res)=>{
             res.send("Changed")
          }
          
-             }
+             
     } catch (error) {
      console.error(error)
      res.status(401).send('An error Occured')

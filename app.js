@@ -81,7 +81,7 @@ app.post("/handleotp/:id", handleOtp)
 
 //Password update garney after otp verify
 
-app.post('/updatepass/:id',updatePass)
+app.post('/updatepass/:email/:otp',updatePass)
   
 // Start server
 app.listen(5000, () => {
