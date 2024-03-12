@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Addpet.css';
 import axios from 'axios';
-import Footer from '../Footer/Footer';
+
 import InnerNav from '../InnerNav/InnerNav';
 import cookies from 'js-cookie';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 const AddPet = () => {
   const [petname, setPetName] = useState('');
@@ -19,6 +19,7 @@ const AddPet = () => {
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,16 +46,13 @@ const AddPet = () => {
 
       if (response.data === 'success') {
         setMessage("Pet Added successfully");
+     
         setMessageType("success");
-        setPetName('');
-        setPetGender('');
-        setPetHealth('');
-        setPetSize('');
-        setPetAge('');
-        setPetLikings('');
-        setAboutPet('');
-        setBreed('');
-        setPetPhoto(null);
+       
+        setTimeout(()=>{
+          window.location.reload()
+        },4000)
+      
       } else {
         setMessage("Fill all details. Please try again.");
         setMessageType("error");

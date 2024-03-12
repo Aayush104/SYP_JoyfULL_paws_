@@ -13,8 +13,28 @@ const SingleDetail = () => {
     const {id} = useParams();
 
     const [detail,setDetail] = useState(null)
+
+    const [dialog,setDialog] = useState(false)
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+
+
+    const handleModel = ()=>{
+      setDialog(true)
+      document.body.style.overflowY = 'hidden'
+      setIsDialogOpen(true)
+     
   
+      }
+
+    const handleClose = ()=>{
+      setDialog(false)
+      document.body.style.overflowY = 'auto'
+      setIsDialogOpen(false)
+  
+      }
     useEffect(()=>{
+     
   
       const fetchData = async ()=>{
   
@@ -29,19 +49,24 @@ const SingleDetail = () => {
       }
   
       fetchData();
+    
     }, [id])
-
 
     const handleDelete = async (id)=>{
       try{
        const response =  await axios.delete(`http://localhost:5000/Delete/${id}`)
+      
     
        if(response && response.data == 'successfully deleted'){
-        navigateTo('/Mypost')
+
+        setIsDialogOpen(false)
+    navigateTo('/Mypost')
+        
 
         setTimeout(()=>{
-   
+         
             window.alert("Your Post has been successfully deleted")
+          
         
 
         },500)
@@ -53,9 +78,19 @@ const SingleDetail = () => {
 
       }
 
-    }
+  }
+
+
+
+
     return (
-      <div className='w-single'>
+
+
+      <>
+            <div className={`w-single ${isDialogOpen ? 'blur-background' : ''}`}>
+      <div>
+
+    
       <InnerNav />
   <div>
     
@@ -118,7 +153,8 @@ const SingleDetail = () => {
 
   )}
  
-  <button className='delete_btn' onClick={() => handleDelete(detail[0].ID)}>Delete</button>
+  <button className='delete_btn' onClick={() =>handleModel()} >Delete</button>
+
 
 
 
@@ -126,9 +162,25 @@ const SingleDetail = () => {
   </div>
  
        <Footer />
+       </div>
       </div>
+      {dialog && (
+   <div className='model'>
+<p>Are You sure want to delete?</p>
+<div className='handleBUtton'>
+<button className='yes'  onClick={() => handleDelete(detail[0].ID)}>Yes</button>
+<button className='cancel' onClick={() =>handleClose()}>Cancel</button>
+</div>
+
+
+    </div>
+  )}
+
+      </>
     )
   }
   
 
 export default SingleDetail
+
+
