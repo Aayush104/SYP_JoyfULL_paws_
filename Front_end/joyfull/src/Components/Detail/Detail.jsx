@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,NavLink } from 'react-router-dom'
 import axios from 'axios';
 import Footer from '../Footer/Footer';
 import InnerNav from '../InnerNav/InnerNav';
@@ -64,7 +64,11 @@ const Detail = () => {
   
     <div className='desrciption'>  
     <span>{detail[0].PetLikings}</span>
+    <NavLink to  = "/chat">
     <button className='Applybtm'>Apply Today</button>
+    </NavLink>
+  
+  
     </div>
     </div>
 

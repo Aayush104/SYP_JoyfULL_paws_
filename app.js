@@ -8,7 +8,8 @@ const { isauthenticate } = require('./Middleware/isauthenticate');
 const{multer, storage} = require("./Services/MulterConfig");
 const jwt = require('jsonwebtoken');
 const upload = multer({storage:storage})
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { Server } = require('socket.io');
 //front end saga connection ko lagi
 app.use(cors({
     origin: 'http://localhost:5173', 
@@ -84,9 +85,17 @@ app.post("/handleotp/:id", handleOtp)
 app.post('/updatepass/:email/:otp',updatePass)
   
 // Start server
-app.listen(5000, () => {
+const server = app.listen(5000, () => {
     console.log(`Server is running on port 5000`);
 });
+
+
+// mathi ko server lai yaha haleko parameter ma
+// const io = new Server(server)
+
+// io.on("connection",()=>{
+//     console.log("A user connected")
+// })
 
 
 

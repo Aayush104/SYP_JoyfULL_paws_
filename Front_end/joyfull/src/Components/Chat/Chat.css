@@ -1,0 +1,110 @@
+.main_chat{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w-chat{
+    display: flex;
+    width: 95%;
+    border: 1px solid #ccc;
+    height: 95vh;
+    gap: 10px;
+}
+
+.dashboard{
+    width: 30%;
+    background: var(--helper);
+    padding: 1rem 2rem;
+}
+
+.dashboard p{
+    color: #fff;
+}
+
+.sender input{
+    
+outline: none;
+padding: 13px;
+border: 1px solid #ccc;
+border-radius: 10px;
+flex: 0.96;
+}
+
+.sender{
+
+    display: flex;
+    gap: 10px;
+}
+
+.conversation {
+
+    flex: 1;
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .sender {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    
+  }
+  
+
+ .received p{
+    background: rgb(42, 151, 213);
+    width: fit-content;
+  border-radius: 10px;
+
+   color: #fff;
+   padding: 6px 12px;
+  }
+
+  .received{
+    /* background-color: red; */
+  }
+
+  .sent{
+    /* background: blue; */
+  }
+  .received,
+  .sent {
+    width: 50%;
+    
+    float: left;
+
+  }
+  
+  .sender {
+    width: 100%;
+    clear: both;
+    
+  }
+  
+
+  .sent{
+  
+
+    margin-left: 50%;
+   
+    
+  }
+
+.sent p{
+    background: rgb(213, 42, 110);
+    width: fit-content;
+  border-radius: 10px;
+  float: right;
+  margin-right: 10px;
+
+   color: #fff;
+   padding: 6px 12px;
+}

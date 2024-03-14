@@ -127,7 +127,7 @@ const SingleDetail = () => {
     
       <div className='desrciption'>  
       <span>{detail[0].PetLikings}</span>
-      <button className='Applybtm'>Apply Today</button>
+     
       </div>
       </div>
   
