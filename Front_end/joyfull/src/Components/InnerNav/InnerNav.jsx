@@ -12,6 +12,7 @@ import { LuLogOut } from "react-icons/lu";
 import { NavLink, } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useEffect,useState } from 'react';
+import { AiFillMessage } from "react-icons/ai";
 import axios from 'axios';
 
 const InnerNav = () => {
@@ -72,6 +73,16 @@ const InnerNav = () => {
 
       </div>
           About Us 
+         
+        </li>
+      </NavLink>
+      <NavLink to = '/chat'>
+      <li className='nav-link link'>
+        <div className='h-link'>
+        <AiFillMessage   className = 'chat_icon'/>
+
+      </div>
+          Chat
          
         </li>
       </NavLink>

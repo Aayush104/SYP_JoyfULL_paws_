@@ -12,7 +12,7 @@ const sendEmailPreparing = async(options) =>{
     })
 
     const mailSendOption = {
-        from : "Aayush Adhikari <aayushadhikari601@gmail.com>",
+        from : "Aayush Adhhikari <aayushadhikari601@gmail.com>",
         to : options.email,
     subject : options.subject,
         text : "Your Otp is" + options.otp,

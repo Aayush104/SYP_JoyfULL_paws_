@@ -25,6 +25,7 @@ import Forget  from './Components/Forget/Forget';
 import Otp  from './Components/Otp/Otp';
 import Resetpassword from './Components/ResetPassword/Resetpassword';
 import Chat from './Components/Chat/Chat';
+import Convo from './Components/Convo/Convo';
 
 const App = () => {
   return (
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/Mypost" element={<Protect><Mypost /></Protect>} />
           <Route path="/Edit/:id" element={<Protect><Edit /></Protect>} />
           <Route path="/chat" element={<Protect><Chat /></Protect>} />
+          <Route path="/convo/:id" element={<Protect><Convo /></Protect>} />
           <Route path="/forget" element={<Forget/>} />
           <Route path="/resetPassword/:email/:otp" element={<Resetpassword/>} />
           <Route path="/Otp/:email" element={<Otp/>} />

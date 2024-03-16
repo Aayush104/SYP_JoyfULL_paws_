@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams,NavLink } from 'react-router-dom'
+import { useParams,NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import Footer from '../Footer/Footer';
 import InnerNav from '../InnerNav/InnerNav';
@@ -9,6 +9,7 @@ const Detail = () => {
   const {id} = useParams();
 
   const [detail,setDetail] = useState(null)
+  const navigateTo = useNavigate()
 
   useEffect(()=>{
 
@@ -26,6 +27,16 @@ const Detail = () => {
 
     fetchData();
   }, [id])
+
+
+  const handlenav = () => {
+   
+     
+      navigateTo(`/convo/${detail[0].userID}`);
+    
+  }
+
+
   return (
     <div className='w-single'>
     <InnerNav />
@@ -64,9 +75,9 @@ const Detail = () => {
   
     <div className='desrciption'>  
     <span>{detail[0].PetLikings}</span>
-    <NavLink to  = "/chat">
-    <button className='Applybtm'>Apply Today</button>
-    </NavLink>
+  
+    <button className='Applybtm' onClick={handlenav}>Apply Today</button>
+   
   
   
     </div>

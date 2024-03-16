@@ -1,7 +1,10 @@
 import './Chat.css';
 import InnerNav from '../InnerNav/InnerNav';
+// import { useParams } from 'react-router-dom';
+
 
 const Chat = () => {
+  // const { name } = useParams();
   return (
     <>
       <InnerNav />
@@ -11,6 +14,10 @@ const Chat = () => {
             <p>This is dashboard</p>
           </div>
           <div className='conversation'>
+          <div className='p-name'>
+          <span>Aayush</span>
+          </div>
+      
             <div className='texts'>
               <div className='received'>
                 <p>Hello, my name is Aayush</p>

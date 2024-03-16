@@ -5,10 +5,12 @@ const fs = require('fs');
 const { assert } = require("console");
 const { Op, DATE } = require('sequelize');
 const sendEmailPreparing = require("../Services/SendEmail");
+const userTalkPreparing = require("../Services/UserTalk");
 
 //Register User in Database
 exports.createUser =  async (req, res) => {
     const { Username, Email, Password, Confirm } = req.body;
+    
 
     try {
         const existingUser = await users.findOne({
@@ -146,7 +148,7 @@ exports.getPetdetail = async (req, res) => {
             }
         });
 
-        console.log(petDetail);
+        // console.log(petDetail);
         res.json(petDetail);
     } catch (error) {
         console.error('Error fetching pet details:', error);
@@ -175,7 +177,7 @@ exports.singleDetail = async (req,res)=>{
             }
         })
    
-    
+    // console.log(alldetails)
         res.json (alldetails)
         
     } catch (error) {
@@ -436,7 +438,7 @@ console.log(generateOtp)
 
   //for to handle otp
 
-  exports.handleOtp = async (req,res) =>{
+exports.handleOtp = async (req,res) =>{
     const otp = req.body.otp
     const email = req.params.id //params.id naqai lekhna parxa tyo params ko value lina 
      
@@ -535,3 +537,55 @@ exports.updatePass = async (req,res)=>{
   
  
  }
+
+exports.sentEmail = async (req,res)=>{
+ 
+    const Email = req.body.email
+    const sub = req.body.subject
+    const text = req.body.text
+
+    const id = req.params.id
+  
+    const toEmail = await users.findAll({
+        where :{
+            ID : id
+        }
+    })
+
+   const emailReceiver = toEmail[0].Email
+   console.log(emailReceiver)
+    const token = req.headers.authorization?.split(' ')[1];
+    const decodedToken = jwt.verify(token, process.env.SECRETKEY);
+    const userId = decodedToken.id;
+    
+    const getemail = await users.findAll({
+        where :{
+            ID : userId
+        }
+    }) 
+   
+
+    const userEmail = getemail[0].Email
+    const username = getemail[0].UserName
+    console.log(userEmail)
+
+    if(userEmail !== Email){
+        console.log("notvalid")
+        res.send("Not valid")
+
+    }else{
+        res.send("Successfull")
+ await userTalkPreparing({
+            toemail: emailReceiver,
+            email : userEmail,
+            subject : sub,
+            text:  userEmail+" "+text,
+            username : username
+          
+            })
+           
+
+
+         
+    }
+  }

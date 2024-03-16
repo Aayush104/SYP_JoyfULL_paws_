@@ -10,9 +10,13 @@
     width: 95%;
     border: 1px solid #ccc;
     height: 95vh;
-    gap: 10px;
+    /* gap: 10px; */
+    z-index: -1;
 }
 
+.texts{
+  margin: 1rem 1rem;
+}
 .dashboard{
     width: 30%;
     background: var(--helper);
@@ -68,13 +72,7 @@ flex: 0.96;
    padding: 6px 12px;
   }
 
-  .received{
-    /* background-color: red; */
-  }
 
-  .sent{
-    /* background: blue; */
-  }
   .received,
   .sent {
     width: 50%;
@@ -107,4 +105,18 @@ flex: 0.96;
 
    color: #fff;
    padding: 6px 12px;
+}
+
+
+.p-name span{
+margin: 2rem;
+color: var( --skyblue);
+}
+
+.p-name{
+  background-color: #ccc;
+  padding: 0.8rem 0;
+  border: 1px solid #adacac;
+  border-bottom-right-radius:5px ;
+  border-bottom-left-radius:5px ;
 }
