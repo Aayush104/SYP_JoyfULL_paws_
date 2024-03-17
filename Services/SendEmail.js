@@ -6,16 +6,16 @@ const sendEmailPreparing = async(options) =>{
         service : 'gmail',
 
         auth :{
-            user:"aayushadhikari601@gmail.com",
-            pass: "wsggmoqcqyzxbsep"
+            user:"joyfullpaws01@gmail.com",
+            pass: "qqbwubvsmtxfopzl"
         }
     })
 
     const mailSendOption = {
-        from : "Aayush Adhhikari <aayushadhikari601@gmail.com>",
+        from : "Joyfull Paws <joyfullpaws01@gmail.com>",
         to : options.email,
     subject : options.subject,
-        text : "Your Otp is" + options.otp,
+        text : "Your Otp is " + options.otp,
 
     };
 

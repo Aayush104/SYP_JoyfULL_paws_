@@ -76,7 +76,7 @@ const InnerNav = () => {
          
         </li>
       </NavLink>
-      <NavLink to = '/chat'>
+      {/* <NavLink to = '/chat'>
       <li className='nav-link link'>
         <div className='h-link'>
         <AiFillMessage   className = 'chat_icon'/>
@@ -85,7 +85,7 @@ const InnerNav = () => {
           Chat
          
         </li>
-      </NavLink>
+      </NavLink> */}
       
 
      <NavLink to = '/innercontact'>

@@ -481,6 +481,8 @@ console.log(userdata)
     }
   }
 
+
+//edit 
 exports.updatePass = async (req,res)=>{
 
     const confirm = req.body.confirmpass;
@@ -538,6 +540,8 @@ exports.updatePass = async (req,res)=>{
  
  }
 
+
+ // it sent email to user 
 exports.sentEmail = async (req,res)=>{
  
     const Email = req.body.email
@@ -567,7 +571,7 @@ exports.sentEmail = async (req,res)=>{
 
     const userEmail = getemail[0].Email
     const username = getemail[0].UserName
-    console.log(userEmail)
+    // console.log("this is user mail",userEmail)
 
     if(userEmail !== Email){
         console.log("notvalid")
@@ -576,8 +580,9 @@ exports.sentEmail = async (req,res)=>{
     }else{
         res.send("Successfull")
  await userTalkPreparing({
-            toemail: emailReceiver,
-            email : userEmail,
+           
+            emailer: userEmail,
+             toemail: emailReceiver,
             subject : sub,
             text:  userEmail+" "+text,
             username : username

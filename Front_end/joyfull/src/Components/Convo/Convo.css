@@ -11,7 +11,7 @@
     padding: 2rem 2rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     width: 400px;
-height: fit-content;
+height: 74%;
 border-radius: 10px;
 display: flex;
 flex-direction: column;
@@ -74,9 +74,25 @@ gap: 1rem;
    background: rgb(208, 55, 121);
    color: white;
    cursor: pointer;
+   transition: all 0.2s linear;
 
 }
 
 .btn_convo:hover{
-box-shadow: 0 0 8px rgba(0,0,0,0.2);
+
+transform: translateY(-2px); 
+box-shadow: 0 10px 10px rgba(244, 1, 139, 0.3);
+}
+
+
+.message_error{
+    margin-top: 0;
+    text-align: center;
+    color: red;
+}
+
+.message_success{
+    margin-top: 0;
+    text-align: center;
+    color: green;
 }

@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Edit = () => {
   const { id } = useParams();
   const navigateto = useNavigate();
+  const [message, setMessage] = useState();
 
   const [petData, setPetData] = useState({
     petname: '',
@@ -73,6 +74,7 @@ const Edit = () => {
   
       if (response.data && response.data === 'update successful') {
         navigateto(`/SingleDetail/${id}`);
+
   
         setTimeout(() => {
           window.alert("Update successful");

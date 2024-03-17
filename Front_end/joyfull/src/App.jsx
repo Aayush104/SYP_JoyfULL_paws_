@@ -59,7 +59,7 @@ const App = () => {
           <Route path="/SingleDetail/:id" element={<Protect><SingleDetail /></Protect>} />
           <Route path="/Mypost" element={<Protect><Mypost /></Protect>} />
           <Route path="/Edit/:id" element={<Protect><Edit /></Protect>} />
-          <Route path="/chat" element={<Protect><Chat /></Protect>} />
+          {/* <Route path="/chat" element={<Protect><Chat /></Protect>} /> */}
           <Route path="/convo/:id" element={<Protect><Convo /></Protect>} />
           <Route path="/forget" element={<Forget/>} />
           <Route path="/resetPassword/:email/:otp" element={<Resetpassword/>} />

@@ -17,7 +17,8 @@ body{
     /* backgrund-color: #fff; */
     padding-bottom: 1rem;
   margin-bottom: 3.2rem;
-  background: linear-gradient(to bottom right, #5ac6fc 0%, #86b0e4 1.2%, #6ecab3);
+  background: linear-gradient(to bottom right, #5a7dfc 0%, #33a6d8 1.2%, #5fc6ac);
+opacity: 0.9;
   position: relative;
   border-radius: 25px 20px 25px 20px; 
 
