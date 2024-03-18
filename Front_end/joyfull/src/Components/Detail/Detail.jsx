@@ -40,9 +40,7 @@ const Detail = () => {
   return (
     <div className='w-single'>
     <InnerNav />
-<div>
-  
-</div>
+
 
 {detail && detail[0] && (
   <div className='m-single'>

@@ -48,7 +48,7 @@ const Mypost = () => {
           <div className='pet_box_span' key={details.id}>
             <img src={details.PetPhoto} alt='Pet' className='pet-image' />
             <span>{details.PetName}</span>
-            <span>{details.PetLikings}</span>
+            <span>{details.PetLikings.split(' ').slice(0, 30).join(' ')+"..."}</span>
             <NavLink to={`/SingleDetail/${details.ID}`}>
               <button className='read_btn'>Read More</button>
             </NavLink>

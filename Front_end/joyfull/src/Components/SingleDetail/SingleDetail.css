@@ -89,3 +89,30 @@ transform: translate(-50%,-50%);
     cursor: pointer;
 
   }
+
+.About_pets{
+ 
+    width: fit-content;
+    height: max-content;
+    margin-bottom: 1rem;
+}
+.About_pets p{
+ 
+    font-size: 16px;
+    color: #525050;
+    line-height: 1.8rem;
+    text-align: justify;
+}
+
+.desrciption span{
+    line-height: 1.4rem;
+    text-align: justify;
+}
+
+.detail_contain{
+   display: flex;
+   gap: 10px;
+   font-size: 2.5rem;
+   font-weight: 700;
+}
+

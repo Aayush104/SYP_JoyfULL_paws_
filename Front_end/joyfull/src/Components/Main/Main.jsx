@@ -124,7 +124,7 @@ const Main = () => {
               <div className='pet_box_span' key={detail.id}>
               <img src={detail.PetPhoto} className='pet-image' />
                 <span>{detail.PetName}</span>
-                <span>{detail.PetLikings	}</span>
+              <span>{detail.PetLikings.split(' ').slice(0, 30).join(' ')+"..."}</span>
 
                 <NavLink to={`/Detail/${detail.ID}`}>
   <button className='read_btn'>Read More</button>

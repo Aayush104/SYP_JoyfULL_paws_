@@ -19,7 +19,7 @@
 
 .button {
     background: linear-gradient(180deg, #1d6183 26.71%, #0fa9ba 99.36%);
-    box-shadow: 0px 5px 10px rgba(125, 255, 255, 0.42);
+    box-shadow: 0px 5px 10px rgba(125, 255, 255, 0.38);
     border-radius: 34px;
     border: none;
     color: white;

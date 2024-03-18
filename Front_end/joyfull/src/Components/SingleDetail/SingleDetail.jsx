@@ -102,8 +102,8 @@ const SingleDetail = () => {
   
   <div>
   <div className='detail_contain'>
-  
-  <p>Meet {detail[0].PetName}</p>
+  <span>Meet</span>
+  <span>{detail[0].PetName}</span>
   </div>
   <div className='right'>
   <div className='detail_span'> 

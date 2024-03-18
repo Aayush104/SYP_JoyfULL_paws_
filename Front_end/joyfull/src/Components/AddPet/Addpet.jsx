@@ -46,7 +46,16 @@ const AddPet = () => {
 
       if (response.data === 'success') {
         setMessage("Pet Added successfully");
-     
+        setPetName('');
+        setPetGender('');
+        setPetHealth('');
+        setPetSize('');
+        setPetAge('');
+        setPetLikings('');
+        setAboutPet('');
+        setBreed('');
+        setPetPhoto(null);
+        setSelectedFile(null);
         setMessageType("success");
        
         setTimeout(()=>{
@@ -144,7 +153,7 @@ const AddPet = () => {
           
               <div className='l-1'>
                 <label htmlFor="petLikings">Pet Likings:</label><br />
-                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="6" cols="80" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required maxLength="200"></textarea>
+                <textarea id="petLikings" placeholder= "Behaviour and liking of your pet"  name="petLikings" rows="6" cols="80" value={petlikings} onChange={(e) => setPetLikings(e.target.value)} required ></textarea>
               </div>
               <div className='l-1'>
                 <label htmlFor="aboutPet">About pet:</label><br />

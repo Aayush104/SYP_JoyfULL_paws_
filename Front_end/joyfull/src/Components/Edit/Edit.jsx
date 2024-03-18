@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Edit = () => {
   const { id } = useParams();
   const navigateto = useNavigate();
-  const [message, setMessage] = useState();
+
 
   const [petData, setPetData] = useState({
     petname: '',
@@ -175,7 +175,7 @@ const Edit = () => {
                 <div className='right_form'>
                   <div className='l-1'>
                     <label htmlFor="petLikings">Pet Likings:</label><br />
-                    <textarea id="petLikings" placeholder="Behaviour and liking of your pet" name="petlikings" rows="6" cols="80" value={petData.petlikings} onChange={handleInputChange} required maxLength="500"></textarea>
+                    <textarea id="petLikings" placeholder="Behaviour and liking of your pet" name="petlikings" rows="6" cols="80" value={petData.petlikings} onChange={handleInputChange} required ></textarea>
                   </div>
                   <div className='l-1'>
                     <label htmlFor="aboutPet">About pet:</label><br />
