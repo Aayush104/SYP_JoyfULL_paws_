@@ -17,7 +17,7 @@ const userTalkPreparing = async (options) => {
         text: "Hello I am " + options.username + " "+ "conect me on "+ options.text
     };
 
-    console.log(mailSendOption)
+    // console.log(mailSendOption)
     await transporter.sendMail(mailSendOption);
 };
 

@@ -20,52 +20,49 @@ function Register() {
     const [password, setPassword] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [isdisable, setdisable] = useState(false);
     const navigateTo = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+setdisable(true)
 
+setTimeout(() => {
+    setMessage('')
+  
+    
+}, 2000);
+setTimeout(() => {
+   
+    setdisable(false)
+    
+}, 4000);
         if (!email || !username || !password || !ConfirmPassword) {
             setMessage('Please Fill All Inputs');
+            
         } else if(password.length < 8){
             setMessage('Password must be at least 8 characters long');
-        }
-        else {
-            try {
-                const response = await axios.post('http://localhost:5000/register', {
-                    Email: email,
-                    Username: username,
-                    Password: password,
-                    Confirm: ConfirmPassword
-                });
-          
-                if (response.data === 'Registration successful') {
-                    console.log("User has been created");
-                    setEmail('');
-                    setUsername('');
-                    setPassword('');
-                    navigateTo('/Login');
-                    
-                    setTimeout(()=>{
-                        window.alert("You have been registered successfully!! Please login");
-                    }, 500);
-      
-                }
+        }else if(password !== ConfirmPassword){
+            setMessage('Invalid re enter password');
+        }else{
+            const response = await axios.post("http://localhost:5000/getPass",{
+                email
+            })
 
-                if (response.data === 'Password donot match') {
-                    setMessage('Problem while confirming password');
-                    setConfirmPassword('');
-                }
-            } catch (error) {
+            if(response && response.data == "User exists"){
+                setMessage("User already exist")
+            }else{
 
-              
-                if (error.response && error.response.status === 400) {
-                    setMessage('Email already exists. Please use another email.');
-                } else {
-                    setMessage('Oops! Something went wrong.');
-                }
+            
+                 localStorage.setItem('otp', response.data);
+                 localStorage.setItem('email', email);
+                 localStorage.setItem('username', username);
+                 localStorage.setItem('password', password);
+                navigateTo(`/registerOtp`)
+                
             }
         }
+       
     };
 
     return (
@@ -145,7 +142,9 @@ function Register() {
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                 />
                             </div>
-                            <button className='button2' type="submit">Sign Up</button>
+                           
+                            <button className='button2' type="submit" disabled={isdisable}>Sign Up</button>
+                          
                             <NavLink to='/Login'>
                                 <button className='already'> Already have an account?</button>
                             </NavLink>

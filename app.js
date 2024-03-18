@@ -9,6 +9,7 @@ const{multer, storage} = require("./Services/MulterConfig");
 const jwt = require('jsonwebtoken');
 const upload = multer({storage:storage})
 const bcrypt = require('bcrypt');
+const sendregister = require('./Services/Registermail');
 // const { Server } = require('socket.io');
 //front end saga connection ko lagi
 app.use(cors({
@@ -86,7 +87,45 @@ app.post('/updatepass/:email/:otp',updatePass)
 
 //to sent email from User To user
 app.post('/sentEmail/:id',sentEmail)
-  
+
+
+app.post('/getPass', async (req, res) => {
+  const { email } = req.body;
+
+  if(!email){
+    res.send("no user")
+  }
+
+  try {
+    
+    const existingUser = await users.findOne({
+      where: {
+        Email: email
+      }
+    });
+
+    if (existingUser) {
+      console.log("User exists.");
+      res.send("User exists");
+    } else {
+      console.log("Success.");
+      const generateOtp = Math.floor(10000 * Math.random(9999))
+      
+      await sendregister({
+        email : email,
+        otp :generateOtp
+      })
+      res.json(generateOtp)
+      console.log(generateOtp)
+      // res.status(200).send("Success");
+
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Start server
  app.listen(5000, () => {
     console.log(`Server is running on port 5000`);

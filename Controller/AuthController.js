@@ -9,7 +9,9 @@ const userTalkPreparing = require("../Services/UserTalk");
 
 //Register User in Database
 exports.createUser =  async (req, res) => {
-    const { Username, Email, Password, Confirm } = req.body;
+    const { Username, Email, Password} = req.body;
+
+    console.log(req.body)
     
 
     try {
@@ -24,11 +26,7 @@ exports.createUser =  async (req, res) => {
             return res.status(400).send("Email already exists");
         }
 
-        if(Password !==  Confirm){
-            console.log("PASSWORD dONOT MATCH")
-            return res.send("Password donot match")
-            
-        }
+      
     
         await users.create({
             UserName: Username,

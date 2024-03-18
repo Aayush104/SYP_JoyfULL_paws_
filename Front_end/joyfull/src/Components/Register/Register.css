@@ -185,3 +185,10 @@ label{
   margin: 0 auto;
   text-align: center;
 }
+
+
+.otp_btns{
+  margin: 1.5rem 1.5rem;
+  border-radius: 10px;
+}
+

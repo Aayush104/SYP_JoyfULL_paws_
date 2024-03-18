@@ -26,6 +26,7 @@ import Otp  from './Components/Otp/Otp';
 import Resetpassword from './Components/ResetPassword/Resetpassword';
 import Chat from './Components/Chat/Chat';
 import Convo from './Components/Convo/Convo';
+import RegisterOtp from './Components/RegisterOtp/RegisterOtp';
 
 const App = () => {
   return (
@@ -64,6 +65,7 @@ const App = () => {
           <Route path="/forget" element={<Forget/>} />
           <Route path="/resetPassword/:email/:otp" element={<Resetpassword/>} />
           <Route path="/Otp/:email" element={<Otp/>} />
+          <Route path="/registerOtp" element={<RegisterOtp/>} />
 
         
         </Routes>

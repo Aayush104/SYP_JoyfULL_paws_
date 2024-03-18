@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
@@ -13,6 +13,14 @@ const Login = () => {
     const [message, setMessage] = useState('');
     const navigateTo = useNavigate();
 
+
+    useEffect(()=>{
+        localStorage.removeItem('otp')
+        localStorage.removeItem('username')
+        localStorage.removeItem('password')
+        localStorage.removeItem('email')
+        
+    })
     const handleSubmit = async (e) => {
         e.preventDefault();
 
