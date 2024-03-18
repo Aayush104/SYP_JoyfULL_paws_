@@ -101,7 +101,7 @@ const SingleDetail = () => {
     <img src={detail[0].PetPhoto}></img>
   
   <div>
-  <div className='detail_contain'>
+  <div className='details_contain'>
   <span>Meet</span>
   <span>{detail[0].PetName}</span>
   </div>

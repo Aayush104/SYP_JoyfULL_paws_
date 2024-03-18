@@ -109,10 +109,14 @@ transform: translate(-50%,-50%);
     text-align: justify;
 }
 
-.detail_contain{
-   display: flex;
-   gap: 10px;
-   font-size: 2.5rem;
-   font-weight: 700;
+.details_contain{
+    margin: 2.5rem 0 1rem 2rem;
+    display:flex;
+    gap:10px;
 }
 
+.details_contain span{
+   font-size: 2.4rem;
+font-weight: 600;
+     
+}

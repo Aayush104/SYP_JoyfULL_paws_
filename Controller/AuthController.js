@@ -146,7 +146,7 @@ exports.getPetdetail = async (req, res) => {
                     [Op.ne]: userId // [op.ne work as not equal to operator]
                 }
             }
-        });
+        });   
 
         // console.log(petDetail);
         res.json(petDetail);
