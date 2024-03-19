@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { CgEnter } from 'react-icons/cg';
+// import { CgEnter } from 'react-icons/cg';
 
 const RegisterOtp = () => {
   const [otp, setOtp] = useState('');
@@ -36,6 +36,9 @@ const RegisterOtp = () => {
 
         if (response && response.data === "Registration successful") {
           navigateTo('/login');
+          setTimeout(()=>{
+            window.alert("You have been registerd successfully")
+          },200)
         }
       } catch (error) {
         console.error("Error:", error);

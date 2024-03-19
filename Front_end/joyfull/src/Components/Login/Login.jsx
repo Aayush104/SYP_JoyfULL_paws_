@@ -3,9 +3,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 import Cookies from 'js-cookie'
-
-
-
 import paw from "../../img/log_paw.png";
 const Login = () => {
     const [password, setPassword] = useState('');
