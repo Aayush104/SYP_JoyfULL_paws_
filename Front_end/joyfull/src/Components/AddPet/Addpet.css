@@ -6,16 +6,19 @@
     height: 150vh;
     justify-content: center;
     flex-direction: column;
-
-background: linear-gradient(to bottom right, #2d7c97 0%, #449d8d 33%, #82c0a2 66%, #30708b);
+    /* background-image: url('../../img/signup_img.jpg') ; */
+    background-image: url("https://images4.alphacoders.com/941/941357.jpg");
+    /* background-position: center; */
+    background-repeat: no-repeat;
+background-size: cover;
 
 }
 
-.W-Addpet h2{
-  margin-top: -2rem;
- color: #fff;
+/* .W-Addpet h2{
+
+ color: rgb(19, 120, 153);
   font-size: 2.8rem;
-}
+} */
 .pet_form{
    
    background-color: #00000041;
@@ -24,8 +27,10 @@ background: linear-gradient(to bottom right, #2d7c97 0%, #449d8d 33%, #82c0a2 66
    border-radius: 10px;
    border: 1px solid #ccc;
  box-shadow: 0 0 8px rgba(115, 115, 115, 0.4);
+
     
 }
+
 
 .left_form{
     display: flex;
@@ -47,15 +52,23 @@ background: linear-gradient(to bottom right, #2d7c97 0%, #449d8d 33%, #82c0a2 66
 .form_p .l-1 input,textarea{
     padding: 10px;
   border-radius: 5px;
-  border: none;
-  outline: none;
+  border: 1px solid #ccc;
+  outline: 1px solid rgba(46, 176, 170, 0.927);
 resize: none;
-  border-bottom: 1px solid #b3b3b3;
-  color: #5a5959;
+  
+  color: #f3f3f3;
   margin-top: 4px;
   margin-bottom: 2px;
   font-size: 15px;
+  background: rgba(14, 14, 14, 0.156)
 
+}
+
+.form_p .l-1 textarea::placeholder{
+  color: rgba(231, 231, 231, 0.995);
+}
+.form_p .l-1 input::placeholder{
+  color: rgba(231, 231, 231, 0.995);
 }
 .form_p .l-1 label{
 font-size: 16px; 
@@ -65,9 +78,18 @@ color: #fff;
 font-size: 15px; 
 padding: 10px;  
 border: 1px solid #ccc;
+outline: 1px solid rgba(57, 231, 222, 0.927);
 border-radius: 8px;
 width: 21rem;
-color: #5a5959;
+color: #fff;
+background: rgba(14, 14, 14, 0.156)
+
+}
+.form_p .l-1 select option{
+
+background: #fff;
+color: #333;
+cursor: pointer;
 
 }
 .form_p .l-2 label{
@@ -77,6 +99,7 @@ color: #fff;
 
 .form_p .l-2{
   margin-top: 1rem;
+ 
 }
 .form_p .l-2 input{
 background-color: rgba(0, 0, 0, 0);   
@@ -91,7 +114,7 @@ border: 1px solid #ccc;
 
 }
 
-.pet_form form button{
+.pet_form form .button3{
     margin-top: 1.5rem;
     background: rgb(13, 159, 127);
     color: white;
@@ -108,7 +131,7 @@ border: 1px solid #ccc;
   }
   
   .success {
-    color: green;
+    color: rgba(234, 234, 234, 0.921);
   }
   
   .error {
@@ -141,3 +164,49 @@ border: 1px solid #ccc;
     cursor: pointer;
    
   }
+
+  .photo_div{
+    position: relative;
+    display: flex;
+  }
+
+  .photo_div button{
+     position: absolute;
+    top: -1rem;
+  }
+
+.file_btn{
+  margin-top: 1.5rem;
+
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 11px 26px 11px 26px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap:10px;
+  background:rgb(202, 12, 94);
+  
+ }
+.file_btn:hover{
+  transform: translateY(-2px); 
+  box-shadow: 5px 0 10px rgba(168, 24, 106, 0.992);
+ }
+
+
+ .heads{
+  display: block;
+  background-color: rgb(17, 180, 205);
+  padding:0 1rem;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 10px rgba(27, 196, 230, 0.957);
+ }
+ 
+
+.heads h2{
+color: #fff;
+font-size: 1.8rem;
+}

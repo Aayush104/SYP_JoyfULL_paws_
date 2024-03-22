@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Edit.css'
 
 import InnerNav from '../InnerNav/InnerNav';
@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { RxUpload } from "react-icons/rx";
 
 const Edit = () => {
   const { id } = useParams();
@@ -24,6 +25,11 @@ const Edit = () => {
     petphoto: null
   });
   const [selectedFile, setSelectedFile] = useState(null);
+  const fileInputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  }
 
   useEffect(() => {
     const getPetData = async () => {
@@ -93,7 +99,7 @@ const Edit = () => {
     setPetData({
       ...petData,
       [name]: value
-    });
+    });   
   };
 
   const handleFileChange = (e) => {
@@ -107,11 +113,16 @@ const Edit = () => {
   return (
     <div>
       <InnerNav />
+     
       <div className='m-edit'>
+     
       <div className='w-edit'>
+      <div className='head_edit'>
         {/* <div className='W-Addpet'> */}
         <h2>Edit Your Pet details</h2>
+        </div>
           <div className='pet_form'>
+          
             <form onSubmit={handleSubmit}>
               <div className='form_p'>
                 <div className='left_form'>
@@ -175,16 +186,30 @@ const Edit = () => {
                 <div className='right_form'>
                   <div className='l-1'>
                     <label htmlFor="petLikings">Pet Likings:</label><br />
-                    <textarea id="petLikings" placeholder="Behaviour and liking of your pet" name="petlikings" rows="6" cols="80" value={petData.petlikings} onChange={handleInputChange} required ></textarea>
+                    <textarea id="petLikings" placeholder="Behaviour and liking of your pet" name="petlikings" rows="7" cols="70" value={petData.petlikings} onChange={handleInputChange} required ></textarea>
                   </div>
                   <div className='l-1'>
                     <label htmlFor="aboutPet">About pet:</label><br />
-                    <textarea id="aboutPet" placeholder="Write About Your pet..." name="aboutpet" rows="6" cols="80" value={petData.aboutpet} onChange={handleInputChange} required ></textarea>
+                    <textarea id="aboutPet" placeholder="Write About Your pet..." name="aboutpet" rows="14" cols="70" value={petData.aboutpet} onChange={handleInputChange} required ></textarea>
                   </div>
                   <div className='l-2'>
                     <label htmlFor="petPhoto">Pet Photo:</label><br />
-                    <input type="file" id="petPhoto" name="petphoto" onChange={handleFileChange} />
-                    <p>{selectedFile ? `Selected File: ${selectedFile.name}` : "No file selected"}</p>
+                    <div className='photo_div'>
+                    <input type="file" id="petPhoto" name="petphoto"   ref={fileInputRef}
+                        style={{ display: 'none' }} onChange={handleFileChange} />
+
+                    <div className='button_display'>
+                      <button type="button" onClick={handleButtonClick} className='file_btn'>
+                      Select Photo
+                        <RxUpload fontSize={20} />
+                      </button>
+                     
+                      </div>
+                     
+
+                    </div>
+                   
+                    <p className='selectfile'>{selectedFile ? `Selected File: ${selectedFile.name}` : "No file selected"}</p>
                   </div>
                 </div>
               </div>

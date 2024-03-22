@@ -24,7 +24,7 @@ const RegisterOtp = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault(); 
 
     if (abc === otp) {
       try {
@@ -47,6 +47,7 @@ const RegisterOtp = () => {
       console.log("OTP doesn't match");
       setMessage("Invalid Otp");
 
+      
       setTimeout(() => {
         setMessage('');
       }, 3000);

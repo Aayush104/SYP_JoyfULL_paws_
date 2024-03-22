@@ -4,14 +4,37 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-     background: linear-gradient(to bottom right, #2c988a 0%, #399692 1.2%, #16555d);
+     /* background: linear-gradient(to bottom right, #2c988a 0%, #399692 1.2%, #16555d); */
+     background-image: url("https://www.zastavki.com/pictures/originals/2014/Animals___Cats_Beautiful_cat_Cymric_cat_092261_.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
 }
 
-.w-edit h2{
+.head_edit h2{
     color: #fff;
-    font-size: 2.8rem;
-    margin-top: -2rem;
+    font-size: 1.8rem;
+
     font-weight: 700;
     text-align: center;
     text-transform: capitalize;
+}
+
+.head_edit{
+   
+    background-color: rgb(17, 180, 205);
+ margin-bottom: 1rem;
+padding: 0 1rem;
+border-radius: 15px;
+box-shadow: 5px 5px 8px rgba(16, 122, 167, 0.791);
+
+}
+
+.w-edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selectfile{
+    margin-top: 4rem;
 }

@@ -104,7 +104,7 @@ exports.Addpet = async (req, res) => {
         // Find the user in the database
         const user = await users.findByPk(decodedToken.id);
 
-        console.log(user)
+        console.log(user)   
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
@@ -227,7 +227,7 @@ exports.userInfo = async(req,res)=>{
         const decodedToken =  jwt.verify(token,process.env.SECRETKEY)
         
         const userId = decodedToken.id
-        // console.log(userId)
+       
     
         const Username = await users.findAll({
             where :{
