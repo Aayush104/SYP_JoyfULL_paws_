@@ -451,8 +451,7 @@ exports.handleOtp = async (req,res) =>{
             Otp : otp
         }
     })
-    // console.log(userdata) //esma data aauna duitai value true hunai aprxa
-console.log(userdata)
+    console.log("This is Otp",userdata[0].Otp) //esma data aauna duitai value true hunai aprxa
     if(userdata.length == 0){
         console.log("invalid")
        return res.json("Invalid Otp")
@@ -461,19 +460,19 @@ console.log(userdata)
         const CurrentTime = Date.now() //current time
         const otpGeneratetTime = userdata[0].OtpGeneratedTime //past time
 
-        if(CurrentTime - otpGeneratetTime <= 240000){
+        if(CurrentTime - otpGeneratetTime >= 120000){
          
-            
-            return res.json("valid")
-
-        }else{
-            
             userdata[0].Otp = null //ekchoti use bhaesakya otp lai null banaideko
             userdata[0].OtpGeneratedTime = null
             await userdata[0].save()
             
             console.log("otp expire")
             res.json("otp expire")
+            
+
+        }else{
+            
+            return res.json("valid")
         }
        
     }
@@ -503,9 +502,7 @@ exports.updatePass = async (req,res)=>{
          if(!check){
             return res.send("user not found")
          }
-        //  const CurrentTime = Date.now() //current time
-        //  const otpGeneratetTime = check[0].OtpGeneratedTime //past time
- 
+        
         
              const updatepass = await users.update({
                  Password : bcrypt.hashSync(confirm, 10) ,
