@@ -4,9 +4,9 @@ import axios from 'axios';
 
 import InnerNav from '../InnerNav/InnerNav';
 import cookies from 'js-cookie';
-import { NavLink} from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import { RxUpload } from "react-icons/rx";
-
+import {toast} from 'react-toastify'
 
 const AddPet = () => {
   const [petname, setPetName] = useState('');
@@ -18,13 +18,15 @@ const AddPet = () => {
   const [aboutpet, setAboutPet] = useState('');
   const [breed, setBreed] = useState('');
   const [petphoto, setPetPhoto] = useState(null);
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState('');
+
+ 
   const [selectedFile, setSelectedFile] = useState(null);
+  const navigateto = useNavigate()
  
   const fileInputRef = useRef(null);
 
   const handleButtonClick = () => {
+    
     fileInputRef.current.click();
   }
 
@@ -42,42 +44,59 @@ const AddPet = () => {
     formData.append('aboutpet', aboutpet);
     formData.append('breed', breed);
     formData.append('petphoto', petphoto);
+    if(petphoto == null){
+      toast.error("Add a photo.",{
+        autoClose: 3000,
+        theme: "colored",
 
-    try {
-      const response = await axios.post("http://localhost:5000/Addpet", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${userId}` // Include the token in the request headers
-        }
       });
-
-      if (response.data === 'success') {
-        setMessage("Pet Added successfully");
-        setPetName('');
-        setPetGender('');
-        setPetHealth('');
-        setPetSize('');
-        setPetAge('');
-        setPetLikings('');
-        setAboutPet('');
-        setBreed('');
-        setPetPhoto(null);
-       
-        setMessageType("success");
-       
-        setTimeout(()=>{
-          window.location.reload()
-        },4000)
-      
-      } else {
-        setMessage("Fill all details. Please try again.");
-        setMessageType("error");
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setMessage("Fill all valid details. Please try again.");
-      setMessageType("error");
     }
+  
+
+   
+   
+else{
+  try {
+    
+    const response = await axios.post("http://localhost:5000/Addpet", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${userId}` // Include the token in the request headers
+      }
+    });
+
+    if (response.data === 'success') {
+
+     navigateto('/Mypost')
+     
+     setTimeout(() => {
+        toast.success("Your Pet has been listed",{
+          position: "top-center",
+autoClose: 3000,
+
+
+        });
+      }, 500);
+
+    } else {
+      toast.error("Fill all details. Please try again.",{
+        transition: "Slide",
+
+      });
+     
+    }
+  } catch (error) {
+    console.error('Error:', error);
+   
+    toast.error("Fill all details. Please try again.",{
+      transition: "Slide",
+
+    });
+   
+  }
+
+}
+   
   };
 
   const handleFileChange = (e) => {
@@ -179,7 +198,7 @@ const AddPet = () => {
                         onChange={handleFileChange}
                         ref={fileInputRef}
                         style={{ display: 'none' }}
-                        required
+                       
                       />
                       <div className='button_display'>
                       <button type="button" onClick={handleButtonClick} className='file_btn'>
@@ -204,7 +223,7 @@ const AddPet = () => {
         
           </div>
         
-          <p className={`message ${messageType === "success" ? "success" : "error"}`}>{message}</p>
+         
         </form>
       </div>
     </div>

@@ -56,12 +56,17 @@ gap: 1rem;
 
 .text_convo{
     border: 1px solid #ccc;
+    outline: none;
     width: 380px;
     height: 100px;
+    background: #fff;
 }
 
 .text_convo::placeholder{
     font-family: Arial, Helvetica, sans-serif;
+    color: #8b8b8b;
+    font-size: 14px;
+
 
 }
 

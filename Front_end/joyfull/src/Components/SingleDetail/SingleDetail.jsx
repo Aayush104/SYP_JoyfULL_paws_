@@ -4,6 +4,7 @@ import axios from 'axios';
 import Footer from '../Footer/Footer';
 import InnerNav from '../InnerNav/InnerNav';
 import './SingleDetail.css'
+import { toast } from 'react-toastify';
 
 
 const SingleDetail = () => {
@@ -65,7 +66,10 @@ const SingleDetail = () => {
 
         setTimeout(()=>{
          
-            window.alert("Your Post has been successfully deleted")
+            toast.info("Your Post has been successfully deleted",{
+              theme : "colored",
+              position: "top-center"
+            })
           
         
 

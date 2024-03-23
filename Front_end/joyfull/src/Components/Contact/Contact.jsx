@@ -11,6 +11,10 @@ const Contact = () => {
     const transition = {duration:4, type: 'spring'}
     const initialPosition ={x:-800, opacity:0};
     const finalPosition ={x:0, opacity:1};
+
+    const handleSubmit = (e)=>{
+      e.preventDefault()
+    }
     return (
       <div className='W-contact' id='Contact'>
       <motion.div className='heading_C'
@@ -45,7 +49,7 @@ const Contact = () => {
       </div>
   
   <div className='fix2 contacts'>
-  <form>
+  <form onSubmit={handleSubmit}>
       <div className=' grid grid-two-column'>
       <div><input className='username' type='text' id='username' placeholder='username'></input></div>
   <div><input className='email' type='email' id='email' placeholder='Your Email'></input></div>
@@ -54,8 +58,9 @@ const Contact = () => {
   <div>
   <input className='subject' type='text' id='subject' placeholder='Subject'></input></div>
   <div>
-  <textarea placeholder='Your Message' style={{height: 200}}></textarea>
+  <textarea placeholder='Your Message' style={{height: 200}} className='contact_text'></textarea>
   </div>
+  <button className='button2' type='submit'>Send</button>
   </form>
   
   

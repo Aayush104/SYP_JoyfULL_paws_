@@ -4,13 +4,13 @@ import InnerNav from '../InnerNav/InnerNav';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 const Convo = () => {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [texting, setText] = useState('');
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState(''); // New state to determine message type
+ 
 
   const userid = Cookies.get('token');
   const { id } = useParams();
@@ -29,25 +29,27 @@ const Convo = () => {
       });
 
       if (response && response.data === "Successfull") {
-        setMessage("Your message has been sent successfully");
-        setMessageType('success');
+       
         setSubject('');
         setText('');
         setEmail('');
         setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+          toast.success("Your message has been sent successfully")
+        }, 100);
+        
       } else if (response && response.data === "Not valid") {
-        setMessage("Not a valid email");
-        setMessageType('error');
+       
         setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+          toast.error("Please input Valid details",{
+            theme: 'colored'
+          })
+        },100);
       }
     } catch (error) {
       console.error("Error:", error);
-      setMessage("Something went wrong. Please try again later.");
-      setMessageType('error');
+      toast.error("An error Occured",{
+        theme: 'colored'
+      })
     }
   }
 
@@ -90,7 +92,7 @@ const Convo = () => {
               ></textarea>
             </div>
             <button type='submit' className='btn_convo'>Send</button>
-            {message && <p className={`message_${messageType}`}>{message}</p>}
+         
           </form>
         </div>
       </div>

@@ -2,10 +2,10 @@ import  { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import { CgEnter } from 'react-icons/cg';
-
+import {toast} from 'react-toastify';
 const RegisterOtp = () => {
   const [otp, setOtp] = useState('');
-  const [message, setMessage] = useState('');
+  
   const abc = localStorage.getItem('otp');
   const username = localStorage.getItem('username');
   const email = localStorage.getItem('email');
@@ -37,20 +37,25 @@ const RegisterOtp = () => {
         if (response && response.data === "Registration successful") {
           navigateTo('/login');
           setTimeout(()=>{
-            window.alert("You have been registerd successfully")
+            toast.success('Registered !! Procceed to Login ',{
+              theme: "colored",
+              position: "bottom-center"
+            })
           },200)
         }
       } catch (error) {
         console.error("Error:", error);
+        toast.error('An error Occured! please try again',{
+          theme: "colored"
+        })
       }
     } else {
       console.log("OTP doesn't match");
-      setMessage("Invalid Otp");
+      toast.warning('Invalid Otp',{
+        theme: "colored"
+      })
 
-      
-      setTimeout(() => {
-        setMessage('');
-      }, 3000);
+    
     }
   };
 
@@ -60,14 +65,16 @@ const RegisterOtp = () => {
         email
       });
 
-     window.alert("Otp has been sent again Check You mail")
-      setTimeout(() => {
-        setMessage('');
-      }, 3000);
+      toast.success('Otp has been sent',{
+        theme: "colored"
+      })
+    
       localStorage.setItem('otp', response.data);
     } catch (error) {
       console.error("An error occurred", error);
-      setMessage("Internal error occurred");
+      toast.error('An error Occured',{
+        theme: "colored"
+      })
     }
   };
 
@@ -95,7 +102,7 @@ const RegisterOtp = () => {
           <span className='resend' onClick={handleResend}>Resend Otp</span>
           <button type="submit" className='verify_btn'>Verify OTP</button>
         </form>
-        {message && <p className='error' style={{ textAlign: 'center' }}>{message}</p>}
+     
       </div>
     </>
   );

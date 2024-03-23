@@ -3,12 +3,13 @@ import Navbar from '../Navbar/Navbar';
 import './Otp.css';
 import axios from 'axios';
 import { useState } from 'react';
+import {toast} from 'react-toastify';
+
 
 
 const Otp = () => {
   const [otp, setOtp] = useState('');
-  const [message, setMessage] = useState('');
-  const [message1, setMessage1] = useState('');
+
   const { email } = useParams();
   const navigateTo = useNavigate()
 
@@ -21,10 +22,12 @@ const Otp = () => {
         otp
       });
       if (response && response.data === "otp expire") {
-        setMessage("Otp has been expired");
+        toast.warning('Otp has been expired',{
+          theme: "colored"
+        })
       }
     else  if (response && response.data === "valid") {
-      // navigateTo(`/resetPassword/${email}&?otp=${otp}`)
+     
 
       navigateTo({
         pathname: `/resetPassword/${email}/${otp}`,
@@ -34,7 +37,9 @@ const Otp = () => {
 
 
       }else{
-        setMessage("Invalid Otp")
+        toast.error('Invalid Email',{
+          theme: "colored"
+        })
       }
     } catch (error) {
       console.error('Error occurred while handling OTP:', error);
@@ -49,10 +54,14 @@ const Otp = () => {
         email
       });
       if (response && response.data === "Invalid") {
-        setMessage('Invalid Email');
+        toast.error('Invalid Email',{
+          theme: "colored"
+        })
       }
       if (response && response.data === "success") {
-        setMessage1('Otp sent Successfully');
+        toast.success('Otp sent Successfully',{
+          theme: "colored"
+        })
       }
     } catch (error) {
       console.error('Error occurred while resending OTP:', error);
@@ -80,8 +89,7 @@ const Otp = () => {
           <span onClick={handleResend} className='resend'>Resend Otp</span>
           <button type="submit" className='verify_btn'>Verify OTP</button>
         </form>
-        {message && <p className='error_otp'>{message}</p>}
-        {message1 && <p className='success_otp'>{message1}</p>}
+       
       </div>
     </>
   );

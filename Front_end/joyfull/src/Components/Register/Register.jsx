@@ -3,6 +3,7 @@ import './Register.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import paw from "../../img/paw_print.jpg";
+import {toast} from 'react-toastify';
 
 
 import { motion } from 'framer-motion';
@@ -19,7 +20,7 @@ function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState('');
-    const [message, setMessage] = useState('');
+  
     const [isdisable, setdisable] = useState(false);
     const navigateTo = useNavigate();
 
@@ -27,30 +28,38 @@ function Register() {
         e.preventDefault();
 setdisable(true)
 
-setTimeout(() => {
-    setMessage('')
-  
-    
-}, 2000);
+
 setTimeout(() => {
    
     setdisable(false)
     
 }, 4000);
         if (!email || !username || !password || !ConfirmPassword) {
-            setMessage('Please Fill All Inputs');
+            toast.error('Please Fill All Inputs',{
+                theme: "colored",
+                
+              })
             
         } else if(password.length < 8){
-            setMessage('Password must be at least 8 characters long');
+          toast.error('Password Must be atleast 8 credentials ',{
+              theme: "colored",
+              position: "bottom-center"
+            })
         }else if(password !== ConfirmPassword){
-            setMessage('Invalid re enter password');
+            toast.warning('Incorrect Retyped Password',{
+                theme: "colored",
+              
+              })
         }else{
             const response = await axios.post("http://localhost:5000/getPass",{
                 email
             })
 
             if(response && response.data == "User exists"){
-                setMessage("User already exist")
+                toast.error('User already exist',{
+                    theme: "colored",
+                   
+                  })
             }else{
 
             
@@ -149,7 +158,6 @@ setTimeout(() => {
                                 <button className='already'> Already have an account?</button>
                             </NavLink>
                         </form>
-                        {message && <p className="error-message">{message}</p>}
                     </div>
 
                     <div>

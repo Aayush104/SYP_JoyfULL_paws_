@@ -4,10 +4,11 @@ import './Login.css';
 import axios from 'axios';
 import Cookies from 'js-cookie'
 import paw from "../../img/log_paw.png";
+import { toast } from 'react-toastify';
 const Login = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+
     const navigateTo = useNavigate();
 
 
@@ -32,17 +33,33 @@ const Login = () => {
                 const { token } = response.data;
             Cookies.set('token', token)
                 navigateTo('/main'); 
+
+                setTimeout(()=>{
+                    toast.success('Login Success',{
+                        position: "top-center"
+                      })
+
+                },200)
             }
 
            
         } catch (error) {
             console.error("Error:", error.response.data);
             if (error.response && error.response.status === 401) {
-                setMessage("Password doesn't match");
+                toast.warning('Password doesnot Match',{
+                    theme: "colored",
+                 
+                  })
             } else if (error.response && error.response.status === 404) {
-                setMessage("User not found");
+                toast.warning('User Not Found',{
+                    theme: "colored",
+                   
+                  })
             } else {
-                setMessage("Error logging in");
+                toast.error('Error Login',{
+                    theme: "colored",
+                  
+                  })
             }
         }
     };
@@ -80,7 +97,7 @@ const Login = () => {
                     <NavLink to='/register'>
                         <button className='C-btn'> Create An account?</button>
                     </NavLink>
-                    {message && <p className='error-message'>{message}</p>}
+                 
                 </div>
             </div>
 

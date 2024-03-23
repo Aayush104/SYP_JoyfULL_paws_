@@ -4,11 +4,12 @@ import Navbar from '../Navbar/Navbar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';4
 // import Otp from '../Otp/Otp';
+import {toast} from 'react-toastify'
 
 const Forget = () => {
     
     const [email ,setEmail] = useState('');
-    const [message ,setMessage] = useState('');
+   
     const navigateTo = useNavigate()
 
     const handleSubmit = async (e)=>{
@@ -18,15 +19,17 @@ const Forget = () => {
             email
         })
 if (response && response.data == "Invalid"){
-    setMessage('Invalid Email')
+  toast.error('Invalid Email',{
+    theme: "colored"
+  })
 }
 if (response && response.data == "success"){
-  setMessage('Otp sent Successfully')
+ 
   navigateTo(`/Otp/${email}`)
 
   setTimeout(() => {
     console.log(email)
-    window.alert('Otp sent Successfully')
+    toast.info('Otp sent Successfully')
   },500);
  
 }
@@ -58,7 +61,7 @@ if (response && response.data == "success"){
      
       
     </form>
-    {message && <p className='forgot_message'>{message}</p>}
+ 
   </div>
     </>
   

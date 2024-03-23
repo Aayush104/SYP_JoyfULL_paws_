@@ -3,11 +3,12 @@ import './ResetPassword.css'
 import Navbar from '../Navbar/Navbar'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 const Resetpassword = () => {
   const [confirmpass, setconfirmpass] = useState('');
 const [newpass, setnewpass] = useState('');
-const [message, setmessage] = useState('');
+
 const navigateTo = useNavigate()
 
 const{email}=  useParams();
@@ -16,12 +17,22 @@ const {otp} = useParams()
 const handleSubmit = async (e)=>{
   e.preventDefault()
 if(confirmpass !== newpass){
-  setmessage("Please Add same password in both Input")
+  toast.warning('Please add same password in both Field',{
+    theme: "colored",
+  
+  })
+
 
 }else if(!confirmpass || !newpass){
-  setmessage("Please Enter the password")
+  toast.error('Please Enter the password',{
+    theme: "colored",
+    position: "bottom-center"
+  })
 }else if(newpass.length < 8){
-  setmessage("Password must be atleast 8 character")
+  toast.info('Password must be atleast 8 Character',{
+    theme: "colored",
+    position: "bottom-center"
+  })
 
 }
   else{
@@ -32,7 +43,9 @@ if(confirmpass !== newpass){
 if(response && response.data == 'Changed'){
   navigateTo('/login')
   setTimeout(() => {
-    window.alert("Your password has been changed")
+    toast.success('Password has been changed Successfully',{
+
+    })
   }, 300);
   
 
@@ -65,7 +78,7 @@ if(response && response.data == 'Changed'){
             </div>
             <button type='submit' className='pass_confirm'>Confirm</button>
         </div>
-        {message && <p className='error'>{message}</p>}
+       
      </form>
    
     </div>

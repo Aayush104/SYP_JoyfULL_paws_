@@ -7,6 +7,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { RxUpload } from "react-icons/rx";
+import {toast} from 'react-toastify'
 
 const Edit = () => {
   const { id } = useParams();
@@ -83,13 +84,23 @@ const Edit = () => {
 
   
         setTimeout(() => {
-          window.alert("Update successful");
-        }, 500);
+          toast.success("Update successful",{
+            position: "top-center",
+
+
+
+          });
+        },200);
       } else {
-        window.alert("Update failed");
+        toast.error("Update failed",{
+          theme: "colored",
+        });
       }
     } catch (error) {
       console.error('Error updating pet:', error);
+      toast.error("An error Occured",{
+        theme: "colored",
+      });
     }
   };
   
@@ -214,7 +225,7 @@ const Edit = () => {
                 </div>
               </div>
               <div className='buttonss'>
-          <button className='button3' type="submit">Add</button>
+          <button className='button3' type="submit">Update</button>
           <NavLink to= '/Mypost'>
           <button className='button4'>Back</button>
           </NavLink>
