@@ -451,7 +451,7 @@ exports.handleOtp = async (req,res) =>{
             Otp : otp
         }
     })
-    console.log("This is Otp",userdata[0].Otp) //esma data aauna duitai value true hunai aprxa
+ 
     if(userdata.length == 0){
         console.log("invalid")
        return res.json("Invalid Otp")
@@ -462,7 +462,7 @@ exports.handleOtp = async (req,res) =>{
 
         if(CurrentTime - otpGeneratetTime >= 120000){
          
-            userdata[0].Otp = null //ekchoti use bhaesakya otp lai null banaideko
+            userdata[0].Otp = null,
             userdata[0].OtpGeneratedTime = null
             await userdata[0].save()
             

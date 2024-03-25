@@ -19,14 +19,15 @@
       flex-direction: column;
      align-items: flex-start;
      text-align: center;
+     font-family: 'comic'
      
   }
   
 
   .ia_banner span:nth-child(1) {
     color: #fff;
-  
-      font-size: 3.2rem;
+  text-align: center;
+      font-size: 3rem;
       font-weight: 700;
       padding-bottom: 0.8rem;
   }

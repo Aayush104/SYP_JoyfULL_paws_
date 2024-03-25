@@ -26,12 +26,12 @@ if(confirmpass !== newpass){
 }else if(!confirmpass || !newpass){
   toast.error('Please Enter the password',{
     theme: "colored",
-    position: "bottom-center"
+   
   })
 }else if(newpass.length < 8){
   toast.info('Password must be atleast 8 Character',{
     theme: "colored",
-    position: "bottom-center"
+   
   })
 
 }

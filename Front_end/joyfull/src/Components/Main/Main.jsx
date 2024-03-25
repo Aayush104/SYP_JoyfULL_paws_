@@ -12,6 +12,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';         
 import { NavLink } from 'react-router-dom';
 import cookies from 'js-cookie'
+import bgvideo from '../../img/puppy.mp4'
 
 
 const Main = () => {
@@ -21,8 +22,11 @@ const Main = () => {
   };
 
   const transition = { duration: 4, type: 'spring' };
-  const initialPosition = { y: -200 } // Initial position off-screen
-  const finalPosition = { y: 0 }
+  const initialPosition = { x: -700 } // Initial position off-screen
+  const finalPosition = { x: 0 }
+  const transition1 = { duration: 4, type: 'spring' };
+  const initialPosition1 = { x: 700 } // Initial position off-screen
+  const finalPosition1 = { x: 0 }
 
   const userid = cookies.get('token');
 
@@ -47,58 +51,29 @@ const Main = () => {
 
 
   return (
-    <div className='w-main'>
+
+    <>
       <InnerNav />
-      <div className='w-mainIntro'>
-        <div className='spans'>
-      
-          <motion.span
-          transition={transition}
-          initial= {initialPosition}
-          whileInView={finalPosition}
-          >Welcome to JoyfulPaw🤍 </motion.span>
-      
-        
-          <motion.span
-          transition={transition}
-          initial= {initialPosition}
-          whileInView={finalPosition}
-          >Spread Joy, Save a Paw🐾 </motion.span>
-      
-          <motion.span
-          transition={transition}
-          initial= {initialPosition}
-          whileInView={finalPosition}
-          >Where Every Adoption </motion.span>
-          <motion.span
-          transition={transition}
-          initial= {initialPosition}
-          whileInView={finalPosition}
-          >Tells a Story!📖 </motion.span>
-
-          
+      <div className='bvideo'>
+        <video src={bgvideo} muted loop autoPlay></video>
+        <div className='v_span'>
+        <motion.span
+         initial={initialPosition}
+              whileInView={finalPosition} 
+              transition={transition}
+        >Welcome to Joyful Paws💙</motion.span>
+        <motion.span
+         initial={initialPosition1}
+              whileInView={finalPosition1} 
+              transition={transition1}
+        > Where smiles meet wagging tails in pure friendship🐇</motion.span>
         </div>
-        <motion.div
-          className='m-pets'
-          variants={fadeIn}
-          initial='hidden'
-          animate='visible'
-          transition={transition}
-        >
-          <img
-            src="https://fullkit.moxcreative.com/pawpaw/wp-content/uploads/sites/12/2022/07/pet_home_.png"
-            alt="Pet Home"
-            width="550"
-            height="400"
-            className='pets'
-          />
-
-
-          
-        </motion.div>
-
+       
         
       </div>
+    <div className='w-main'>
+    
+     
 <Information />
       <div className='featured_pets'>
       <div className='head'>
@@ -142,6 +117,7 @@ const Main = () => {
       <Testimonial />
       <Footer />
     </div>
+    </>
   );
 }
 
