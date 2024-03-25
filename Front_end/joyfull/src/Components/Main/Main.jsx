@@ -12,19 +12,16 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';         
 import { NavLink } from 'react-router-dom';
 import cookies from 'js-cookie'
-import bgvideo from '../../img/puppy.mp4'
+import bgvideo from '../../img/Main_bg.mp4'
 
 
 const Main = () => {
-  const fadeIn = {
-    hidden: { opacity: 0, y: 100 }, // y vaneko kaha hunxa view ma aaunu vanda aagdai vaneko
-    visible: { opacity: 1, y: 0 },
-  };
+ 
 
-  const transition = { duration: 4, type: 'spring' };
+  const transition = { duration: 3, type: 'autumn' };
   const initialPosition = { x: -700 } // Initial position off-screen
   const finalPosition = { x: 0 }
-  const transition1 = { duration: 4, type: 'spring' };
+  const transition1 = { duration: 3, type: 'autumn' };
   const initialPosition1 = { x: 700 } // Initial position off-screen
   const finalPosition1 = { x: 0 }
 
