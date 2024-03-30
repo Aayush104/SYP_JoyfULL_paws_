@@ -12,7 +12,7 @@ exports.createUser =  async (req, res) => {
     const { Username, Email, Password} = req.body;
 
     console.log(req.body)
-    
+           
 
     try {
         const existingUser = await users.findOne({
@@ -37,7 +37,7 @@ exports.createUser =  async (req, res) => {
     } catch (error) {
        
         console.error('Error registering user:', error);
-       return res.status(500).send('Error registering user');
+       return res.sta (500).send('Error registering user');
        
     }
 };

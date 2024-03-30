@@ -1,4 +1,4 @@
-const express = require('express');
+    const express = require('express');
 const app = express();
 const { users, pets } = require('./model/Index');
 const cors = require('cors');
@@ -130,8 +130,3 @@ app.post('/getPass', async (req, res) => {
  app.listen(5000, () => {
     console.log(`Server is running on port 5000`);
 });
-
-
-
-
-

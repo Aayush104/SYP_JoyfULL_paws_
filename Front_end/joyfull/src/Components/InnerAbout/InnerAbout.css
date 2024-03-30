@@ -1,5 +1,5 @@
 
-  
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Rubik+Scribble&display=swap');
   /* Styling for the banner */
   .ia_banner {
       background-image: url('../../img/Banner.png');
@@ -19,13 +19,14 @@
       flex-direction: column;
      align-items: flex-start;
      text-align: center;
-     font-family: 'comic'
+     font-family: "Rubik Scribble";
+     color: rgb(6, 138, 186);
      
   }
   
 
   .ia_banner span:nth-child(1) {
-    color: #fff;
+   
   text-align: center;
       font-size: 3rem;
       font-weight: 700;
@@ -34,7 +35,7 @@
   
 
 .ia_banner span:nth-child(2) {
-   color: #fff;
+  
 
     font-size: 3rem;
     padding-bottom: 1rem;

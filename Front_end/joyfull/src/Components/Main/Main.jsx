@@ -63,7 +63,12 @@ const Main = () => {
          initial={initialPosition1}
               whileInView={finalPosition1} 
               transition={transition1}
-        > Where smiles meet wagging tails in pure friendship🐇</motion.span>
+        > Where smiles meet wagging tails </motion.span>
+        <motion.span
+         initial={initialPosition1}
+              whileInView={finalPosition1} 
+              transition={transition1}
+        >  In pure friendship🐇</motion.span>
         </div>
        
         

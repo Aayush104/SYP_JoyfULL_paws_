@@ -72,7 +72,7 @@ else{
      setTimeout(() => {
         toast.success("Your Pet has been listed",{
           position: "top-center",
-autoClose: 3000,
+
 
 
         });
