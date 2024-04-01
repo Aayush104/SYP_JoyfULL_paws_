@@ -4,12 +4,15 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import paw from "../../img/paw_print.jpg";
 import {toast} from 'react-toastify';
+import HashLoader from "react-spinners/HashLoader";
 
 
 import { motion } from 'framer-motion';
 
 function Register() {   
 
+
+    
 
     const transition = { duration: 2, type: 'autumn' }
     const initialPosition = { x: -200, y: 300} // Initial position off-screen
@@ -20,23 +23,25 @@ function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState('');
-  
-    const [isdisable, setdisable] = useState(false);
+  const [loading, setloading] = useState(false)
+   
     const navigateTo = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-setdisable(true)
 
 
-setTimeout(() => {
-   
-    setdisable(false)
-    
-}, 4000);
+
+
+        setTimeout(() => {
+           setloading(false)
+        }, 5000);
+
+
         if (!email || !username || !password || !ConfirmPassword) {
             toast.error('Please Fill All Inputs',{
                 theme: "colored",
+
                 
               })
             
@@ -51,15 +56,22 @@ setTimeout(() => {
               
               })
         }else{
+            setloading(true)
+
+           
             const response = await axios.post("http://localhost:5000/getPass",{
                 email
             })
 
             if(response && response.data == "User exists"){
+                setloading(false)
                 toast.error('User already exist',{
                     theme: "colored",
+                  
+                    
                    
                   })
+
             }else{
 
             
@@ -68,15 +80,34 @@ setTimeout(() => {
                  localStorage.setItem('username', username);
                  localStorage.setItem('password', password);
                 navigateTo(`/registerOtp`)
-                
+                    
             }
         }
        
     };
 
     return (
+
         <>
-            <div className="w-register">
+
+
+
+        {loading ?
+        <div className='loading-spinner'>
+        <div className="spinner-container">
+                        <HashLoader
+                            color={'D0021B'}
+                            loading={loading}
+                            speedMultiplier={2}
+                            size={80}
+                        />
+                        
+                         <img src='https://lordicon.com/icons/wired/gradient/177-envelope-send.gif' width='100px'></img>
+                      
+                        
+                    </div>
+        </div>
+        :       <div className="w-register">
                 <div className='left_reg'>
                     <NavLink to='/'>
                         <p className='back'>Back</p>
@@ -152,7 +183,7 @@ setTimeout(() => {
                                 />
                             </div>
                            
-                            <button className='button2' type="submit" disabled={isdisable}>Sign Up</button>
+                            <button className='button2' type="submit">Sign Up</button>
                           
                             <NavLink to='/Login'>
                                 <button className='already'> Already have an account?</button>
@@ -181,7 +212,8 @@ setTimeout(() => {
           />
           </div>
                 </div>
-            </div>
+            </div>}
+      
         </>
     );
 }
