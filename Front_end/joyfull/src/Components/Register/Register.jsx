@@ -35,7 +35,7 @@ function Register() {
 
         setTimeout(() => {
            setloading(false)
-        }, 5000);
+        }, 5200);
 
 
         if (!email || !username || !password || !ConfirmPassword) {

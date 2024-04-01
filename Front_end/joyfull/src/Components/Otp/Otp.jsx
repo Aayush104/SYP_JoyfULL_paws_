@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import './Otp.css';
 import axios from 'axios';
@@ -70,8 +70,13 @@ const Otp = () => {
 
   return (
     <>
-      <Navbar />
+     <div className='bck'>
+       <NavLink to= '/forget'>
+       <button className='button'>back</button>
+       </NavLink>
+       </div>
       <div className='w-otp'>
+    
         <form className='form_otp' onSubmit={handleSubmit}>
           <div className='input_form'>
             <label>Enter the Otp:</label>

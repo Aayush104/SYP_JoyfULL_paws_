@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './ResetPassword.css'
 import Navbar from '../Navbar/Navbar'
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import {toast} from 'react-toastify';
 
 const Resetpassword = () => {
@@ -57,7 +57,11 @@ if(response && response.data == 'Changed'){
 
   return (
     <>
-        <Navbar/>
+      <div className='bck'>
+       <NavLink to= '/forget'>
+       <button className='button'>back</button>
+       </NavLink>
+       </div>
     <div className='main_reset'>
  
      <form className='reset_form' onSubmit = {handleSubmit}>
