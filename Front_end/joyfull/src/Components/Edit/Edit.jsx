@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Edit.css'
 
 import InnerNav from '../InnerNav/InnerNav';
-import Footer from '../Footer/Footer';
+
 import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,9 @@ import {toast} from 'react-toastify'
 const Edit = () => {
   const { id } = useParams();
   const navigateto = useNavigate();
-
+  
+  const validAgePattern = /^(0|[1-9]\d*) (years?|months?|days?)$/; //regular expression or regax
+  const validNamePattern = /^[a-zA-Z]+(?:[' -][a-zA-Z]+)*$/; //regular expression or regax
 
   const [petData, setPetData] = useState({
     petname: '',
@@ -71,6 +73,28 @@ const Edit = () => {
     formData.append('petlikings', petData.petlikings);
     formData.append('aboutpet', petData.aboutpet);
     formData.append('breed', petData.breed);
+
+
+
+    
+
+
+    if (!validAgePattern.test(petData.petage)) {
+      toast.error("Invalid age format. Please use the format: 'X years/months/days'", {
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
+    }
+
+    if (!validNamePattern.test(petData.petname)) {
+      toast.error("Invalid name format'", {
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
+    }
+
   
     try {
       const response = await axios.post(`http://localhost:5000/Edit/${id}`, formData, {
@@ -241,3 +265,5 @@ const Edit = () => {
 }
 
 export default Edit;
+
+

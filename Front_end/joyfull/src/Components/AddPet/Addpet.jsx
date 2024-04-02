@@ -30,8 +30,16 @@ const AddPet = () => {
     fileInputRef.current.click();
   }
 
+  const invalidHtmlScriptPattern = /<[a-z][\s\S]*>/i;
+
+  const validAgePattern = /^(0|[1-9]\d*) (years?|months?|days?)$/; //regular expression or regax
+  const validNamePattern = /^[a-zA-Z]+(?:[' -][a-zA-Z]+)*$/; //regular expression or regax
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+   
+
 
     const userId = cookies.get('token'); // Fetch user token from cookies
     const formData = new FormData();
@@ -44,6 +52,34 @@ const AddPet = () => {
     formData.append('aboutpet', aboutpet);
     formData.append('breed', breed);
     formData.append('petphoto', petphoto);
+
+
+    if (invalidHtmlScriptPattern.test(petname) || invalidHtmlScriptPattern.test(breed) || invalidHtmlScriptPattern.test(petlikings) || invalidHtmlScriptPattern.test(aboutpet)) {
+      toast.error("Invalid input. Please avoid using HTML or scripting.", {
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
+    }
+
+    if (!validAgePattern.test(petage)) {
+      toast.error("Invalid age format. Please use the format: 'X years/months/days'", {
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
+    }
+
+    if (!validNamePattern.test(petname,breed,petlikings,aboutpet)) {
+      toast.error("Invalid name format'", {
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
+    }
+
+
+
     if(petphoto == null){
       toast.error("Add a photo.",{
         autoClose: 3000,
