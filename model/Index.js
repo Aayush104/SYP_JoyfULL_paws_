@@ -5,7 +5,7 @@ const {Sequelize, DataTypes} = require("sequelize");
 const sequelize = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,{
     host: dbconfig.HOST,
     dialect: dbconfig.dialect,
-    operatorsAliases: false,
+    operatorsAliases: false,   
     pool:{
         max: dbconfig.pool.max,
         min: dbconfig.pool.min,

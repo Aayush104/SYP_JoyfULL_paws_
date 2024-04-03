@@ -13,6 +13,7 @@ const Edit = () => {
   const { id } = useParams();
   const navigateto = useNavigate();
   
+  const invalidHtmlScriptPattern = /<[a-z][\s\S]*>/i;
   const validAgePattern = /^(0|[1-9]\d*) (years?|months?|days?)$/; //regular expression or regax
   const validNamePattern = /^[a-zA-Z]+(?:[' -][a-zA-Z]+)*$/; //regular expression or regax
 
@@ -75,7 +76,15 @@ const Edit = () => {
     formData.append('breed', petData.breed);
 
 
+    if (invalidHtmlScriptPattern.test(petData.petname) || invalidHtmlScriptPattern.test(petData.breed) || invalidHtmlScriptPattern.test(petData.petlikings) || invalidHtmlScriptPattern.test(petData.aboutpet)) {
+      toast.error("Invalid input. Please avoid using HTML or scripting.", {
+        autoClose: 3000,
+        theme: "colored",
+      });
 
+      console.log("NOt valid html")
+      return;
+    }
     
 
 
