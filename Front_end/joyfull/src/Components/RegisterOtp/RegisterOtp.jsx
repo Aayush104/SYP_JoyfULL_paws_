@@ -65,7 +65,7 @@ const RegisterOtp = () => {
         email
       });
 
-      toast.success('Otp has been sent',{
+      toast.success('Otp has been sent Check gmail ',{
         theme: "colored"
       })
     

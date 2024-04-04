@@ -12,8 +12,6 @@ import { motion } from 'framer-motion';
 function Register() {   
 
 
-    
-
     const transition = { duration: 2, type: 'autumn' }
     const initialPosition = { x: -200, y: 300} // Initial position off-screen
     const finalPosition = { x: 0 , y :0} // Final
